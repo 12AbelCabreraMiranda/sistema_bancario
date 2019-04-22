@@ -1,0 +1,54 @@
+<?php 
+	class usuario
+	{
+		private $conexion;
+		public function __construct()
+		{
+			require_once('conexion.php');
+			$this->conexion= new conexion();
+			$this->conexion->conectar();
+		}
+
+		function identificar($email,$password)
+		{
+			$pass=sha1($password);
+			$sql="SELECT * FROM empleado WHERE usuario='$email' && contrasenia='$pass'";
+			$resulatdos = $this->conexion->conexion->query($sql);
+			if ($resulatdos->num_rows > 0) {
+				$r=$resulatdos->fetch_array();
+			}
+			else{
+				$r[0]=0;
+			}
+			return $r;
+			$this->conexion->cerrar();
+		}
+
+		function registrar($nombre,$apellido,$telefono,$direccion,$usuario,$password){
+			$pass=sha1($password);
+			
+			//HORA SISTEMA AL REGISTRARSE
+			ini_set('date.timezone', 'America/Guatemala');
+			$hora_sistema = date ('H:i:s', time());
+			//FECHA SISTEMA AL REGISTRARSE
+			ini_set('date.timezone', 'America/Guatemala');
+			$fecha_sistema = date("d-m-Y");
+						
+			//TABLA EMPLEADOS
+			$sql="INSERT INTO empleado
+			VALUES(0,'$nombre','$apellido','$telefono','$direccion',1,'$usuario','$pass',1,'$hora_sistema','$fecha_sistema')";
+			if($this->conexion->conexion->query($sql)){
+				return true;
+			}
+			else{
+				return false;
+			}					
+			$this->conexion->cerrar();
+		}
+
+	
+	}
+
+
+	
+?>
