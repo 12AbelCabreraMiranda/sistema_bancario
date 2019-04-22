@@ -11,11 +11,11 @@
 					session_destroy();
 				break;
 			case 'ingresar':
-					$usuario = $_POST['usuario'];
-					$password = $_POST['password'];
+					$usu = $_POST['usu'];
+					$contrasenia = $_POST['contrasenia'];
 
 					$ins = new usuario();
-					$array=$ins->identificar($usuario,$password);
+					$array=$ins->identificar($usu,$contrasenia);
 					if ($array[0]==0) 
 					{
 						echo '0';

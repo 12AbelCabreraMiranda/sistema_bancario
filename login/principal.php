@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mi Banco</title>
 
-    <link rel="stylesheet" href="../Resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Resources/css/bootstrap.min.css">
 
 </head>
  
@@ -53,17 +53,17 @@ session_start();
             </div>
         </div>
     </div>
-    <script src="../Resources/js/jquery-1.11.2.js"></script>
-    <script src="../Resources/js/bootstrap.min.js"></script>
+    <script src="Resources/js/jquery-1.11.2.js"></script>
+    <script src="Resources/js/bootstrap.min.js"></script>
     <script>
         function cerrar()
         {
             $.ajax({
-                url:'../Controllers/usuario.php',
+                url:'Controllers/usuario.php',
                 type:'POST',
                 data:"boton=cerrar"
             }).done(function(resp){
-                location.href = '../Views/'
+                location.href = 'index.php'
             });
         }
     </script>
@@ -75,7 +75,7 @@ session_start();
   }
   else
   {
-    header("location: ./");
+    header("location: ./");//pendiente
   }
  ?>
     

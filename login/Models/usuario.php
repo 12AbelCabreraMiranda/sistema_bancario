@@ -9,10 +9,10 @@
 			$this->conexion->conectar();
 		}
 
-		function identificar($email,$password)
+		function identificar($usuario,$password)
 		{
 			$pass=sha1($password);
-			$sql="SELECT * FROM empleado WHERE usuario='$email' && contrasenia='$pass'";
+			$sql="SELECT * FROM empleado WHERE usuario='$usuario' && contrasenia='$pass'";
 			$resulatdos = $this->conexion->conexion->query($sql);
 			if ($resulatdos->num_rows > 0) {
 				$r=$resulatdos->fetch_array();

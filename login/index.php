@@ -6,8 +6,7 @@
    	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Mi Banco</title>
 
-    <link rel="stylesheet" href="../Resources/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="Resources/css/bootstrap.min.css">
 </head>
  
 <body>
@@ -42,17 +41,17 @@
                         </div>                     
                         <form role="form">
                             <div class="form-group">
-                                <label for="usuario">Usuario:</label>
+                                <label for="usu">Usuario:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input REQUIRED type="text" class="form-control" id="usuario" placeholder="Usuario">
+                                    <input REQUIRED type="text" class="form-control" id="usu" placeholder="Usuario">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="password">Contraseña</label>
+                                <label for="contrasenia">Contraseña</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                                    <input REQUIRED type="password" class="form-control" id="password" placeholder="Password">
+                                    <input REQUIRED type="contrasenia" class="form-control" id="contrasenia" placeholder="Contrasenia">
                                 </div>
                             </div>                     
                             <button type="button" class="btn btn-primary" onclick='confirmar();'><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
@@ -79,44 +78,44 @@
                   <div class="form-group">
                     <label for="nombres" class="control-label col-xs-5">Nombres :</label>
                     <div class="col-xs-5">
-                      <input id="nombres" name="nombres" type="text" class="form-control" placeholder="Ingrese sus Nombres">
+                      <input REQUIRED id="nombres" name="nombres" type="text" class="form-control" placeholder="Ingrese sus Nombres">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="apellidos" class="control-label col-xs-5">Apellidos :</label>
                     <div class="col-xs-5">
-                      <input id="apellidos" name="apellidos"  type="text" class="form-control" placeholder="Ingrese sus Apellidos">
+                      <input REQUIRED id="apellidos" name="apellidos"  type="text" class="form-control" placeholder="Ingrese sus Apellidos">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="telefono" class="control-label col-xs-5">Telefono :</label>
                     <div class="col-xs-5">
-                      <input id="telefono" name="telefono"  type="text" class="form-control" placeholder="Ingrese su teléfono">
+                      <input REQUIRED id="telefono" name="telefono"  type="text" class="form-control" placeholder="Ingrese su teléfono">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="direccion" class="control-label col-xs-5">Dirección :</label>
                     <div class="col-xs-5">
-                      <input id="direccion" name="direccion"  type="text" class="form-control" placeholder="Ingrese su dirección">
+                      <input REQUIRED id="direccion" name="direccion"  type="text" class="form-control" placeholder="Ingrese su dirección">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="usuario" class="control-label col-xs-5">Usuario:</label>
                     <div class="col-xs-5">
-                        <input id="usuario" name="usuario" type="text" class="form-control" placeholder="Ingrese su usuario">
+                        <input REQUIRED id="usuario" name="usuario" type="text" class="form-control" placeholder="Ingrese su usuario">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="pass" class="control-label col-xs-5">Contraseña:</label>
                     <div class="col-xs-5">
-                        <input id="pass" name="pass" type="password" class="form-control" placeholder="Ingrese su contraseña">
+                        <input REQUIRED id="pass" name="pass" type="password" class="form-control" placeholder="Ingrese su contraseña">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="pass2" class="control-label col-xs-5">Repetir Contraseña:</label>
                     <div class="col-xs-5">
-                        <input id="pass2" name="pass2" type="password" class="form-control" placeholder="Repetir contraseña">
+                        <input REQUIRED id="pass2" name="pass2" type="password" class="form-control" placeholder="Repetir contraseña">
                     </div>
                   </div>
                 </form>
@@ -130,21 +129,21 @@
         </div><!-- /.modal -->
     </div>
        
-	<script src="../Resources/js/jquery-1.11.2.js"></script>
-	<script src="../Resources/js/bootstrap.min.js"></script>
+	<script src="Resources/js/jquery-1.11.2.js"></script>
+	<script src="Resources/js/bootstrap.min.js"></script>
     <script>
         function confirmar(){
-            var usuario = $('#usuario').val();
-            var password = $('#password').val();
+            var usu = $('#usu').val();
+            var contrasenia = $('#contrasenia').val();
             $.ajax({
-                url:'../Controllers/usuario.php',
+                url:'Controllers/usuario.php',
                 type:'POST',
-                data:'usuario='+usuario+'&password='+password+"&boton=ingresar"
+                data:'usu='+usu+'&contrasenia='+contrasenia+"&boton=ingresar"
             }).done(function(resp){
                 if(resp=='0'){
                     $('#error').show();
                 }else{
-                    location.href='../Views/principal.php';
+                    location.href='principal.php';
                 }
             });
         }
@@ -177,7 +176,7 @@
                 
                 
                 $.ajax({
-                    url:'../Controllers/usuario.php',
+                    url:'Controllers/usuario.php',
                     type:'POST',
                     data:'nombres='+nombres+'&apellidos='+apellidos+ '&telefono='+telefono+ '&direccion='+direccion+'&usuario='+usuario+'&password='+password+'&boton=registrar'
                 }).done(function(resp){
