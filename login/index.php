@@ -1,3 +1,13 @@
+<?php
+    $conexion = new mysqli("localhost","root","","sistema_bancario");
+
+    $query = "select id_banco, nombre_banco from banco";
+    $resultado = $conexion->query($query);
+
+    $query2 = "select idtipo_usuario, nombre_tipo from tipo_usuario";
+    $resultado2 = $conexion->query($query2);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +61,7 @@
                                 <label for="contrasenia">Contraseña</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                                    <input REQUIRED type="contrasenia" class="form-control" id="contrasenia" placeholder="Contrasenia">
+                                    <input REQUIRED type="password" class="form-control" id="contrasenia" placeholder="Contrasenia">
                                 </div>
                             </div>                     
                             <button type="button" class="btn btn-primary" onclick='confirmar();'><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
@@ -100,11 +110,37 @@
                     </div>
                   </div>
 
+                    <div class="form-group" >
+                        <label class="control-label col-xs-5">SELECCIONAR BANCO :</label>
+                        <div class="col-xs-5">
+                            <select name="banco" class="form-control col-xs-5"  id="banco_id">
+                                <?php while($row = $resultado->fetch_assoc()){  ?>
+                                    <option  value="<?php echo $row['id_banco']; ?> ">
+                                        <?php  echo $row['nombre_banco']; ?>                                             
+                                    </option>
+                                <?php }?>
+                            </select> 
+                        </div>
+                    </div> 
+
+                    <div class="form-group"> 
+                        <label class="control-label col-xs-5">SELECCIONAR TIPO USUARIO </label>
+                        <div class="col-xs-5">
+                            <select name="tipo_usuario" class="form-control"  id="tipo_usuario_id">
+                                <?php while($row = $resultado2->fetch_assoc()){  ?>
+                                    <option value="<?php echo $row['idtipo_usuario']; ?> ">
+                                        <?php  echo $row['nombre_tipo']; ?>                                             
+                                    </option>
+                                <?php }?>
+                            </select> 
+                        </div> 
+                    </div> 
+
                   <div class="form-group">
-                    <label for="usuario" class="control-label col-xs-5">Usuario:</label>
-                    <div class="col-xs-5">
-                        <input REQUIRED id="usuario" name="usuario" type="text" class="form-control" placeholder="Ingrese su usuario">
-                    </div>
+                        <label for="usuario" class="control-label col-xs-5">Nombre de Usuario:</label>
+                        <div class="col-xs-5">
+                            <input REQUIRED id="usuario" name="usuario" type="text" class="form-control" placeholder="Ingrese su usuario">
+                        </div>
                   </div>
                   <div class="form-group">
                     <label for="pass" class="control-label col-xs-5">Contraseña:</label>
@@ -136,7 +172,7 @@
             var usu = $('#usu').val();
             var contrasenia = $('#contrasenia').val();
             $.ajax({
-                url:'Controllers/usuario.php',
+                url:'Models/usuario.php',
                 type:'POST',
                 data:'usu='+usu+'&contrasenia='+contrasenia+"&boton=ingresar"
             }).done(function(resp){
@@ -153,6 +189,8 @@
             var apellidos = $('#apellidos').val();
             var telefono = $('#telefono').val();
             var direccion = $('#direccion').val();
+            var banco =$('#banco_id').val();
+            var tipo_usuario =$('#tipo_usuario_id').val();
             var usuario = $('#usuario').val();
             var password = $('#pass').val();
             var password2 = $('#pass2').val();
@@ -176,9 +214,9 @@
                 
                 
                 $.ajax({
-                    url:'Controllers/usuario.php',
+                    url:'Models/usuario.php',
                     type:'POST',
-                    data:'nombres='+nombres+'&apellidos='+apellidos+ '&telefono='+telefono+ '&direccion='+direccion+'&usuario='+usuario+'&password='+password+'&boton=registrar'
+                    data:'nombres='+nombres+'&apellidos='+apellidos+ '&telefono='+telefono+ '&direccion='+direccion+ '&banco='+banco+ '&tipoUsuario='+tipo_usuario+ '&usuario='+usuario+'&password='+password+'&boton=registrar'
                 }).done(function(resp){
                     if (resp==='exito') {
                         $('#exito').show();                                    

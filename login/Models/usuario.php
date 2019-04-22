@@ -1,54 +1,52 @@
-<?php 
-	class usuario
-	{
-		private $conexion;
-		public function __construct()
-		{
-			require_once('conexion.php');
-			$this->conexion= new conexion();
-			$this->conexion->conectar();
-		}
-
-		function identificar($usuario,$password)
-		{
-			$pass=sha1($password);
-			$sql="SELECT * FROM empleado WHERE usuario='$usuario' && contrasenia='$pass'";
-			$resulatdos = $this->conexion->conexion->query($sql);
-			if ($resulatdos->num_rows > 0) {
-				$r=$resulatdos->fetch_array();
-			}
-			else{
-				$r[0]=0;
-			}
-			return $r;
-			$this->conexion->cerrar();
-		}
-
-		function registrar($nombre,$apellido,$telefono,$direccion,$usuario,$password){
-			$pass=sha1($password);
-			
-			//HORA SISTEMA AL REGISTRARSE
-			ini_set('date.timezone', 'America/Guatemala');
-			$hora_sistema = date ('H:i:s', time());
-			//FECHA SISTEMA AL REGISTRARSE
-			ini_set('date.timezone', 'America/Guatemala');
-			$fecha_sistema = date("d-m-Y");
-						
-			//TABLA EMPLEADOS
-			$sql="INSERT INTO empleado
-			VALUES(0,'$nombre','$apellido','$telefono','$direccion',1,'$usuario','$pass',1,'$hora_sistema','$fecha_sistema')";
-			if($this->conexion->conexion->query($sql)){
-				return true;
-			}
-			else{
-				return false;
-			}					
-			$this->conexion->cerrar();
-		}
-
+<?php
 	
-	}
+		require_once('usuarioQuery.php');
 
 
-	
+		$boton=$_POST['boton'];
+
+		switch ($boton) {
+			case 'cerrar':
+					session_start();
+					session_destroy();
+				break;
+			case 'ingresar':
+					$usu = $_POST['usu'];
+					$contrasenia = $_POST['contrasenia'];
+
+					$ins = new usuario();
+					$array=$ins->identificar($usu,$contrasenia);
+					if ($array[0]==0) 
+					{
+						echo '0';
+					}
+					else
+					{
+						session_start();
+						$_SESSION['ingreso']='YES';
+						$_SESSION['nombre']=$array[1];
+					}
+				break;
+			case 'registrar':
+					$nombres=$_POST['nombres'];
+					$apellidos=$_POST['apellidos'];
+					$telefono=$_POST['telefono'];
+					$direccion=$_POST['direccion'];	
+					$banco=$_POST['banco'];
+					$tipoUsu=$_POST['tipoUsuario'];				
+					$usuario = $_POST['usuario'];
+					$password = $_POST['password'];
+					$instancia = new usuario();
+					if($instancia->registrar($nombres,$apellidos,$telefono,$direccion,$banco,$tipoUsu,$usuario,$password)){
+						echo "exito";
+					}else{
+						echo "no_exito";
+					}
+				break;
+			default:
+				# code...
+				break;
+		}
+
+		
 ?>

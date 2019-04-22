@@ -59,7 +59,7 @@ session_start();
         function cerrar()
         {
             $.ajax({
-                url:'Controllers/usuario.php',
+                url:'Models/usuario.php',
                 type:'POST',
                 data:"boton=cerrar"
             }).done(function(resp){
