@@ -45,7 +45,7 @@ if($action == 'ajax'){
 						<th>DPI </th>
 						<th >NIT</th>
 						<th >Teléfeno</th>
-						<th >Direccion</th>
+						<th >Direccion</th>						
 						<th >Hora registrado</th>
 						<th >Fecha registrado</th>						
 						<th></th>
@@ -61,7 +61,9 @@ if($action == 'ajax'){
 							$dpi=$row['dpi'];
 							$nit=$row['nit'];
 							$telefono=$row['telefono'];	
-							$direccion=$row['direccion'];								
+							$direccion=$row['direccion'];		
+							$usuario_cliente= $row['usuario_cliente'];
+							$contrasenia_cliente= $row['contrasenia_cliente'];
 							$horaApertura=$row['hora_apertura'];
 							$fechaApertura=$row['fecha_apertura'];							
 								
@@ -73,13 +75,13 @@ if($action == 'ajax'){
 							<td ><?php echo $dpi;?></td>
 							<td ><?php echo $nit;?></td>
 							<td ><?php echo $telefono;?></td>
-							<td ><?php echo $direccion;?></td>						
+							<td ><?php echo $direccion;?></td>													
 							<td ><?php echo $horaApertura;?></td>
 							<td ><?php echo $fechaApertura;?></td>						
 
 							<td>
-								<a href="#"  data-target="#editProductModal" class="edit" data-toggle="modal"  data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-dpi="<?php echo $dpi?>" data-nit="<?php echo $nit;?>"   data-telefono="<?php echo $telefono;?>" data-direccion="<?php echo $direccion;?>" data-usuCliente="<?php echo $usuarioCliente;?>" data-passCliente="<?php echo $contraseniaCliente;?>" data-horaA="<?php echo $horaApertura;?>" data-fechaA="<?php echo $fechaApertura;?>"   data-idChequera="<?php echo $chequera_id; ?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i></a>
-								<a href="#deleteProductModal" class="delete" data-toggle="modal" data-id="<?php echo $chequera_id;?>"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#"  data-target="#editProductModal" class="edit" data-toggle="modal"  data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-dpi="<?php echo $dpi?>" data-nit="<?php echo $nit;?>"   data-telefono="<?php echo $telefono;?>" data-direccion="<?php echo $direccion;?>" data-usuario_cliente="<?php echo $usuario_cliente;?>" data-contrasenia_cliente="<?php echo $contrasenia_cliente;?>" data-horaA="<?php echo $horaApertura;?>" data-fechaA="<?php echo $fechaApertura;?>"   data-idChequera="<?php echo $chequera_id; ?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i></a>
+								<a href="#deleteProductModal" class="delete" data-toggle="modal" data-idChequera="<?php echo $chequera_id;?>"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                     		</td>
 						</tr>
 						<?php }?>

@@ -21,17 +21,26 @@ function load(page){
 
 $('#editProductModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
-  var code = button.data('code') 
-  $('#edit_code').val(code)
-  var name = button.data('name') 
-  $('#edit_name').val(name)
-  var category = button.data('category') 
-  $('#edit_category').val(category)
-  var stock = button.data('stock') 
-  $('#edit_stock').val(stock)
-  var price = button.data('price') 
-  $('#edit_price').val(price)
-  var id = button.data('id') 
+
+  var nombreCleinte = button.data('nombre') 
+  $('#edit_nombre').val(nombreCleinte)
+  var apellidoCliente = button.data('apellido') 
+  $('#edit_apellido').val(apellidoCliente)
+  var dpiCliente = button.data('dpi') 
+  $('#edit_dpi').val(dpiCliente)
+  var nitCliente = button.data('nit') 
+  $('#edit_nit').val(nitCliente)
+  var telefonoCliente = button.data('telefono') 
+  $('#edit_telefono').val(telefonoCliente)
+  var direccionCliente = button.data('direccion') 
+  $('#edit_direccion').val(direccionCliente)
+
+  var usuCliente = button.data('usuario_cliente') 
+  $('#edit_UsuarioCliente').val(usuCliente)
+  var passwCliente = button.data('contrasenia_cliente') 
+  $('#edit_passwordCliente').val(passwCliente)
+
+  var id = button.data('idChequera') 
   $('#edit_id').val(id)
 })
 
