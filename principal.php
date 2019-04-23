@@ -10,8 +10,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mi Banco</title>
-
-    <link rel="stylesheet" href="Resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login/Resources/css/bootstrap.min.css">
 
 </head>
  
@@ -53,17 +52,17 @@ session_start();
             </div>
         </div>
     </div>
-    <script src="Resources/js/jquery-1.11.2.js"></script>
-    <script src="Resources/js/bootstrap.min.js"></script>
+    <script src="login/Resources/js/jquery-1.11.2.js"></script>
+    <script src="login/Resources/js/bootstrap.min.js"></script>
     <script>
         function cerrar()
         {
             $.ajax({
-                url:'Models/usuario.php',
+                url:'login/Models/usuario.php',
                 type:'POST',
                 data:"boton=cerrar"
             }).done(function(resp){
-                location.href = 'index.php'
+                location.href = 'login/index.php'
             });
         }
     </script>

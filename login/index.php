@@ -179,7 +179,7 @@
                 if(resp=='0'){
                     $('#error').show();
                 }else{
-                    location.href='principal.php';
+                    location.href='../principal.php';
                 }
             });
         }
