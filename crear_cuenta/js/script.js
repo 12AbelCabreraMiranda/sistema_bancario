@@ -19,6 +19,7 @@ function load(page){
     })
 }
 
+//SCRIPT DE VISTA DE VENTANA DE EDICION
 $('#editProductModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
 
@@ -34,15 +35,16 @@ $('#editProductModal').on('show.bs.modal', function (event) {
   $('#edit_telefono').val(telefonoCliente)
   var direccionCliente = button.data('direccion') 
   $('#edit_direccion').val(direccionCliente)
-
   var usuCliente = button.data('usuario_cliente') 
   $('#edit_UsuarioCliente').val(usuCliente)
   var passwCliente = button.data('contrasenia_cliente') 
   $('#edit_passwordCliente').val(passwCliente)
 
-  var id = button.data('idChequera') 
+  var id = button.data('chequera_id') 
   $('#edit_id').val(id)
 })
+
+
 
 $('#deleteProductModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
@@ -50,9 +52,11 @@ $('#deleteProductModal').on('show.bs.modal', function (event) {
   $('#delete_id').val(id)
 })
 
-
+// SCRIPT DE EDICION CON BASE DE DATOS
 $( "#edit_product" ).submit(function( event ) {
+  
   var parametros = $(this).serialize();
+
     $.ajax({
             type: "POST",
             url: "ajax/editar_producto.php",
@@ -61,15 +65,16 @@ $( "#edit_product" ).submit(function( event ) {
                 $("#resultados").html("Enviando...");
               },
             success: function(datos){
-            $("#resultados").html(datos);
+            $("#resultados").html(datos);                          
             load(1);
             $('#editProductModal').modal('hide');
           }
     });
   event.preventDefault();
+  
 });
 
-
+//GUARDAR REGISTROS CONEXION CON LA BASE DE DATOS
 $( "#add_product" ).submit(function( event ) {
   var parametros = $(this).serialize();
     $.ajax({
@@ -88,6 +93,7 @@ $( "#add_product" ).submit(function( event ) {
   event.preventDefault();
 });
 
+//SCRIPT PARA BORRAR REGISTROS DE LA BASE DE DATOS
 $( "#delete_product" ).submit(function( event ) {
   var parametros = $(this).serialize();
     $.ajax({

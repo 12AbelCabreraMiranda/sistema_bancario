@@ -3,7 +3,7 @@
 			<div class="modal-content">
 				<form name="edit_product" id="edit_product">
 					<div class="modal-header">						
-						<h4 class="modal-title">Editar Cuenta</h4>
+						<h4 class="modal-title">Editar datos del cliente</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 
@@ -40,7 +40,7 @@
 							<label>Usuario Cliente</label>
 							<input type="text" name="edit_UsuarioCliente" id="edit_UsuarioCliente" class="form-control" required>
 						</div>
-						
+
 						<div class="form-group">
 							<label>Contraseña Cliente</label>
 							<input type="text" name="edit_passwordCliente" id="edit_passwordCliente" class="form-control" required>
