@@ -3,22 +3,28 @@
 		$errors[] = "Ingresa el nombre del producto.";
 	} elseif (!empty($_POST['name'])){
 	require_once ("../conexion.php");//Contiene funcion que conecta a la base de datos
-	// escapando, además eliminando todo lo que pueda ser (html/javascript-) code
-    $prod_code = mysqli_real_escape_string($con,(strip_tags($_POST["code"],ENT_QUOTES)));
-	$prod_name = mysqli_real_escape_string($con,(strip_tags($_POST["name"],ENT_QUOTES)));
-	$prod_ctry = mysqli_real_escape_string($con,(strip_tags($_POST["category"],ENT_QUOTES)));
-	$stock = intval($_POST["stock"]);
-	$price = floatval($_POST["price"]);
 	
+    $cuenta_nombre = mysqli_real_escape_string($con,(strip_tags($_POST["name"],ENT_QUOTES)));
+	$cuenta_apellido = mysqli_real_escape_string($con,(strip_tags($_POST["apellido"],ENT_QUOTES)));
+	$cuenta_dpi = mysqli_real_escape_string($con,(strip_tags($_POST["dpi"],ENT_QUOTES)));
+	$cuenta_nit = mysqli_real_escape_string($con,(strip_tags($_POST["nit"],ENT_QUOTES)));
+	$cuenta_telefono = mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
+	$cuenta_direccion = mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
+	$cuenta_usuCliente = mysqli_real_escape_string($con,(strip_tags($_POST["usuarioCliente"],ENT_QUOTES)));
+	$cuenta_passCliente = mysqli_real_escape_string($con,(strip_tags($_POST["contraseniaCliente"],ENT_QUOTES)));
+	//$cuenta_numCuenta = mysqli_real_escape_string($con,(strip_tags($_POST["numCuenta"],ENT_QUOTES)));
+	//$cuenta_tipoCuenta = mysqli_real_escape_string($con,(strip_tags($_POST["tipo_cuenta"],ENT_QUOTES)));
+	//$cuenta_saldoInicial = mysqli_real_escape_string($con,(strip_tags($_POST["saldoInicial"],ENT_QUOTES)));	
 
-	// REGISTER data into database
-    $sql = "INSERT INTO tblprod(id, prod_code, prod_name, prod_ctry, prod_qty, price) VALUES (NULL,'$prod_code','$prod_name','$prod_ctry','$stock','$price')";
+	// Registro en la BD
+    $sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente) 
+			VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$cuenta_passCliente')";
     $query = mysqli_query($con,$sql);
-    // if product has been added successfully
+    // Mensaje insertado registro en la base de datos
     if ($query) {
-        $messages[] = "El producto ha sido guardado con éxito.";
+        $messages[] = "La cuenta ha sido registrado con éxito.";
     } else {
-        $errors[] = "Lo sentimos, el registro falló. Por favor, regrese y vuelva a intentarlo.";
+        $errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
     }
 		
 	} else 

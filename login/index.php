@@ -45,8 +45,8 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">Iniciar Sesion</div>
-                    <div class="panel-body"> 
-                        <div class="alert alert-danger text-center" style="display:none;" id="error">
+                    <div class="panel-body">
+                        <div class="alert alert-danger text-center" style="display:none;" id="result">
                             <p>Usuario o Password no identificados</p>
                         </div>                     
                         <form role="form">
@@ -54,17 +54,17 @@
                                 <label for="usu">Usuario:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input REQUIRED type="text" class="form-control" id="usu" placeholder="Usuario">
+                                    <input REQUIRED type="text" class="form-control" name="user" id="user" placeholder="Usuario">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="contrasenia">Contraseña</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                                    <input REQUIRED type="password" class="form-control" id="contrasenia" placeholder="Contrasenia">
+                                    <input REQUIRED type="password" class="form-control" name="pass" id="pass" placeholder="Contrasenia">
                                 </div>
-                            </div>                     
-                            <button type="button" class="btn btn-primary" onclick='confirmar();'><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                            </div>                    
+                            <button type="button" name="login" id="login" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
                         </form>
                     </div>
                 </div>
@@ -167,6 +167,43 @@
        
 	<script src="Resources/js/jquery-1.11.2.js"></script>
 	<script src="Resources/js/bootstrap.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#login').click(function(){
+        var user = $('#user').val();
+        var pass = $('#pass').val();
+        if($.trim(user).length > 0 && $.trim(pass).length > 0){
+            $.ajax({
+            url:"logueame.php",
+            method:"POST",
+            data:{user:user, pass:pass},
+            cache:"false",
+            beforeSend:function() {
+                $('#login').val("Conectando...");
+            },
+            success:function(data) {
+                $('#login').val("Login");
+                if (data=="7") {
+                $(location).attr('href','../principal.php');
+                }
+                if (data=="10") {
+                $(location).attr('href','../crear_cuenta/index.php');
+                }
+                
+                
+                
+                if (data!=="1" && data!=="2") {
+                $("#result").html("<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Error!</strong> las credenciales son incorrectas.</div>");
+                }
+            }
+            });
+        };
+        });
+    });
+    </script>
+
+
     <script>
         function confirmar(){
             var usu = $('#usu').val();
@@ -178,9 +215,11 @@
             }).done(function(resp){
                 if(resp=='0'){
                     $('#error').show();
-                }else{
+                }
+                else{
                     location.href='../principal.php';
                 }
+               
             });
         }
 

@@ -1,9 +1,12 @@
-
 <?php 
-session_start();
-  if (isset($_SESSION['ingreso']) && $_SESSION['ingreso']=='YES') 
-  {?>
-    <!DOCTYPE html>
+    session_start();
+    if(!isset($_SESSION["user"])){
+    header("location:login/indexs.php");
+    }
+
+  ?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,7 +32,7 @@ session_start();
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['nombre']; ?></a>
+                <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
                         <li><a href="javascript: void(0)" onclick='cerrar();'>Cerrar Session</a></li>
                      
@@ -69,12 +72,4 @@ session_start();
 </body>
 </html>
 
-<?php
-
-  }
-  else
-  {
-    header("location: ./");//pendiente
-  }
- ?>
     

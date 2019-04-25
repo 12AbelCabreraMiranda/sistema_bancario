@@ -1,3 +1,10 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION["user"])){
+    header("location:../login/indexs.php");
+    }
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +35,7 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript: void(0)" style="color:white" class="dropdown-toggle" data-toggle="dropdown"><?php  ?>nombre logeado</a>
+                <li><a href="javascript: void(0)" style="color:white" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
                         <li><a href="javascript: void(0)" onclick='cerrar();'>Cerrar Session</a></li>
                      
@@ -79,5 +86,19 @@
 	<!-- Delete Modal HTML -->
 	<?php include("html/modal_delete.php");?>
 	<script src="js/script.js"></script>
+
+    <script>
+        function cerrar()
+        {
+            $.ajax({
+                url:'../login/Models/usuario.php',
+                type:'POST',
+                data:"boton=cerrar"
+            }).done(function(resp){
+                location.href = '../login/index.php'
+            });
+        }
+    </script>
+
 </body>
 </html>

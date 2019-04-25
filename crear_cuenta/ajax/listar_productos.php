@@ -86,7 +86,7 @@ if($action == 'ajax'){
 						</tr>
 						<?php }?>
 						<tr>
-							<td colspan='6'> 
+							<td colspan='9'> 
 								<?php 
 									$inicios=$offset+1;
 									$finales+=$inicios -1;

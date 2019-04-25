@@ -1,45 +1,80 @@
+<?php
+    $conexion = new mysqli("localhost","root","","sistema_bancario");
+
+    $query = "select id_tipo_cuenta, nombre_tipoCuenta from tipo_cuentas";
+    $resultado = $conexion->query($query);
+
+?>
 <div id="addProductModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form name="add_product" id="add_product">
-					<div class="modal-header">						
-						<h4 class="modal-title">Agregar datos de la nueva cuenta</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<div class="modal-header">
+						<center>
+							<h4 class="modal-title">Datos del cliente</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						</center>						
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="form-group col-md-6">
-								<label>Cedula</label>
-								<input type="text" name="cedula" id="cedula"class="form-control" required>
+								<label>Nombre</label>
+								<input type="text" name="name" id="name"class="form-control" required>
 							</div>
 							<div class="form-group col-md-6">            
-								<label>Nombre</label>
-								<input type="text" name="nombre" id="nombre" class="form-control" required>
+								<label>Apellido</label>
+								<input type="text" name="apellido" id="apellido" class="form-control" required>
 							</div>	
 							<div class="form-group col-md-6">
-								<label>Código</label>
-								<input type="text" name="code"  id="code" class="form-control" required>							
+								<label>DPI</label>
+								<input type="text" name="dpi"  id="dpi" class="form-control" required>							
 							</div>
 							<div class="form-group col-md-6">
-								<label>Producto</label>
-								<input type="text" name="name" id="name" class="form-control" required>
+								<label>Nit</label>
+								<input type="text" name="nit" id="nit" class="form-control" required>
 							</div>
 							<div class="form-group col-md-6">
-								<label>Categoría</label>
-								<input type="text" name="category" id="category" class="form-control" required>
+								<label>Teléfono</label>
+								<input type="text" name="telefono" id="telefono" class="form-control" required>
 							</div>
 							<div class="form-group col-md-6">
-								<label>Stock</label>
-								<input type="number" name="stock" id="stock" class="form-control" required>
-							</div>
+								<label>Dirección</label>
+								<input type="text" name="direccion" id="direccion" class="form-control" required>
+							</div>	
+							
+						</div>
+						<div class="row" style="background:#e6edea">
+							<center>
+								<h4 class="modal-title">Datos para aperturar cuenta</h4><hr>							
+							</center>					
+												
 							<div class="form-group col-md-6">
-								<label>Precio</label>
-								<input type="text" name="price" id="price" class="form-control" required>
+								<label>Usuario Cliente</label>
+								<input type="text" name="usuarioCliente" id="usuarioCliente" class="form-control" required>
 							</div>	
 							<div class="form-group col-md-6">
-								<label>Precio</label>
-								<input type="text" name="price" id="price" class="form-control" required>
+								<label>Contraseña Cliente</label>
+								<input type="password" name="contraseniaCliente" id="contraseniaCliente" class="form-control" required>
 							</div>
+							<div class="form-group col-md-6">
+								<label>Numero de Cuenta</label>
+								<input type="text" name="numCuenta" id="numCuenta" class="form-control" required>
+							</div>
+							<div class="form-group col-md-6"> 
+								<label>TIPO DE CUENTA </label>								
+								<select name="tipo_cuenta" class="form-control"  id="tipo_cuenta">
+									<?php while($row = $resultado->fetch_assoc()){  ?>
+										<option value="<?php echo $row['id_tipo_cuenta']; ?> ">
+											<?php  echo $row['nombre_tipoCuenta']; ?>                                             
+										</option>
+									<?php }?>
+								</select> 								
+							</div> 							
+							<div class="form-group col-md-6">
+								<label>Aperturar cuenta con Q.100.00</label>
+								<input type="text" name="saldoInicial" id="saldoInicial" class="form-control" required value="100" >
+							</div>
+							
 						</div>
 
 					</div>

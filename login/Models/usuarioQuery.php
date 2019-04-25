@@ -12,15 +12,22 @@
 		function identificar($usuario,$password)
 		{
 			$pass=sha1($password);
-			$sql="SELECT * FROM empleado WHERE usuario='$usuario' && contrasenia='$pass'";
+			
+			$sql="SELECT id_empleados FROM empleado WHERE usuario='$usuario' && contrasenia='$pass'";
 			$resulatdos = $this->conexion->conexion->query($sql);
 			if ($resulatdos->num_rows > 0) {
-				$r=$resulatdos->fetch_array();
+				$r=$resulatdos->fetch_array();				
+				
 			}
 			else{
 				$r[0]=0;
 			}
 			return $r;
+
+
+
+
+
 			$this->conexion->cerrar();
 		}
 
