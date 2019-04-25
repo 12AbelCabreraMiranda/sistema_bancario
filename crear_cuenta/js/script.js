@@ -7,7 +7,7 @@ function load(page){
     var parametros = {"action":"ajax","page":page,'query':query,'per_page':per_page};
     $("#loader").fadeIn('slow');
     $.ajax({
-        url:'ajax/listar_productos.php',
+        url:'ajax/listar_cuentas.php',
         data: parametros,
          beforeSend: function(objeto){
         $("#loader").html("Cargando...");
@@ -20,7 +20,7 @@ function load(page){
 }
 
 //SCRIPT DE VISTA DE VENTANA DE EDICION
-$('#editProductModal').on('show.bs.modal', function (event) {
+$('#editCuentaModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
 
   var nombreCleinte = button.data('nombre') 
@@ -53,13 +53,13 @@ $('#deleteProductModal').on('show.bs.modal', function (event) {
 })
 
 // SCRIPT DE EDICION CON BASE DE DATOS
-$( "#edit_product" ).submit(function( event ) {
+$( "#edit_cuenta" ).submit(function( event ) {
   
   var parametros = $(this).serialize();
 
     $.ajax({
             type: "POST",
-            url: "ajax/editar_producto.php",
+            url: "ajax/editar_cuentas.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#resultados").html("Enviando...");
@@ -67,7 +67,7 @@ $( "#edit_product" ).submit(function( event ) {
             success: function(datos){
             $("#resultados").html(datos);                          
             load(1);
-            $('#editProductModal').modal('hide');
+            $('#editCuentaModal').modal('hide');
           }
     });
   event.preventDefault();
@@ -79,7 +79,7 @@ $( "#add_product" ).submit(function( event ) {
   var parametros = $(this).serialize();
     $.ajax({
             type: "POST",
-            url: "ajax/guardar_producto.php",
+            url: "ajax/guardar_cuentas.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#resultados").html("Enviando...");
@@ -98,7 +98,7 @@ $( "#delete_product" ).submit(function( event ) {
   var parametros = $(this).serialize();
     $.ajax({
             type: "POST",
-            url: "ajax/eliminar_producto.php",
+            url: "ajax/eliminar_cuentas.php",
             data: parametros,
              beforeSend: function(objeto){
                 $("#resultados").html("Enviando...");

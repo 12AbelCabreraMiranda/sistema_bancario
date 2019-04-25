@@ -1,7 +1,7 @@
-<div id="editProductModal" class="modal fade">
+<div id="editCuentaModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form name="edit_product" id="edit_product">
+				<form name="edit_cuenta" id="edit_cuenta">
 					<div class="modal-header">						
 						<h4 class="modal-title">Editar datos del cliente</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

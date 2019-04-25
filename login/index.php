@@ -203,11 +203,17 @@
                 if (data=="1") {
                 $(location).attr('href','../administrador.php');
                 }
+                if (data=="2") {
+                $(location).attr('href','../receptorPagador/receptorPagador.php');
+                }
+                if (data=="3") {
+                $(location).attr('href','../secretaria/secretaria.php');
+                }
                 if (data=="4") {
                 $(location).attr('href','../crear_cuenta/index.php');
                 }
                                                 
-                if (data!=="1" && data!=="4") {   //si no reconoce ningun usuario registrado, muestra alerta             
+                if (data!=="1" && data!=="2" && data!=="3" && data!=="4") {   //si no reconoce ningun usuario registrado, muestra alerta             
                 $("#result").show();
                     
                 }
