@@ -9,27 +9,21 @@
 			$this->conexion->conectar();
 		}
 
-		function identificar($usuario,$password)
+		/*function identificar($usuario,$password)
 		{
 			$pass=sha1($password);
 			
 			$sql="SELECT id_empleados FROM empleado WHERE usuario='$usuario' && contrasenia='$pass'";
 			$resulatdos = $this->conexion->conexion->query($sql);
 			if ($resulatdos->num_rows > 0) {
-				$r=$resulatdos->fetch_array();				
-				
+				$r=$resulatdos->fetch_array();								
 			}
 			else{
 				$r[0]=0;
 			}
 			return $r;
-
-
-
-
-
 			$this->conexion->cerrar();
-		}
+		}*/
 
 		function registrar($nombre,$apellido,$telefono,$direccion,$banco,$tipoUsu,$usuario,$password){
 			$pass=sha1($password);

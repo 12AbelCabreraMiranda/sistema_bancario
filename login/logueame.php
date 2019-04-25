@@ -8,14 +8,14 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
   $pass = mysqli_real_escape_string($connect, $_POST["pass"]);
   
   $passEncriptado=sha1($pass);
-  $sql = "SELECT id_empleados,nombre FROM empleado WHERE usuario='$user' AND contrasenia='$passEncriptado'";
+  $sql = "SELECT tipoUsuario_id, nombre FROM empleado WHERE usuario='$user' AND contrasenia='$passEncriptado'";
   $result = mysqli_query($connect, $sql);
   $num_row = mysqli_num_rows($result);
   
   if ($num_row == "1") {
     $data = mysqli_fetch_array($result);
     $_SESSION["user"] = $data["nombre"];
-    echo $data["id_empleados"];
+    echo $data["tipoUsuario_id"];
   } else {
     echo "error";
   }

@@ -10,7 +10,7 @@
 					session_start();
 					session_destroy();
 				break;
-			case 'ingresar':
+			/*case 'ingresar': //este caso no está en funcion
 					$usu = $_POST['usu'];
 					$contrasenia = $_POST['contrasenia'];
 
@@ -26,7 +26,8 @@
 						$_SESSION['ingreso']='YES';
 						$_SESSION['nombre']=$array[1];
 					}
-				break;
+				break;*/
+
 			case 'registrar':
 					$nombres=$_POST['nombres'];
 					$apellidos=$_POST['apellidos'];

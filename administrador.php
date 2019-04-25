@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION["user"])){
-    header("location:login/indexs.php");
+    header("location:login/index.php");
     }
 
   ?>
@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mi Banco</title>
+    <link rel="icon" href="img/icono.png">
     <link rel="stylesheet" href="login/Resources/css/bootstrap.min.css">
 
 </head>
@@ -49,7 +50,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Bienvenido</div>
                     <div class="panel-body">                     
-                      <p>Estas a dentro!</p>
+                      <h1>Módulo ADMINISTRADOR DEL SISTEMA</h1>
                     </div>
                 </div>
             </div>

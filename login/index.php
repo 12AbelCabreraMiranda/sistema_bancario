@@ -13,7 +13,8 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-   	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../img/icono.png">
 	<title>Mi Banco</title>
 
     <link rel="stylesheet" href="Resources/css/bootstrap.min.css">
@@ -21,7 +22,7 @@
  
 <body>
     <!--Barra de Navegacion-->
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" style="background-color: #269b76">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Cambiar Navegacion</span>
@@ -29,13 +30,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Sistema Bancario</a>
+            <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" >
                
-                <li><a href="javascript:void(0)" data-toggle="modal" data-target="#responsive">Registrarse</a></li>
+                <li ><a style="color:white" href="javascript:void(0)" data-toggle="modal" data-target="#responsive">Registrarse</a></li>
             </ul>
         </div>
     </nav>
@@ -46,10 +47,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Iniciar Sesion</div>
                     <div class="panel-body">
-                        <div class="alert alert-danger text-center" style="display:none;" id="result">
-                            <p>Usuario o Password no identificados</p>
-                        </div>                     
-                        <form role="form">
+                        
+                    
+
+
+                        <form role="form" id="login_form">
                             <div class="form-group">
                                 <label for="usu">Usuario:</label>
                                 <div class="input-group">
@@ -61,11 +63,15 @@
                                 <label for="contrasenia">Contraseña</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                                    <input REQUIRED type="password" class="form-control" name="pass" id="pass" placeholder="Contrasenia">
+                                    <input REQUIRED type="password" class="form-control" name="password" id="password" placeholder="Contrasenia">
                                 </div>
                             </div>                    
                             <button type="button" name="login" id="login" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                        
                         </form>
+                    </div>
+                    <div class="alert alert-danger text-center" style="display:none;" id="result">
+                        <p>Usuario o Contraseña no identificados</p>
                     </div>
                 </div>
             </div>
@@ -157,7 +163,7 @@
                 </form>
               </div>
               <div class="modal-footer">  
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 <button onclick="registrar();" type="button" class="btn btn-success">Guardar</button>
               </div>
             </div><!-- /.modal-content -->
@@ -167,12 +173,13 @@
        
 	<script src="Resources/js/jquery-1.11.2.js"></script>
 	<script src="Resources/js/bootstrap.min.js"></script>
-
+    
     <script>
+        //FUNCION DE AUTENTICACIÓN DE USUARIOS
     $(document).ready(function() {
         $('#login').click(function(){
         var user = $('#user').val();
-        var pass = $('#pass').val();
+        var pass = $('#password').val();
         if($.trim(user).length > 0 && $.trim(pass).length > 0){
             $.ajax({
             url:"logueame.php",
@@ -183,19 +190,28 @@
                 $('#login').val("Conectando...");
             },
             success:function(data) {
+                //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
+                $("#result").css('display', 'none');
+                    setTimeout(function() {                
+                        $("#result").fadeOut(1500);
+                        //limpiar los campos de textos                  
+                        $("#login_form")[0].reset().fadeOut(1500);
+                    },3000); 
+                //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
+
                 $('#login').val("Login");
-                if (data=="7") {
-                $(location).attr('href','../principal.php');
+                if (data=="1") {
+                $(location).attr('href','../administrador.php');
                 }
-                if (data=="10") {
+                if (data=="4") {
                 $(location).attr('href','../crear_cuenta/index.php');
                 }
-                
-                
-                
-                if (data!=="1" && data!=="2") {
-                $("#result").html("<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Error!</strong> las credenciales son incorrectas.</div>");
+                                                
+                if (data!=="1" && data!=="4") {   //si no reconoce ningun usuario registrado, muestra alerta             
+                $("#result").show();
+                    
                 }
+
             }
             });
         };
@@ -205,7 +221,7 @@
 
 
     <script>
-        function confirmar(){
+        /*function confirmar(){//Esta funcion no está en funcionalidad
             var usu = $('#usu').val();
             var contrasenia = $('#contrasenia').val();
             $.ajax({
@@ -217,11 +233,11 @@
                     $('#error').show();
                 }
                 else{
-                    location.href='../principal.php';
+                    location.href='../administrador.php';
                 }
                
             });
-        }
+        }*/
 
         function registrar(){
             var nombres = $('#nombres').val();
