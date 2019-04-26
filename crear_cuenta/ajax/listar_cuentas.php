@@ -2,15 +2,24 @@
 	
 	/* Connect To Database*/
 	require_once ("../conexion.php");
-
+	session_start();
 	
 $action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 if($action == 'ajax'){
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
+	$usuarioLogeado = $_SESSION['user'];
+	//SELECCION USUARIO para extraer id del logeado
+	$id_logeado;
+	$id_empleadoBanco;
+	$consulta1 = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+	$resultado1 = $con->query($consulta1);
+	if($row = $resultado1->fetch_assoc()){      		
+		$id_empleadoBanco=$row['banco_id_empleado'];
+	}
 
 	$tables="cuenta_clientes";
 	$campos="*";
-	$sWhere=" cuenta_clientes.nombre LIKE '%".$query."%' and cuenta_clientes.banco_id=2 ";
+	$sWhere=" cuenta_clientes.nombre LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
 	$sWhere.=" order by cuenta_clientes.nombre";
 	
 	
