@@ -40,7 +40,7 @@ $('#editCuentaModal').on('show.bs.modal', function (event) {
   var passwCliente = button.data('contrasenia_cliente') 
   $('#edit_passwordCliente').val(passwCliente)
 
-  var id = button.data('chequera_id') 
+  var id = button.data('id') 
   $('#edit_id').val(id)
 })
 

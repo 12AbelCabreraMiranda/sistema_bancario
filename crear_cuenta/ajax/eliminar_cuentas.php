@@ -4,15 +4,15 @@
 	} elseif (!empty($_POST['delete_id'])){
 	require_once ("../conexion.php");//Contiene funcion que conecta a la base de datos
 	// escaping, additionally removing everything that could be (html/javascript-) code
-    $id_producto=intval($_POST['delete_id']);
+    $id_chequera=intval($_POST['delete_id']);
 	
 
-	// DELETE FROM  database
-    $sql = "DELETE FROM  tblprod WHERE id='$id_producto'";
+	// DELETE FROM  database	
+	$sql = "UPDATE chequeras SET estado=0 WHERE id_chequeras='".$id_chequera."' ";
     $query = mysqli_query($con,$sql);
     // if product has been added successfully
     if ($query) {
-        $messages[] = "El producto ha sido eliminado con éxito.";
+        $messages[] = "La cuenta ha sido eliminada con éxito.";
     } else {
         $errors[] = "Lo sentimos, la eliminación falló. Por favor, regrese y vuelva a intentarlo.";
     }
