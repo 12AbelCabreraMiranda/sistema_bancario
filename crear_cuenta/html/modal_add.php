@@ -42,6 +42,7 @@
 								<input type="text" name="direccion" id="direccion" class="form-control" required>
 							</div>	
 							
+							
 						</div>
 						<div class="row" style="background:#e6edea">
 							<center>
@@ -73,6 +74,10 @@
 							<div class="form-group col-md-6">
 								<label>Aperturar cuenta con Q.100.00</label>
 								<input type="text" name="saldoInicial" id="saldoInicial" class="form-control" required value="100" >
+							</div>
+							<div class="form-group col-md-6">
+								<label>Heredar cuenta a:</label>
+								<input type="text" name="heredarCuenta" id="heredarCuenta" class="form-control" required placeholder="Ingresar nombre" >
 							</div>
 							
 						</div>

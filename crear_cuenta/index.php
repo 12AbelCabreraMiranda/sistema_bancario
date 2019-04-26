@@ -31,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand" style="color:white">Sistema Bancario</a>
+            <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">

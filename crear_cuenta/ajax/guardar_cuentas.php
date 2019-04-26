@@ -2,7 +2,7 @@
 	session_start();
 
 	if (empty($_POST['name'])){
-		$errors[] = "Ingresa el nombre del producto.";
+		$errors[] = "Ingresa el nombre.";
 	} elseif (!empty($_POST['name'])){
 		require_once ("../conexion.php");//Contiene funcion que conecta a la base de datos
 	
@@ -17,8 +17,22 @@
 		$cuenta_numCuenta = mysqli_real_escape_string($con,(strip_tags($_POST["numCuenta"],ENT_QUOTES)));
 		$cuenta_tipoCuenta = mysqli_real_escape_string($con,(strip_tags($_POST["tipo_cuenta"],ENT_QUOTES)));
 		$cuenta_saldoInicial = mysqli_real_escape_string($con,(strip_tags($_POST["saldoInicial"],ENT_QUOTES)));
+		$cuenta_heredar = mysqli_real_escape_string($con,(strip_tags($_POST["heredarCuenta"],ENT_QUOTES)));
 		$usuarioLogeado = $_SESSION['user'];	
 
+		
+	 
+		// Registro en la BD
+		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente) 
+				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$cuenta_passCliente')";
+		$query = mysqli_query($con,$sql);
+		// Mensaje insertado registro en la base de datos
+		if ($query) {
+			$messages[] = "La cuenta ha sido registrado con éxito en tabla clientes.";
+		} else {
+			$errors[] = "Lo sentimos, el registro falló en tabla clientes. Por favor, vuelva a intentarlo.";
+			}
+				
 		//SELECCION USUARIO para extraer id del logeado
 		$id_logeado;
 		$id_empleadoBanco;
@@ -28,21 +42,9 @@
 			$id_logeado =$row['id_empleados'];
 			$id_empleadoBanco=$row['banco_id_empleado'];
 		}
-	 
-		// Registro en la BD
-		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente) 
-				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$cuenta_passCliente')";
-		$query = mysqli_query($con,$sql);
-		// Mensaje insertado registro en la base de datos
-		if ($query) {
-			$messages[] = "La cuenta ha sido registrado con éxito.";
-		} else {
-			$errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
-			}
-			
-		
+		//SELECCIONAR ID DEL CLIENTE
 		$id_clienteRegistrado;	
-		$consulta2 = ("SELECT id_clientes FROM clientes where nombre='$cuenta_nombre'");
+		$consulta2 = ("SELECT id_clientes FROM clientes where nombre='$cuenta_nombre' and nit='$cuenta_nit'");
 		$resultado2 = $con->query($consulta2);
 		if($row = $resultado2->fetch_assoc()){      
 			$id_clienteRegistrado =$row['id_clientes'];		
@@ -55,28 +57,36 @@
 		ini_set('date.timezone', 'America/Guatemala');
 		$fecha_sistema = date("d-m-Y");
 		
-
 		// insercion en la tabla cuenta Registro en la BD
-		$sql2 = "INSERT INTO cuenta(banco_id, hora_apertura, fecha_apertura, tipo_cuentas, empleado_id_cuenta, cliente_id_cuenta) 
-				VALUES (NULL,'$$id_empleadoBanco','$hora_sistema','$fecha_sistema','$cuenta_tipoCuenta','$id_logeado','$id_clienteRegistrado')";
+		$sql2 = "INSERT INTO cuenta(banco_id, hora_apertura, fecha_apertura, tipo_cuentas, empleado_id_cuenta, cliente_id_cuenta, heredarCuenta) 
+				VALUES ('$id_empleadoBanco','$hora_sistema','$fecha_sistema','$cuenta_tipoCuenta','$id_logeado','$id_clienteRegistrado','$cuenta_heredar')";
 		$query2 = mysqli_query($con,$sql2);
 		// Mensaje insertado registro en la base de datos
 		if ($query2) {
-			$messages[] = "La cuenta ha sido registrado con éxito.";
+			$messages[] = "La cuenta ha sido registrado con éxito en tabla cuenta.";
 		} else {
-			$errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
+			$errors[] = "Lo sentimos, el registro falló en tabla cuenta. Por favor, vuelva a intentarlo.";
 			}
 
 		//A CONTINUACIÓN EXTRAER EL ID DE LA TABLA CUENTA PARA REGISTRARLO EN TABLA CHEQUERA ---pendiente
 		//agregar otro atributo a la tabla cuenta para poder dominar su ID
 		$id_cuentaRegistrado;	
-		$consulta3 = ("SELECT id_cuentas FROM cuenta where nombre='$cuenta_nombre'");
-		$resultado3 = $con->query($consulta2);
+		$consulta3 = ("SELECT id_cuentas FROM idcuenta where dpi='$cuenta_dpi'");
+		$resultado3 = $con->query($consulta3);
 		if($row = $resultado3->fetch_assoc()){      
-			$id_cuentaRegistrado =$row['id_clientes'];		
+			$id_cuentaRegistrado =$row['id_cuentas'];		
 			}
 
-
+		// insercion en la tabla chequera Registro en la BD
+		$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera, estado) 
+				VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_cuentaRegistrado',1)";
+		$query3 = mysqli_query($con,$sql3);
+		// Mensaje insertado registro en la base de datos
+		if ($query3) {
+			$messages[] = "La cuenta ha sido registrado con éxito en tabla chequera.";
+		} else {
+			$errors[] = "Lo sentimos, el registro falló en tabla chequera. Por favor, vuelva a intentarlo.";
+			}
 
 
 
