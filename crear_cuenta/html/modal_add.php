@@ -56,11 +56,7 @@
 							<div class="form-group col-md-6">
 								<label>Contraseña Cliente</label>
 								<input type="password" name="contraseniaCliente" id="contraseniaCliente" class="form-control" required>
-							</div>
-							<div class="form-group col-md-6">
-								<label>Numero de Cuenta</label>
-								<input type="text" name="numCuenta" id="numCuenta" class="form-control" required>
-							</div>
+							</div>							
 							<div class="form-group col-md-6"> 
 								<label>TIPO DE CUENTA </label>								
 								<select name="tipo_cuenta" class="form-control"  id="tipo_cuenta">

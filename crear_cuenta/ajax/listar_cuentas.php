@@ -10,7 +10,7 @@ if($action == 'ajax'){
 
 	$tables="cuenta_clientes";
 	$campos="*";
-	$sWhere=" cuenta_clientes.nombre LIKE '%".$query."%'";
+	$sWhere=" cuenta_clientes.nombre LIKE '%".$query."%' and cuenta_clientes.banco_id=2 ";
 	$sWhere.=" order by cuenta_clientes.nombre";
 	
 	
