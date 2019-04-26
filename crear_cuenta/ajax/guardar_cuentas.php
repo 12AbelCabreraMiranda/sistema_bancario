@@ -30,7 +30,7 @@
 		if ($query) {
 			$messages[] = "La cuenta ha sido registrado con éxito en tabla clientes.";
 		} else {
-			$errors[] = "Lo sentimos, el registro falló en tabla clientes. Por favor, vuelva a intentarlo.";
+			$errors[] = "El registro falló. El No. DPI y USUARIO debe ser únicos. Por favor, vuelva a intentarlo.";
 			}
 				
 		//SELECCION USUARIO para extraer id del logeado
@@ -44,7 +44,7 @@
 		}
 		//SELECCIONAR ID DEL CLIENTE
 		$id_clienteRegistrado;	
-		$consulta2 = ("SELECT id_clientes FROM clientes where nombre='$cuenta_nombre' and nit='$cuenta_nit'");
+		$consulta2 = ("SELECT id_clientes FROM clientes where dpi='$cuenta_dpi'");
 		$resultado2 = $con->query($consulta2);
 		if($row = $resultado2->fetch_assoc()){      
 			$id_clienteRegistrado =$row['id_clientes'];		
@@ -65,7 +65,7 @@
 		if ($query2) {
 			$messages[] = "La cuenta ha sido registrado con éxito en tabla cuenta.";
 		} else {
-			$errors[] = "Lo sentimos, el registro falló en tabla cuenta. Por favor, vuelva a intentarlo.";
+			$errors[] = "El registro falló en tabla cuenta. Por favor, vuelva a intentarlo.";
 			}
 
 		//A CONTINUACIÓN EXTRAER EL ID DE LA TABLA CUENTA PARA REGISTRARLO EN TABLA CHEQUERA ---pendiente
@@ -85,7 +85,7 @@
 		if ($query3) {
 			$messages[] = "La cuenta ha sido registrado con éxito en tabla chequera.";
 		} else {
-			$errors[] = "Lo sentimos, el registro falló en tabla chequera. Por favor, vuelva a intentarlo.";
+			$errors[] = "El registro falló. El número de cuenta debe ser unico. Por favor, vuelva a intentarlo.";//que se realice automaticamente
 			}
 
 
