@@ -23,24 +23,31 @@ function load(page){
 $('#editCuentaModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
 
-  var nombreCleinte = button.data('nombre') 
-  $('#edit_nombre').val(nombreCleinte)
-  var apellidoCliente = button.data('apellido') 
-  $('#edit_apellido').val(apellidoCliente)
-  var dpiCliente = button.data('dpi') 
-  $('#edit_dpi').val(dpiCliente)
-  var nitCliente = button.data('nit') 
-  $('#edit_nit').val(nitCliente)
-  var telefonoCliente = button.data('telefono') 
-  $('#edit_telefono').val(telefonoCliente)
-  var direccionCliente = button.data('direccion') 
-  $('#edit_direccion').val(direccionCliente)
-  var usuCliente = button.data('usuario_cliente') 
-  $('#edit_UsuarioCliente').val(usuCliente)
-  var passwCliente = button.data('contrasenia_cliente') 
-  $('#edit_passwordCliente').val(passwCliente)
+  var nombre = button.data('nombre') 
+  $('#edit_nombre').val(nombre)
 
-  var id = button.data('id') 
+  var apellido = button.data('apellido') 
+  $('#edit_apellido').val(apellido)
+
+  var dpi = button.data('dpi') 
+  $('#edit_dpi').val(dpi)
+
+  var nit = button.data('nit') 
+  $('#edit_nit').val(nit)
+
+  var telefono = button.data('telefono') 
+  $('#edit_telefono').val(telefono)
+
+  var direccion = button.data('direccion') 
+  $('#edit_direccion').val(direccion)
+
+  var usuario_cliente = button.data('usuario_cliente') 
+  $('#edit_UsuarioCliente').val(usuario_cliente)
+
+  var contrasenia_cliente = button.data('contrasenia_cliente') 
+  $('#edit_passwordCliente').val(contrasenia_cliente)
+
+  var id = button.data('id_cliente') 
   $('#edit_id').val(id)
 })
 
