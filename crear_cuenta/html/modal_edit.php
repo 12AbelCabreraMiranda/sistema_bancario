@@ -20,11 +20,11 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label>DPI</label>
-								<input type="text" name="edit_dpi" id="edit_dpi" class="form-control" required>
+								<input disabled type="text" name="edit_dpi" id="edit_dpi" class="form-control" required>
 							</div>
 							<div class="form-group col-md-6">
 								<label>NIT</label>
-								<input type="text" name="edit_nit" id="edit_nit" class="form-control" required>
+								<input disabled type="text" name="edit_nit" id="edit_nit" class="form-control" required>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Telefono</label>
