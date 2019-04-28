@@ -1,8 +1,23 @@
 <?php 
+
+    require_once ("conexion.php");
     session_start();
-    if(!isset($_SESSION["user"])){
-    header("location:../login/index.php");
+    
+    $usuarioLogeado = $_SESSION['user'];
+
+    $id_empleadoBancoLogeado;
+    $consulta = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+    $resultado = $con->query($consulta);
+    if($row = $resultado->fetch_assoc()){          
+        $id_empleadoBancoLogeado=$row['banco_id_empleado'];
     }
+    $nombre_empleadoBancoLogeado;
+    $consulta2 = ("SELECT nombre_banco FROM banco where id_banco='$id_empleadoBancoLogeado'");
+    $resultado2 = $con->query($consulta2);
+    if($row = $resultado2->fetch_assoc()){          
+        $nombre_empleadoBancoLogeado=$row['nombre_banco'];
+    }
+    
 
   ?>
 <!DOCTYPE html>
@@ -22,6 +37,12 @@
 <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+    <?php // AGREGARLO EN LAS DEMAS PAGINAS PARA QUE LOS QUE ESTEN CON SESION INICIADO PUEDAN ACCEDER ELSE NOT ACCESS        
+        if(isset($_SESSION['user'])){
+        }else{
+            header("location:../login/index.php");
+        }
+    ?>
 	<!--Barra de Navegacion-->
     <nav class="navbar navbar-default" style="background-color: #269b76">
         <div class="navbar-header">
@@ -31,7 +52,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario</a>
+            <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>            
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
