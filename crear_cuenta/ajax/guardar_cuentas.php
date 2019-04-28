@@ -5,7 +5,8 @@
 		$errors[] = "Ingresa el nombre.";
 	} elseif (!empty($_POST['name'])){
 		require_once ("../conexion.php");//Contiene funcion que conecta a la base de datos
-	
+		include('seguridad.php');
+		
 		$cuenta_nombre = mysqli_real_escape_string($con,(strip_tags($_POST["name"],ENT_QUOTES)));
 		$cuenta_apellido = mysqli_real_escape_string($con,(strip_tags($_POST["apellido"],ENT_QUOTES)));
 		$cuenta_dpi = mysqli_real_escape_string($con,(strip_tags($_POST["dpi"],ENT_QUOTES)));
@@ -18,12 +19,13 @@
 		$cuenta_saldoInicial = mysqli_real_escape_string($con,(strip_tags($_POST["saldoInicial"],ENT_QUOTES)));
 		$cuenta_heredar = mysqli_real_escape_string($con,(strip_tags($_POST["heredarCuenta"],ENT_QUOTES)));
 		$usuarioLogeado = $_SESSION['user'];	
-
 		
+		//ENCRIPTACIÓN DE PASSWORD
+		$passEncriptado = SED::encryption($cuenta_passCliente);
 				 
 		// Registro en la BD
 		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente) 
-				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$cuenta_passCliente')";
+				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$passEncriptado')";
 		$query = mysqli_query($con,$sql);
 		// Mensaje insertado registro en la base de datos
 		if ($query) {			

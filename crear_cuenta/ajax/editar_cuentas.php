@@ -3,6 +3,7 @@
 		$errors[] = "ID está vacío.";
 	} elseif (!empty($_POST['edit_id'])){
 	require_once ("../conexion.php");//Contiene funcion que conecta a la base de datos
+	include('seguridad.php');
 	// escapando, además eliminando todo lo que podría ser código (html / javascript-)
     $cuenta_nombre = mysqli_real_escape_string($con,(strip_tags($_POST["edit_nombre"],ENT_QUOTES)));
 	$cuenta_apellido = mysqli_real_escape_string($con,(strip_tags($_POST["edit_apellido"],ENT_QUOTES)));
@@ -12,15 +13,13 @@
 	$cuenta_direccion = mysqli_real_escape_string($con,(strip_tags($_POST["edit_direccion"],ENT_QUOTES)));
 	$cuenta_usuarioCliente = mysqli_real_escape_string($con,(strip_tags($_POST["edit_UsuarioCliente"],ENT_QUOTES)));
 	$cuenta_contraseniaCliente = mysqli_real_escape_string($con,(strip_tags($_POST["edit_passwordCliente"],ENT_QUOTES)));
-
-	//$stock = intval($_POST["edit_stock"]);
-	//$price = floatval($_POST["edit_price"]);
 	
-	$id=intval($_POST['edit_id']);
-	// UPDATE data into database
-    $sql = "UPDATE clientes SET nombre='".$cuenta_nombre."', apellido='".$cuenta_apellido."', telefono='".$cuenta_telefono."',  direccion='".$cuenta_direccion."',  usuario_cliente='".$cuenta_usuarioCliente."',  contrasenia_cliente='".$cuenta_contraseniaCliente."'  WHERE id_clientes='".$id."' ";
+	$contraseniaEncriptadoCliente = SED::encryption($cuenta_contraseniaCliente);
+	
+	$id=intval($_POST['edit_id']);	
+    $sql = "UPDATE clientes SET nombre='".$cuenta_nombre."', apellido='".$cuenta_apellido."', telefono='".$cuenta_telefono."',  direccion='".$cuenta_direccion."',  usuario_cliente='".$cuenta_usuarioCliente."',  contrasenia_cliente='".$contraseniaEncriptadoCliente."'  WHERE id_clientes='".$id."' ";
     $query = mysqli_query($con,$sql);
-    // if product has been added successfully
+    
     if ($query) {
         $messages[] = "Los datos han sido actualizados con éxito.";
     } else {
