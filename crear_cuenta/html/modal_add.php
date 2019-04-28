@@ -27,11 +27,13 @@
 							</div>	
 							<div class="form-group col-md-6">
 								<label>DPI</label>
-								<input type="text" name="dpi"  id="dpi" class="form-control" required>							
+								<input type="text" name="dpi"  id="dpi" class="form-control text1" required>	
+								<span class="count1"></span>						
 							</div>
 							<div class="form-group col-md-6">
 								<label>Nit</label>
-								<input type="text" name="nit" id="nit" class="form-control" required>
+								<input type="text" name="nit" id="nit" class="form-control text2" required>
+								<span class="count2"></span>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Teléfono</label>

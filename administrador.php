@@ -1,9 +1,21 @@
 <?php 
-    session_start();
-    if(!isset($_SESSION["user"])){
-    header("location:login/index.php");
-    }
-
+        require_once ("crear_cuenta/conexion.php");
+        session_start();
+        
+        $usuarioLogeado = $_SESSION['user'];
+    
+        $id_empleadoBancoLogeado;
+        $consulta = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+        $resultado = $con->query($consulta);
+        if($row = $resultado->fetch_assoc()){          
+            $id_empleadoBancoLogeado=$row['banco_id_empleado'];
+        }
+        $nombre_empleadoBancoLogeado;
+        $consulta2 = ("SELECT nombre_banco FROM banco where id_banco='$id_empleadoBancoLogeado'");
+        $resultado2 = $con->query($consulta2);
+        if($row = $resultado2->fetch_assoc()){          
+            $nombre_empleadoBancoLogeado=$row['nombre_banco'];
+        }
   ?>
 
 <!DOCTYPE html>
@@ -19,6 +31,13 @@
 </head>
  
 <body>
+    <?php       
+        if(isset($_SESSION['user'])){
+        }else{
+            header("location:/login/index.php");
+        }
+    ?>
+
     <!--Barra de Navegacion-->
     <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -28,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Sistema Bancario</a>
+            <a href="#" class="navbar-brand">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">

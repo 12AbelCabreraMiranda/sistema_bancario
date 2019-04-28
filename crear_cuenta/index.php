@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-    <?php // AGREGARLO EN LAS DEMAS PAGINAS PARA QUE LOS QUE ESTEN CON SESION INICIADO PUEDAN ACCEDER ELSE NOT ACCESS        
+    <?php         
         if(isset($_SESSION['user'])){
         }else{
             header("location:../login/index.php");
@@ -76,7 +76,7 @@
 						<h2><b>Cuenta Clientes Registrados</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addProductModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Registrar nueva cuenta</span></a>
+						<a href="#addProductModal" class="btn btn-info" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Registrar nueva cuenta</span></a>
 					</div>
                 </div>
             </div>
@@ -107,7 +107,8 @@
 	<?php include("html/modal_edit.php");?>
 	<!-- Delete Modal HTML -->
 	<?php include("html/modal_delete.php");?>
-	<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/limiteCaracter.js"></script>
 
     <script>
         function cerrar()
