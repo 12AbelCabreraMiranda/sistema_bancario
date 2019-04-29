@@ -3,7 +3,7 @@
 			<div class="modal-content">
 				<form name="vista_cuenta" id="vista_cuenta">
 					<div class="modal-header">						
-						<h4 class="modal-title">Editar datos del cliente</h4>
+						<h4 class="modal-title">Detalle de la cuenta del cliente</h4>						
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 
@@ -30,16 +30,13 @@
 								<label>Saldo actual</label>
 								<input type="text" name="vista_saldoActual" id="vista_saldoActual" class="form-control"disabled required>
 							</div>	
-							
-							
-													
+																		
 						</div>					
 
 					</div>
 					<div class="modal-footer">
 						<center>
-							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-							<input type="submit" class="btn btn-info" value="Guardar datos">
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">							
 						</center>
 					</div>
 				</form>

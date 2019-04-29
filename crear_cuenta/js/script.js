@@ -124,6 +124,9 @@ $( "#delete_product" ).submit(function( event ) {
 $('#vistaCuentaModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
 
+  var nombreCliente = button.data('usuario_cliente') 
+  $('#nombreCliente').val(nombreCliente)
+
   var usuario = button.data('usuario_cliente') 
   $('#vista_usuario').val(usuario)
 
