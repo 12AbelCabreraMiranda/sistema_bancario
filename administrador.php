@@ -47,7 +47,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
+            <a href="administrador.php" class="navbar-brand">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -62,19 +62,14 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Bienvenido</div>
-                    <div class="panel-body">                     
-                      <h1>Módulo ADMINISTRADOR DEL SISTEMA</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    <center>
+        <div class="panel-heading">Bienvenido</div>
+                            
+        <h1>Módulo ADMINISTRADOR DEL SISTEMA</h1>
+
+    </center>
+     
     <script src="login/Resources/js/jquery-1.11.2.js"></script>
     <script src="login/Resources/js/bootstrap.min.js"></script>
     <script>
