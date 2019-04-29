@@ -118,3 +118,29 @@ $( "#delete_product" ).submit(function( event ) {
     });
   event.preventDefault();
 });
+
+
+//SCRIPT DE VISTA DE VENTANA
+$('#vistaCuentaModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Botón que activó el modal.
+
+  var usuario = button.data('usuario_cliente') 
+  $('#vista_usuario').val(usuario)
+
+  var contrasenia = button.data('contrasenia_cliente') 
+  $('#vista_contrasenia').val(contrasenia)
+  
+  var numeroCuenta = button.data('numero_de_cuenta') 
+  $('#vista_NumCuenta').val(numeroCuenta)
+
+  var tipoCuentas = button.data('tipocuenta') 
+  $('#vista_tipCuenta').val(tipoCuentas)
+
+  var saldoActual = button.data('saldo_actual') 
+  $('#vista_saldoActual').val(saldoActual)
+
+
+
+  var id = button.data('id_cliente') 
+  $('#vista_id').val(id)
+})
