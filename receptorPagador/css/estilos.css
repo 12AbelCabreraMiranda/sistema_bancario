@@ -45,7 +45,7 @@ display: none;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 220px;
+    width: 240px;/*default 220 ancho de lateral*/
 }
 
 #page-content-wrapper {
@@ -65,7 +65,7 @@ display: none;
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 220px;
+    width: 240px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -176,7 +176,7 @@ z-index: 999;
 display: block;
 width: 32px;
 height: 32px;
-margin-left: 15px;
+margin-left: 30px;/*15 por fault de icono menu lateral*/
 background: transparent;
 border: none;
 }
