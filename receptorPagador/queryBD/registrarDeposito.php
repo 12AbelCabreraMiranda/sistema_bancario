@@ -21,18 +21,35 @@
 
      //consulta del cliente
      $clienteBancoConsultado;    
-     $query1 = ("SELECT * FROM cuentaclientebanco where nombreBancoCliente='$cuentaCliente' and nombreBancoCliente=='$nombre_empleadoBancoLogeado' ");
+     $query1 = ("SELECT nombreBancoCliente FROM cuentaclientebanco where numero_de_cuenta='$cuentaCliente'  ");
      $result1 = $con->query($query1);
      if($row = $result1->fetch_assoc()){
+        $clienteBancoConsultado=$row['nombreBancoCliente'];
 
-        echo 'Bancos iguales';
-                    //actualizar si ya existe
+        if($nombre_empleadoBancoLogeado==$clienteBancoConsultado){
+        //actualizar si ya existe
         //$query2 = "UPDATE avancepuntos SET puntos=$suma+'$puntaje' where id_estudiante='$NombreCompleto' AND id_curso='$id_curso' ";
         //$resultad2= $conexion->query($query2); 
-        
-     }else{
-            echo 'la cuenta no pertenece a nuestro sistema';
+            
+            echo '<div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Éxito!  </strong>  
+                    El depósito fue un éxito a la cuenta del: <b>'.$clienteBancoConsultado.'.
+                </div>';
+        }else{                    
+            echo '<div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong>Falló el registro!  </strong>  
+                    La cuenta es del: <b>"'.$clienteBancoConsultado.'".</b> No podemos realizar esta operación porque no pertenece en nuestro sistema.
+                </div>';
         }
+                    
+        
+     }
 
     
 ?>
