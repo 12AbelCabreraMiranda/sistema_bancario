@@ -5,6 +5,7 @@
 
     $usuarioLogeado = $_SESSION['user'];
     $cuentaCliente = $_REQUEST["CuentaCliente"];
+    $cantidadDeposito = $_POST['cantidad'];
 
     $id_empleadoBancoLogeado;
    $consulta = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
@@ -20,16 +21,18 @@
    }
 
      //consulta del cliente
-     $clienteBancoConsultado;    
-     $query1 = ("SELECT nombreBancoCliente FROM cuentaclientebanco where numero_de_cuenta='$cuentaCliente'  ");
+     $clienteBancoConsultado;   
+     $idCuentaClienteDeposito; 
+     $query1 = ("SELECT id_cuentas, nombreBancoCliente FROM cuentaclientebanco where numero_de_cuenta='$cuentaCliente'  ");
      $result1 = $con->query($query1);
      if($row = $result1->fetch_assoc()){
         $clienteBancoConsultado=$row['nombreBancoCliente'];
+        $idCuentaClienteDeposito=$row['id_cuentas'];
 
         if($nombre_empleadoBancoLogeado==$clienteBancoConsultado){
-        //actualizar si ya existe
-        //$query2 = "UPDATE avancepuntos SET puntos=$suma+'$puntaje' where id_estudiante='$NombreCompleto' AND id_curso='$id_curso' ";
-        //$resultad2= $conexion->query($query2); 
+        //actualizar 
+        $query2 = "UPDATE chequeras SET saldo_actual=saldo_actual+'$cantidadDeposito' where cuenta_id_chequera='$idCuentaClienteDeposito' ";
+        $resultad2= $con->query($query2); 
             
             echo '<div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
