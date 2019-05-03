@@ -35,7 +35,6 @@ $(document).ready(function(){
     function registrarDeposito(evento){
         evento.preventDefault()
         //alert("funciona");
-
         
         setTimeout("location.href='receptorPagador.php'", 10000);//refress page
         //$(".nombreCliente").empty(); //reset divs
@@ -56,10 +55,31 @@ $(document).ready(function(){
           })                 
     }
 
+    //  -----------retirar ---------------
+    $("#formRegistrarRetiro").submit(registrarRetiro)
+    function registrarRetiro(evento){
+        evento.preventDefault()
+        //alert("funciona");
+        
+        setTimeout("location.href='retiros.php'", 10000);//refress page
+        //$(".nombreCliente").empty(); //reset divs
+        $('#boton').attr("disabled", true);
+
+        var datos = new FormData($("#formRegistrarRetiro")[0])
+
+        var NoCuenta = $(".numCuentaCliente").text();//valorClass
+          $.ajax({
+              url: 'queryBD/registrarRetiro.php?CuentaCliente='+NoCuenta,// variablePHP
+              type: 'POST',
+              data: datos,
+              contentType: false,
+              processData: false,
+              success: function(datos){
+                  $("#respuestaDepositado").html(datos)                  
+              }
+          })                 
+    }
+
 
 })
 
-//limpiar los campos de textos
-function nuevoRegistro(){    
-   // $("#formBuscarCuenta")[0].reset();
-}

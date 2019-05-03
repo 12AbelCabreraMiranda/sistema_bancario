@@ -17,6 +17,9 @@
     if($row = $resultado2->fetch_assoc()){          
         $nombre_empleadoBancoLogeado=$row['nombre_banco'];
     }
+
+    $queryDocumento = "select idtipo_documento, nombre_documento from tipo_documento";
+    $resultadoDocumento = $con->query($queryDocumento);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +39,7 @@
  
  
     
-<body>
+<body style="background: #e5fced ">
 
     <?php       
         if(isset($_SESSION['user'])){
@@ -46,7 +49,7 @@
     ?>
     <!--Barra de Navegacion-->
     <nav class="navbar navbar-default">
-        <div class="navbar-header">
+        <div class="navbar-header">            
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Cambiar Navegacion</span>
                 <span class="icon-bar"></span>
@@ -56,11 +59,12 @@
             <a href="receptorPagador.php" class="navbar-brand">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
         </div>
 
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">         
             <ul class="nav navbar-nav navbar-right">
+            <a class="navbar-brand" style="font-size: 14px"> RECEPTOR PAGADOR </a>
                 <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
-                        <li><a href="javascript: void(0)" onclick='cerrar();'>Cerrar Session</a></li>
+                        <li><a href="javascript: void(0)"  onclick='cerrar();'>Cerrar Session</a></li>
                      
                     </ul>
                 </li>
@@ -68,59 +72,78 @@
             </ul>
         </div>
     </nav>
-    <center>
-        <div style="margin-left:20px"><h4>Módulo RECEPTOR PAGADOR </h4></div>
-    </center>
 
     <!--FORMULARIOS -->
     <div class="container">
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <div class="panel panel-success">
-                    <div class="panel-heading"><h4 class="text-center">RETIROS DE CUENTAS</h4></div>
-                    <div class="panel-body">                     
-                        
-                        <form action="misAlumnos.php" method="post" id="formDatosEstudiantes" enctype="multipart/form-data">                                                   
-                            <div class='col-sm-5'>
-                                <label for="nombre">Número de cuenta</label> 
-                                
-                                <div class="input-group col-md-12">
-                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Ej. 32892928"/>
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info" type="button">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <p></p>
-                                    <label for="nombre">¿Cuánto va a depositar?</label>                        
-                                    <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00">
-                                </div>
-                                <!-- Respuesta de la base de datos-->
-                                <div class="alert alert-success alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <strong>Éxito!  </strong>  Se ha registrado el depósito 
-                                </div>
-                                   
-                                
-                            </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="background-color: #03b25d;color:white"><h4 class="text-center"> RETIROS DE CUENTAS</h4></div>
+                    <div class="panel-body" style="background-color: #ededed">        
 
-                            <div class='col-sm-7' id="datoCuenta">
-                                <h4 class="text-center">Datos de la cuenta</h4>
-                                <p>No. de cuenta: <b> 123456789</b></p>
-                                <p>Cliente: <b> Tomy Vargas</b></p>
-                                <p>Banco: <b> Banrural</b></p>
+                        <form action="receptorPagador.php" id="formBuscarCuenta" method="post" enctype="multipart/form-data">
+                            <div class="container-fluid">
+                                                            
+                                <div class="input-group col-md-5 col-xs-12 col-md-offset-3">
+                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Ingresar número de cuenta" onkeypress="return soloNumero(event)" onpaste="return false"/>
+                                    <span class="input-group-btn">
+                                                                                    
+                                        <input  onclick="buscarCuenta()" id="botonBuscar" type="submit" class="btn btn-info" value="Buscar"> 
+                                                                                  
+                                    </span>
+                                </div>  <br>
+                            </div>
+                        </form>
+
+                        <form action="receptorPagador.php" method="post" id="formRegistrarRetiro" enctype="multipart/form-data">    
+                            <div class="row">
+                                <div class="container-fluid">
                                 
-                            </div>
+                                    <div class="col-sm-7">
+                                        <div class='col-sm-7'>                                                               
+                                            <div class="form-group">                                    
+                                                <label for="nombre">¿Cuánto va a Retirar?</label>                        
+                                                <input REQUIRED name="cantidadRetirar" class="form-control" id="cantidadRetirar" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
+                                            </div>
+                                                                                                                        
+                                            <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>                                   
+                                        </div>
+                                        
+                                        <div class="form-group col-md-5"> 
+                                            <label>TIPO DOCUMENTO </label>								
+                                            <select name="tipoDoc" class="form-control"  id="tipoDoc">
+                                                <?php while($row = $resultadoDocumento->fetch_assoc()){  ?>
+                                                    <option value="<?php echo $row['idtipo_documento']; ?> ">
+                                                        <?php  echo $row['nombre_documento']; ?>                                             
+                                                    </option>
+                                                <?php }?>
+                                            </select> 								
+                                        </div>
+                                        <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
+                                            <div id="respuestaDepositado"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class='col-sm-5' id="datoCuenta" >
+                                        <h4 class="text-center">Datos de la cuenta</h4>                                
+                                        <p  class="nombreCliente"> </p>                                                                
+                                    </div> 
+                                    <div class=" pull-right">
+                                        <center> <br>
+                                            <input disabled onclick="registrarRetiro()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
+                                        </center> 
+                                    </div>
+                                </div>
+
+
+
+                            </div>                                               
                             
-                            <div class="form-group pull-left">
-                                <center> <br>
-                                    <input  onclick="registrarAlumno()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
-                                </center> 
-                            </div>
+
+                                            
+                            
+                            
                         </form>                                                    
 
                     </div>
@@ -164,10 +187,11 @@
             </button>            
         </div>        
     </div>
-
+    <script src="../crear_cuenta/js/limiteCaracter.js"></script>
     <script src="../login/Resources/js/jquery-1.11.2.js"></script>
     <script src="../login/Resources/js/bootstrap.min.js"></script>
     <script src="js/evento.js"></script>
+    <script src="js/registrarMovimiento.js"></script>
 
     <script>
         function cerrar()

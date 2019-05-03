@@ -39,7 +39,7 @@
  
  
     
-<body>
+<body style="background: #dbf2f9 ">
 
     <?php       
         if(isset($_SESSION['user'])){
