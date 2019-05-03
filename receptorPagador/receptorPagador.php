@@ -17,6 +17,9 @@
     if($row = $resultado2->fetch_assoc()){          
         $nombre_empleadoBancoLogeado=$row['nombre_banco'];
     }
+
+    $queryDocumento = "select idtipo_documento, nombre_documento from tipo_documento";
+    $resultadoDocumento = $con->query($queryDocumento);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,33 +96,54 @@
                             </div>
                         </form>
 
-                        <form action="receptorPagador.php" method="post" id="formRegistrarDeposito" enctype="multipart/form-data">                                                   
-                            <div class='col-sm-5'>
-                                                                
-                                <div class="form-group">
-                                    <p></p>
-                                    <label for="nombre">¿Cuánto va a depositar?</label>                        
-                                    <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
-                                </div>
-                                <!-- Respuesta de la base de datos-->
-                                <div id="respuestaDepositado">respuesta</div>
-                                <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>   
+                        <form action="receptorPagador.php" method="post" id="formRegistrarDeposito" enctype="multipart/form-data">    
+                            <div class="row">
+                                <div class="container-fluid">
                                 
-                            </div>
+                                    <div class="col-sm-7">
+                                        <div class='col-sm-7'>                                                               
+                                            <div class="form-group">                                    
+                                                <label for="nombre">¿Cuánto va a depositar?</label>                        
+                                                <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
+                                            </div>
+                                                                                                                        
+                                            <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>                                   
+                                        </div>
+                                        
+                                        <div class="form-group col-md-5"> 
+                                            <label>TIPO DOCUMENTO </label>								
+                                            <select name="tipoDoc" class="form-control"  id="tipoDoc">
+                                                <?php while($row = $resultadoDocumento->fetch_assoc()){  ?>
+                                                    <option value="<?php echo $row['idtipo_documento']; ?> ">
+                                                        <?php  echo $row['nombre_documento']; ?>                                             
+                                                    </option>
+                                                <?php }?>
+                                            </select> 								
+                                        </div>
+                                        <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
+                                            <div id="respuestaDepositado"></div>
+                                        </div>
+                                    </div>
 
-                            <div class='col-sm-7' id="datoCuenta">
-                                <h4 class="text-center">Datos de la cuenta</h4>
-                                
-                                <p  class="nombreCliente"> </p>
-                                
-                                
-                            </div>
+                                    <div class='col-sm-5' id="datoCuenta" >
+                                        <h4 class="text-center">Datos de la cuenta</h4>                                
+                                        <p  class="nombreCliente"> </p>                                                                
+                                    </div> 
+                                    <div class=" pull-right">
+                                        <center> <br>
+                                            <input  onclick="registrarDeposito()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
+                                        </center> 
+                                    </div>
+                                </div>
+
+
+
+                            </div>                                               
                             
-                            <div class="form-group pull-left">
-                                <center> <br>
-                                    <input  onclick="registrarDeposito()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
-                                </center> 
-                            </div>
+
+                                            
+                            
+                            
                         </form>                                                    
 
                     </div>

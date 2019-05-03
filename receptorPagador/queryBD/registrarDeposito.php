@@ -6,6 +6,7 @@
     $usuarioLogeado = $_SESSION['user'];
     $cuentaCliente = $_REQUEST["CuentaCliente"];
     $cantidadDeposito = $_POST['cantidad'];
+    $tipoDocumento = $_POST['tipoDoc'];
 
     $id_empleadoBancoLogeado;
    $consulta = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
@@ -33,6 +34,24 @@
         //actualizar 
         $query2 = "UPDATE chequeras SET saldo_actual=saldo_actual+'$cantidadDeposito' where cuenta_id_chequera='$idCuentaClienteDeposito' ";
         $resultad2= $con->query($query2); 
+
+        //HORA SISTEMA AL REGISTRARSE
+        ini_set('date.timezone', 'America/Guatemala');
+        $hora_sistema = date ('H:i:s', time());
+        //FECHA SISTEMA AL REGISTRARSE
+        ini_set('date.timezone', 'America/Guatemala');
+        $fecha_sistema = date("d-m-Y");
+            
+        $idChequera;
+        $querySelect = ("SELECT id_chequeras from chequeras where numero_de_cuenta='$cuentaCliente' ");
+        $resultSelect =$con->query($querySelect);
+        if($row = $resultSelect->fetch_assoc()){
+            $idChequera=$row['id_chequeras'];
+        }
+
+        $queryInsert  = "INSERT into depositos (chequera_id_deposito,monto_depositado,hora_deDeposito,fecha_deDeposito,tipo_documento_deposito) 
+                        VALUES('$idChequera','$cantidadDeposito','$hora_sistema','$fecha_sistema','$tipoDocumento')";
+        $resultadoInsert= $con->query($queryInsert);
             
             echo '<div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
