@@ -79,8 +79,8 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="panel panel-info">
-                    <div class="panel-heading"><h4 class="text-center"> DEPÓSITO DE CUENTAS</h4></div>
-                    <div class="panel-body">        
+                    <div class="panel-heading" style="background-color: #0ca9c9;color:white"><h4 class="text-center"> DEPÓSITO DE CUENTAS</h4></div>
+                    <div class="panel-body" style="background-color: #b4ddf7">        
 
                         <form action="receptorPagador.php" id="formBuscarCuenta" method="post" enctype="multipart/form-data">
                             <div class="container-fluid">
