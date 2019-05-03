@@ -131,7 +131,7 @@
                                     </div> 
                                     <div class=" pull-right">
                                         <center> <br>
-                                            <input  onclick="registrarDeposito()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
+                                            <input disabled onclick="registrarDeposito()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
                                         </center> 
                                     </div>
                                 </div>
