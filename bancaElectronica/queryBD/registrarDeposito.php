@@ -68,6 +68,7 @@
                     //restar de mi saldo
                     $query5 = "UPDATE chequeras SET saldo_actual=saldo_actual-'$cantidadTransferido' where numero_de_cuenta='$cuentaCLienteLogeado' ";
                     $resultad5= $con->query($query5);
+                    
                     echo '<div class="alert alert-success alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
