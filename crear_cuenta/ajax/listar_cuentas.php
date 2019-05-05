@@ -11,7 +11,7 @@
 		//SELECCION USUARIO para extraer id del logeado
 		$id_logeado;
 		$id_empleadoBanco;
-		$consulta1 = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+		$consulta1 = ("SELECT banco_id_empleado FROM empleado where usuario='$usuarioLogeado'");
 		$resultado1 = $con->query($consulta1);
 		if($row = $resultado1->fetch_assoc()){      		
 			$id_empleadoBanco=$row['banco_id_empleado'];

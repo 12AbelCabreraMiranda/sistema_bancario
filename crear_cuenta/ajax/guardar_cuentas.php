@@ -24,8 +24,8 @@
 		$passEncriptado = SED::encryption($cuenta_passCliente);
 				 
 		// Registro en la BD
-		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente) 
-				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$passEncriptado')";
+		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente,tipoUsu) 
+				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$passEncriptado','cliente')";
 		$query = mysqli_query($con,$sql);
 		// Mensaje insertado registro en la base de datos
 		if ($query) {			
@@ -36,7 +36,7 @@
 			//SELECCION USUARIO para extraer id del logeado
 			$id_logeado;
 			$id_empleadoBanco;
-			$consulta1 = ("SELECT id_empleados, banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+			$consulta1 = ("SELECT id_empleados, banco_id_empleado FROM empleado where usuario='$usuarioLogeado'");
 			$resultado1 = $con->query($consulta1);
 			if($row = $resultado1->fetch_assoc()){      
 				$id_logeado =$row['id_empleados'];

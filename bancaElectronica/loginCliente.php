@@ -39,7 +39,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Iniciar Sesion</div>
+                    <div class="panel-heading text-center">Iniciar Sesión</div>
                     <div class="panel-body">
                         
                         <form role="form" id="login_form">
@@ -100,7 +100,7 @@
 
                 $('#login').val("Login");
                 if (data=="cliente") {
-                $(location).attr('href','principalCliente.php');
+                $(location).attr('href','pageCliente.php');
                 }
                                                                 
                 if (data!=="cliente") {   //si no reconoce ningun usuario registrado, muestra alerta             

@@ -9,7 +9,7 @@
     $tipoDocumento = $_POST['tipoDoc'];
 
     $id_empleadoBancoLogeado;
-   $consulta = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+   $consulta = ("SELECT banco_id_empleado FROM empleado where usuario='$usuarioLogeado'");
    $resultado = $con->query($consulta);
    if($row = $resultado->fetch_assoc()){          
        $id_empleadoBancoLogeado=$row['banco_id_empleado'];

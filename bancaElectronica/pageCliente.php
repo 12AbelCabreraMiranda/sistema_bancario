@@ -5,21 +5,14 @@
 
     $usuarioLogeado = $_SESSION['user'];
     
-    $id_empleadoBancoLogeado;
-    $consulta = ("SELECT banco_id_empleado FROM empleado where nombre='$usuarioLogeado'");
+    $bankCLiente;
+    $consulta = ("SELECT nombre_banco FROM banco_cliente where usuario_cliente='$usuarioLogeado'");
     $resultado = $con->query($consulta);
     if($row = $resultado->fetch_assoc()){          
-        $id_empleadoBancoLogeado=$row['banco_id_empleado'];
+        $bankCLiente=$row['nombre_banco'];
     }
-    $nombre_empleadoBancoLogeado;
-    $consulta2 = ("SELECT nombre_banco FROM banco where id_banco='$id_empleadoBancoLogeado'");
-    $resultado2 = $con->query($consulta2);
-    if($row = $resultado2->fetch_assoc()){          
-        $nombre_empleadoBancoLogeado=$row['nombre_banco'];
-    }
+    
 
-    $queryDocumento = "select idtipo_documento, nombre_documento from tipo_documento";
-    $resultadoDocumento = $con->query($queryDocumento);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +32,7 @@
  
  
     
-<body style="background: #dbf2f9 ">
+<body style="background: #f77e04 ">
 
     <?php       
         if(isset($_SESSION['user'])){
@@ -56,12 +49,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="receptorPagador.php" class="navbar-brand">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
+            <a href="pageCliente.php" class="navbar-brand">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">         
             <ul class="nav navbar-nav navbar-right">
-            <a class="navbar-brand" style="font-size: 14px"> RECEPTOR PAGADOR </a>
+            <a class="navbar-brand" style="font-size: 14px"> BANCA ELECTRÓNICA</a>
                 <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
                         <li><a href="javascript: void(0)"  onclick='cerrar();'>Cerrar Session</a></li>
@@ -76,11 +69,11 @@
     <!--FORMULARIOS -->
     <div class="container">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            <div class="col-md-3"></div>
+            <div class="col-md-7">
                 <div class="panel panel-info">
-                    <div class="panel-heading" style="background-color: #0ca9c9;color:white"><h4 class="text-center"> DEPÓSITO DE CUENTAS</h4></div>
-                    <div class="panel-body" style="background-color: #b4ddf7">        
+                    <div class="panel-heading" style="background-color: #262626;color:white"><h4 class="text-center"> TRANSFERENCIA DE SALDOS</h4></div>
+                    <div class="panel-body" style="background-color: #e8e5e5">        
 
                         <form action="receptorPagador.php" id="formBuscarCuenta" method="post" enctype="multipart/form-data">
                             <div class="container-fluid">
@@ -101,7 +94,7 @@
                                 <div class="container-fluid">
                                 
                                     <div class="col-sm-7">
-                                        <div class='col-sm-7'>                                                               
+                                        <div class='col-sm-12'>                                                               
                                             <div class="form-group">                                    
                                                 <label for="nombre">¿Cuánto va a depositar?</label>                        
                                                 <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
@@ -109,17 +102,7 @@
                                                                                                                         
                                             <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>                                   
                                         </div>
-                                        
-                                        <div class="form-group col-md-5"> 
-                                            <label>TIPO DOCUMENTO </label>								
-                                            <select name="tipoDoc" class="form-control"  id="tipoDoc">
-                                                <?php while($row = $resultadoDocumento->fetch_assoc()){  ?>
-                                                    <option value="<?php echo $row['idtipo_documento']; ?> ">
-                                                        <?php  echo $row['nombre_documento']; ?>                                             
-                                                    </option>
-                                                <?php }?>
-                                            </select> 								
-                                        </div>
+                                                                                
                                         <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
                                             <div id="respuestaDepositado"></div>
                                         </div>
@@ -135,15 +118,7 @@
                                         </center> 
                                     </div>
                                 </div>
-
-
-
-                            </div>                                               
-                            
-
-                                            
-                            
-                            
+                            </div>                                                                                                                                                                               
                         </form>                                                    
 
                     </div>
@@ -160,20 +135,20 @@
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                       Receptor Pagador
+                       Mi Cuenta Bancaria
                     </a>
                 </li>
                 <li>
-                    <a href="receptorPagador.php">Realizar Depósito</a>
+                    <a href="pageCliente.php">Realizar Transferencia</a>
                 </li>
                 <li>
-                    <a href="retiros.php">Realizar Retiros</a>
+                    <a href="#">Consulta de Saldo</a>
                 </li>
                 <li>
-                    <a href="#">Realizar Transacciones</a>
+                    <a href="#">Mis movimientos</a>
                 </li>
                 <li>
-                    <a href="#">Cambio de dólares</a>
+                    <a href="#">Otros</a>
                 </li>                                                              
             </ul>
         </nav>        
