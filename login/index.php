@@ -30,15 +30,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.php" class="navbar-brand" ">Sistema Bancario</a>
+            <a href="index.php" class="navbar-brand" >Sistema Bancario</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right" >
                 <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Identifícate</a>
                     <ul class="dropdown-menu">                        
-                        <li ><a href="#" >EMPLEADO</a></li>
-                        <li ><a href="#" >CLIENTE</a></li>
+                        <li ><a href="index.php" >EMPLEADO</a></li>
+                        <li ><a href="../bancaElectronica/loginCliente.php" >CLIENTE</a></li>
                     </ul>
                 </li>
                 <!-- <li ><a style="color:white" href="javascript:void(0)" data-toggle="modal" data-target="#responsive">Registrarse</a></li>-->
