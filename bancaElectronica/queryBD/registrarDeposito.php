@@ -16,11 +16,15 @@
     
     $cuentaCLienteLogeado;
     $mi_saldoLogueado;
-    $consulta = ("SELECT numero_de_cuenta, saldo_actual FROM cuenta_cliente_logueado where usuario_cliente='$usuarioLogeado'");
+    $nombreClienteLog;
+    $apellidoLog;
+    $consulta = ("SELECT numero_de_cuenta, nombre,apellido, saldo_actual FROM cuenta_cliente_logueado where usuario_cliente='$usuarioLogeado'");
     $resultado = $con->query($consulta);
     if($row = $resultado->fetch_assoc()){          
         $cuentaCLienteLogeado=$row['numero_de_cuenta'];//cuenta logueada
         $mi_saldoLogueado=$row['saldo_actual'];//saldo logueado
+        $nombreClienteLog=$row['nombre'];//nomb cliente
+        $apellidoLog=$row['apellido'];
 
         if($cuentaCLienteLogeado==$cuenta_a_transferir){        
         
@@ -68,7 +72,26 @@
                     //restar de mi saldo
                     $query5 = "UPDATE chequeras SET saldo_actual=saldo_actual-'$cantidadTransferido' where numero_de_cuenta='$cuentaCLienteLogeado' ";
                     $resultad5= $con->query($query5);
-                    
+
+                    //chequera 
+                    $idChequera;
+                    $querySelect = ("SELECT id_chequeras from chequeras where numero_de_cuenta='$cuenta_a_transferir' ");
+                    $resultSelect =$con->query($querySelect);
+                    if($row = $resultSelect->fetch_assoc()){
+                        $idChequera=$row['id_chequeras'];
+                    }
+
+                    //HORA SISTEMA AL REGISTRARSE
+                    ini_set('date.timezone', 'America/Guatemala');
+                    $hora_sistema = date ('H:i:s', time());
+                    //FECHA SISTEMA AL REGISTRARSE
+                    ini_set('date.timezone', 'America/Guatemala');
+                    $fecha_sistema = date("d-m-Y");                                           
+
+                    $queryInsert  = "INSERT into transferencia (numeroCuenta_a_transferir,chequera_id_transaccion,monto_deTransaccion,cliente_que_transfiere,apellido_que_transfiere,cuenta_transfiere,hora_deTransaccion,fecha_deTransaccion) 
+                            VALUES('$cuenta_a_transferir','$idChequera','$cantidadTransferido','$nombreClienteLog','$apellidoLog','$cuentaCLienteLogeado','$hora_sistema','$fecha_sistema')";
+                    $resultadoInsert= $con->query($queryInsert);
+
                     echo '<div class="alert alert-success alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -80,23 +103,9 @@
                         
                 }/*
 
-            //HORA SISTEMA AL REGISTRARSE
-            ini_set('date.timezone', 'America/Guatemala');
-            $hora_sistema = date ('H:i:s', time());
-            //FECHA SISTEMA AL REGISTRARSE
-            ini_set('date.timezone', 'America/Guatemala');
-            $fecha_sistema = date("d-m-Y");
-                
-            $idChequera;
-            $querySelect = ("SELECT id_chequeras from chequeras where numero_de_cuenta='$cuentaCliente' ");
-            $resultSelect =$con->query($querySelect);
-            if($row = $resultSelect->fetch_assoc()){
-                $idChequera=$row['id_chequeras'];
-            }
+            
 
-            $queryInsert  = "INSERT into depositos (chequera_id_deposito,monto_depositado,hora_deDeposito,fecha_deDeposito,tipo_documento_deposito) 
-                            VALUES('$idChequera','$cantidadDeposito','$hora_sistema','$fecha_sistema','$tipoDocumento')";
-            $resultadoInsert= $con->query($queryInsert);
+            
                 */
         }
     }
