@@ -170,7 +170,7 @@
                     <a href="retiros.php">Realizar Retiros</a>
                 </li>
                 <li>
-                    <a href="#">Realizar Transacciones</a>
+                    <a href="#">Remesas</a>
                 </li>
                 <li>
                     <a href="#">Cambio de dólares</a>

@@ -32,7 +32,7 @@
  
  
     
-<body style="background: #f77e04 ">
+<body style="background: #444444 ">
 
     <?php       
         if(isset($_SESSION['user'])){
@@ -79,7 +79,7 @@
                             <div class="container-fluid">
                                                             
                                 <div class="input-group col-md-5 col-xs-12 col-md-offset-3">
-                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Ingresar número de cuenta" onkeypress="return soloNumero(event)" onpaste="return false"/>
+                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Número de cuenta" onkeypress="return soloNumero(event)" onpaste="return false"/>
                                     <span class="input-group-btn">
                                                                                     
                                         <input  onclick="buscarCuenta()" id="botonBuscar" type="submit" class="btn btn-info" value="Buscar"> 
@@ -96,7 +96,7 @@
                                     <div class="col-sm-7">
                                         <div class='col-sm-12'>                                                               
                                             <div class="form-group">                                    
-                                                <label for="nombre">¿Cuánto va a depositar?</label>                        
+                                                <label for="nombre">¿Cuánto va a transferir?</label>                        
                                                 <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
                                             </div>
                                                                                                                         

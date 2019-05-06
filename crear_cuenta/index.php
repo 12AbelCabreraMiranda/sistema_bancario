@@ -58,6 +58,7 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
+                <a class="navbar-brand" style="font-size: 14px;color:white"> SERVICIO AL CLIENTE </a>
                 <li><a href="javascript: void(0)" style="color:white" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
                         <li><a href="javascript: void(0)" onclick='cerrar();'>Cerrar Session</a></li>
