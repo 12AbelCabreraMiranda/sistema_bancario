@@ -37,6 +37,18 @@
 
 <link rel="stylesheet" href="css/custom.css">
 </head>
+<style>
+    body{
+    background: url(apple.jpg);
+    height: 600px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black; 
+}
+</style>
+
 <body>
     <?php         
         if(isset($_SESSION['user'])){
@@ -53,15 +65,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>            
+                <ul class="nav navbar-nav navbar-right">
+                    <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
+                        
+                        <li style="background:#8bf9c4"><a href="#" class="dropdown-toggle" style="color:black" data-toggle="dropdown"> Consultar Cuentas</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="misClientes()" >Registro de clientes</a></li>
+                                <li><a href="#addProductModal"  data-toggle="modal" onclick="newCliente()"> <span>Registrar nuevo Cliente</span></a></li>
+                                <li><a href="#" onclick="solCredito()" >Solicitud de Credito</a></li>
+                                <li><a href="#" onclick="solDebito()" >Solicitud Tarjeta Débito</a></li>
+                                <li><a href="#" onclick="estadoCuenta()" >Estado de cuenta</a></li>
+                            
+                            </ul>
+                        </li>   
+                </ul>         
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <a class="navbar-brand" style="font-size: 14px;color:white"> SERVICIO AL CLIENTE </a>
-                <li><a href="javascript: void(0)" style="color:white" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
+                <a class="navbar-brand" style="font-size: 14px;color:white;"> SERVICIO AL CLIENTE </a>
+                <li><a href="javascript: void(0)" style="color:black;background:#8bf9c4" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
-                        <li><a href="javascript: void(0)" onclick='cerrar();'>Cerrar Session</a></li>
+                        <li><a href="javascript: void(0)" onclick='cerrar();' >Cerrar Session</a></li>
                      
                     </ul>
                 </li>
@@ -70,7 +95,7 @@
         </div>
 	</nav>
 	
-    <div class="container">
+    <div class="container" style="display:none" id="tablaClientes">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -78,7 +103,7 @@
 						<h2><b>Cuenta Clientes Registrados</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addProductModal" class="btn btn-info" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Registrar nueva cuenta</span></a>
+						<!--<a href="#addProductModal" class="btn btn-info" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Registrar nueva cuenta</span></a>-->
 					</div>
                 </div>
             </div>
@@ -110,6 +135,7 @@
 	<!-- Delete Modal HTML -->
     <?php include("html/modal_delete.php");?>
     <?php include("html/modal_vista.php");?>
+    
     <script src="js/script.js"></script>
     <script src="js/limiteCaracter.js"></script>
 

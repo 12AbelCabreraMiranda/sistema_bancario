@@ -42,3 +42,21 @@ function soloNumero(e){
         return false;
     }
 }
+
+function misClientes(){
+    $('#tablaClientes').show();
+}
+
+function newCliente(){
+    $('#tablaClientes').hide();
+}
+
+function estadoCuenta(){
+    $('#tablaClientes').hide();
+}
+function solCredito(){
+    $('#tablaClientes').hide();
+}
+function solDebito(){
+    $('#tablaClientes').hide();
+}
