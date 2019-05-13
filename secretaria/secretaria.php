@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if(!isset($_SESSION["user"])){
-    header("location:../login/index.php");
+    header("location:../inicio.php");
     }
 
   ?>
@@ -66,7 +66,7 @@
                 type:'POST',
                 data:"boton=cerrar"
             }).done(function(resp){
-                location.href = '../login/index.php'
+                location.href = '../inicio.php'
             });
         }
     </script>

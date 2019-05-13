@@ -19,8 +19,19 @@
 
     <link rel="stylesheet" href="Resources/css/bootstrap.min.css">
 </head>
- 
+<style>
+    body{
+    background: url(../img/admin.png)no-repeat center fixed ;
+    height: 600px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black; 
+}
+</style>
 <body>
+       
     <!--Barra de Navegacion-->
     <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -30,15 +41,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.php" class="navbar-brand" >Sistema Bancario</a>
+            <a href="../inicio.php" class="navbar-brand" >SISTEMA BANCARIO</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right" >
                 <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Identifícate</a>
                     <ul class="dropdown-menu">                        
-                        <li ><a href="index.php" >EMPLEADO</a></li>
-                        <li ><a href="../bancaElectronica/loginCliente.php" >CLIENTE</a></li>
+                        <li ><a href="index.php" >EMPLEADO o ADMINISTRADOR</a></li>
+                        <li ><a href="../bancaElectronica/loginCliente.php" >Banca Electrónca</a></li>
+                        <li ><a href="#" >Cajero Automático</a></li>
                     </ul>
                 </li>
                 <!-- <li ><a style="color:white" href="javascript:void(0)" data-toggle="modal" data-target="#responsive">Registrarse</a></li>-->
@@ -50,7 +62,7 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Iniciar Sesion</div>
+                    <div class="panel-heading text-center">Iniciar Sesion</div>
                     <div class="panel-body">
                         
                     
@@ -70,8 +82,10 @@
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
                                     <input REQUIRED type="password" class="form-control" name="password" id="password" placeholder="Contrasenia">
                                 </div>
-                            </div>                    
-                            <button type="button" name="login" id="login" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                            </div>   
+                            <center>
+                                <button type="button" name="login" id="login" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                            </center>                 
                         
                         </form>
                     </div>
@@ -182,54 +196,55 @@
 	<script src="Resources/js/bootstrap.min.js"></script>
     
     <script>
+        setTimeout("location.href='../inicio.php'", 20000);
         //FUNCION DE AUTENTICACIÓN DE USUARIOS
-    $(document).ready(function() {
-        $('#login').click(function(){
-        var user = $('#user').val();
-        var pass = $('#password').val();
-        if($.trim(user).length > 0 && $.trim(pass).length > 0){
-            $.ajax({
-            url:"logueame.php",
-            method:"POST",
-            data:{user:user, pass:pass},
-            cache:"false",
-            beforeSend:function() {
-                $('#login').val("Conectando...");
-            },
-            success:function(data) {
-                //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
-                $("#result").css('display', 'none');
-                    setTimeout(function() {                
-                        $("#result").fadeOut(1500);
-                        //limpiar los campos de textos                  
-                        $("#login_form")[0].reset().fadeOut(1500);
-                    },3000); 
-                //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
+        $(document).ready(function() {
+            $('#login').click(function(){
+            var user = $('#user').val();
+            var pass = $('#password').val();
+            if($.trim(user).length > 0 && $.trim(pass).length > 0){
+                $.ajax({
+                url:"logueame.php",
+                method:"POST",
+                data:{user:user, pass:pass},
+                cache:"false",
+                beforeSend:function() {
+                    $('#login').val("Conectando...");
+                },
+                success:function(data) {
+                    //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
+                    $("#result").css('display', 'none');
+                        setTimeout(function() {                
+                            $("#result").fadeOut(1500);
+                            //limpiar los campos de textos                  
+                            $("#login_form")[0].reset().fadeOut(1500);
+                        },3000); 
+                    //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
 
-                $('#login').val("Login");
-                if (data=="1") {
-                $(location).attr('href','../administrador.php');
-                }
-                if (data=="2") {
-                $(location).attr('href','../receptorPagador/receptorPagador.php');
-                }
-                if (data=="3") {
-                $(location).attr('href','../secretaria/secretaria.php');
-                }
-                if (data=="4") {
-                $(location).attr('href','../crear_cuenta/index.php');
-                }
-                                                
-                if (data!=="1" && data!=="2" && data!=="3" && data!=="4") {   //si no reconoce ningun usuario registrado, muestra alerta             
-                $("#result").show();
-                    
-                }
+                    $('#login').val("Login");
+                    if (data=="1") {
+                    $(location).attr('href','../admin/administrador.php');
+                    }
+                    if (data=="2") {
+                    $(location).attr('href','../receptorPagador/receptorPagador.php');
+                    }
+                    if (data=="3") {
+                    $(location).attr('href','../secretaria/secretaria.php');
+                    }
+                    if (data=="4") {
+                    $(location).attr('href','../crear_cuenta/index.php');
+                    }
+                                                    
+                    if (data!=="1" && data!=="2" && data!=="3" && data!=="4") {   //si no reconoce ningun usuario registrado, muestra alerta             
+                    $("#result").show();
+                        
+                    }
 
-            }
+                }
+                });
+            };
             });
-        };
         });
-    });
     </script>
 
 

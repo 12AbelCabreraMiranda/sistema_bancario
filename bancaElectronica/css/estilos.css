@@ -33,7 +33,7 @@ html { height: 100%;}
     margin-left: -220px;
     overflow-y: auto;
     overflow-x: hidden;
-    background: #027431;
+    background: #1c1d1d;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -86,7 +86,7 @@ display: none;
     z-index: -1;
     height: 100%;
     width: 3px;
-    background-color: #1c1c1c;
+    background-color: #08a810;
     -webkit-transition: width .2s ease-in;
     -moz-transition:  width .2s ease-in;
     -ms-transition:  width .2s ease-in;
@@ -95,7 +95,7 @@ display: none;
 }
 .sidebar-nav li:first-child a {
     color: #fff;
-    background-color: #1a1a1a;
+    background-color: #1892d8;
 }
 .sidebar-nav li:nth-child(2):before {
     background-color: #ec1b5a;   

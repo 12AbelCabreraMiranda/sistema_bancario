@@ -8,7 +8,7 @@
 	<title>Mi Banco</title>
     <link rel="stylesheet" href="../login/Resources/css/bootstrap.min.css">
 </head>
- 
+
 <body style="background: #51504f">
     <!--Barra de Navegacion-->
     <nav class="navbar navbar-default">
@@ -19,15 +19,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../login/index.php" class="navbar-brand">Sistema Bancario cliente</a>
+            <a href="../inicio.php" class="navbar-brand">SISTEMA BANCARIO</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right" >
                 <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Identifícate</a>
                     <ul class="dropdown-menu">                        
-                        <li ><a href="../login/index.php" >EMPLEADO</a></li>
-                        <li ><a href="index.php" >CLIENTE</a></li>
+                        <li ><a href="../login/index.php" >EMPLEADO o ADMINISTRADOR</a></li>
+                        <li ><a href="loginCliente.php" >Banca Electrónca</a></li>
+                        <li ><a href="#" >Cajero Automático</a></li>
                     </ul>
                 </li>                
             </ul>
@@ -56,8 +57,10 @@
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
                                     <input REQUIRED type="password" class="form-control" name="password" id="password" placeholder="Contrasenia">
                                 </div>
-                            </div>                    
-                            <button type="button" name="login" id="login" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                            </div> 
+                            <center>
+                                <button type="button" name="login" id="login" class="btn btn-default"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                            </center>                   
                         
                         </form>                    
                     </div>
@@ -74,43 +77,44 @@
 	<script src="../login/Resources/js/bootstrap.min.js"></script>
     
     <script>
+        setTimeout("location.href='../inicio.php'", 20000);
         //FUNCION DE AUTENTICACIÓN DE USUARIOS
-    $(document).ready(function() {
-        $('#login').click(function(){
-        var user = $('#user').val();
-        var pass = $('#password').val();
-        if($.trim(user).length > 0 && $.trim(pass).length > 0){
-            $.ajax({
-            url:"logueame.php",
-            method:"POST",
-            data:{user:user, pass:pass},
-            cache:"false",
-            beforeSend:function() {
-                $('#login').val("Conectando...");
-            },
-            success:function(data) {
-                //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
-                $("#result").css('display', 'none');
-                    setTimeout(function() {                
-                        $("#result").fadeOut(1500);
-                        //limpiar los campos de textos                  
-                        $("#login_form")[0].reset().fadeOut(1500);
-                    },3000); 
-                //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
+        $(document).ready(function() {
+            $('#login').click(function(){
+            var user = $('#user').val();
+            var pass = $('#password').val();
+            if($.trim(user).length > 0 && $.trim(pass).length > 0){
+                $.ajax({
+                url:"logueame.php",
+                method:"POST",
+                data:{user:user, pass:pass},
+                cache:"false",
+                beforeSend:function() {
+                    $('#login').val("Conectando...");
+                },
+                success:function(data) {
+                    //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
+                    $("#result").css('display', 'none');
+                        setTimeout(function() {                
+                            $("#result").fadeOut(1500);
+                            //limpiar los campos de textos                  
+                            $("#login_form")[0].reset().fadeOut(1500);
+                        },3000); 
+                    //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
 
-                $('#login').val("Login");
-                if (data=="cliente") {
-                $(location).attr('href','pageCliente.php');
+                    $('#login').val("Login");
+                    if (data=="cliente") {
+                    $(location).attr('href','pageCliente.php');
+                    }
+                                                                    
+                    if (data!=="cliente") {   //si no reconoce ningun usuario registrado, muestra alerta             
+                    $("#result").show();                    
+                    }
                 }
-                                                                
-                if (data!=="cliente") {   //si no reconoce ningun usuario registrado, muestra alerta             
-                $("#result").show();                    
-                }
-            }
+                });
+            };
             });
-        };
         });
-    });
     </script>
 
 </body>

@@ -44,7 +44,7 @@
     <?php       
         if(isset($_SESSION['user'])){
         }else{
-            header("location:../login/index.php");
+            header("location:../inicio.php");
         }
     ?>
     <!--Barra de Navegacion-->
@@ -201,7 +201,7 @@
                 type:'POST',
                 data:"boton=cerrar"
             }).done(function(resp){
-                location.href = '../login/index.php'
+                location.href = '../inicio.php'
             });
         }
     </script>

@@ -1,5 +1,5 @@
 <?php 
-        require_once ("crear_cuenta/conexion.php");
+        require_once ("../crear_cuenta/conexion.php");
         session_start();
         
         $usuarioLogeado = $_SESSION['user'];
@@ -33,16 +33,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mi Banco</title>
-    <link rel="icon" href="img/icono.png">
-    <link rel="stylesheet" href="login/Resources/css/bootstrap.min.css">
+    <link rel="icon" href="../img/icono.png">
+    <link rel="stylesheet" href="../login/Resources/css/bootstrap.min.css">
 
 </head>
+
  
 <body>
     <?php       
         if(isset($_SESSION['user'])){
         }else{
-            header("location:/login/index.php");
+            header("location:../inicio.php");
         }
     ?>
 
@@ -174,18 +175,18 @@
 
     </center>
      
-    <script src="login/Resources/js/jquery-1.11.2.js"></script>
-    <script src="login/Resources/js/bootstrap.min.js"></script>
+    <script src="../login/Resources/js/jquery-1.11.2.js"></script>
+    <script src="../login/Resources/js/bootstrap.min.js"></script>
     
     <script>
         function cerrar()
         {
             $.ajax({
-                url:'login/Models/usuario.php',
+                url:'../login/Models/usuario.php',
                 type:'POST',
                 data:"boton=cerrar"
             }).done(function(resp){
-                location.href = 'login/index.php'
+                location.href = '../inicio.php'
             });
         }
     </script>
