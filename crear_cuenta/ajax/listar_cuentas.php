@@ -19,7 +19,7 @@
 
 		$tables="cuenta_clientes";
 		$campos="*";
-		$sWhere=" cuenta_clientes.nombre LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
+		$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
 		$sWhere.=" order by cuenta_clientes.nombre";
 		
 		

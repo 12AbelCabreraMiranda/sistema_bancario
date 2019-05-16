@@ -68,9 +68,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
                         
-                        <li style="background:#8bf9c4"><a href="#" class="dropdown-toggle" style="color:black" data-toggle="dropdown"> Consultar Cuentas</a>
+                        <li style="background:#8bf9c4"><a href="#" class="dropdown-toggle" style="color:black" data-toggle="dropdown"> Consultar </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" onclick="misClientes()" >Registro de clientes</a></li>
+                                <li><a href="#" onclick="misClientes()" >Clientes Registrados</a></li>
                                 <li><a href="#addProductModal"  data-toggle="modal" onclick="newCliente()"> <span>Registrar nuevo Cliente</span></a></li>
                                 <li><a href="#" onclick="solCredito()" >Solicitud de Credito</a></li>
                                 <li><a href="#" onclick="solDebito()" >Solicitud Tarjeta Débito</a></li>
@@ -110,7 +110,7 @@
 			<div class='col-sm-4 pull-right'>
 				<div id="custom-search-input">
                             <div class="input-group col-md-12">
-                                <input type="text" class="form-control" placeholder="Buscar"  id="q" onkeyup="load(1);" />
+                                <input type="text" class="form-control" placeholder="Buscar número cuenta"  id="q" onkeyup="load(1);" />
                                 <span class="input-group-btn">
                                     <button class="btn btn-info" type="button" onclick="load(1);">
                                         <span class="glyphicon glyphicon-search"></span>
