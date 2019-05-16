@@ -147,3 +147,52 @@ $('#vistaCuentaModal').on('show.bs.modal', function (event) {
   var id = button.data('id_cliente') 
   $('#vista_id').val(id)
 })
+
+//SCRIPT NEWCUENTACLIENTEEXISTENTE
+$('#masCuentaModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Botón que activó el modal.
+
+  var nombre = button.data('nombre') 
+  $('#view_nombre').val(nombre)
+
+  var apellido = button.data('apellido') 
+  $('#view_apellido').val(apellido)
+
+  var dpi = button.data('dpi') 
+  $('#view_dpi').val(dpi)
+
+  var nit = button.data('nit') 
+  $('#view_nit').val(nit)
+
+  var telefono = button.data('telefono') 
+  $('#view_telefono').val(telefono)
+
+  var direccion = button.data('direccion') 
+  $('#view_direccion').val(direccion)
+
+
+  var id = button.data('id_cliente') 
+  $('#view_id').val(id)
+})
+
+//GUARDAR OTRA NUEVA CUENTA CLIENTE
+$( "#view_cuenta" ).submit(function( event ) {
+  
+  var parametros = $(this).serialize();
+
+    $.ajax({
+            type: "POST",
+            url: "ajax/cuentaNueva.php",
+            data: parametros,
+             beforeSend: function(objeto){
+                $("#resultados").html("Enviando...");
+              },
+            success: function(datos){
+            $("#resultados").html(datos);                          
+            load(1);
+            $('#masCuentaModal').modal('hide');
+          }
+    });
+  event.preventDefault();
+  
+});

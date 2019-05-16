@@ -95,7 +95,7 @@
         </div>
 	</nav>
 	
-    <div class="container" style="display:none" id="tablaClientes">
+    <div class="container" style="display:show" id="tablaClientes">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -135,6 +135,7 @@
 	<!-- Delete Modal HTML -->
     <?php include("html/modal_delete.php");?>
     <?php include("html/modal_vista.php");?>
+    <?php include("html/modal_masCuenta.php");?>
     
     <script src="js/script.js"></script>
     <script src="js/limiteCaracter.js"></script>

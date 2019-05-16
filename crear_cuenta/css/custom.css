@@ -83,6 +83,9 @@ table.table td a {
 table.table td a:hover {
     color: #2196F3;
 }
+table.table td a.mas {
+    color: rgb(6, 184, 115);
+}
 table.table td a.edit {
     color: #FFC107;
 }
