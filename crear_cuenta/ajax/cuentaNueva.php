@@ -34,9 +34,17 @@
 	$anio = date("Y");										
 	$cuenta_numCuenta = $id_clienteRegistrado.strlen($cuenta_nombre).$segundo.$minuto.$anio.$idTopChequera;
 	
+	//HORA SISTEMA AL REGISTRARSE
+	ini_set('date.timezone', 'America/Guatemala');
+	$hora_sistema = date ('H:i:s', time());
+	//FECHA SISTEMA AL REGISTRARSE
+	ini_set('date.timezone', 'America/Guatemala');
+	$fecha_sistema = date("d-m-Y");
+
+
 	// insercion en la tabla chequera Registro en la BD
-	$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera, tipo_cuentas, estado) 
-	VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_tablaCuenta',$tipoCuenta,1)";
+	$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera, tipo_cuentas, hora_apertura, fecha_apertura, estado) 
+	VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_tablaCuenta','$tipoCuenta','$hora_sistema','$fecha_sistema',1)";
 	$query3 = mysqli_query($con,$sql3);    
     
     if ($query3) {

@@ -58,8 +58,8 @@
 			$fecha_sistema = date("d-m-Y");
 			
 			// insercion en la tabla cuenta Registro en la BD
-			$sql2 = "INSERT INTO cuenta(banco_id, hora_apertura, fecha_apertura, empleado_id_cuenta, cliente_id_cuenta, heredarCuenta) 
-					VALUES ('$id_empleadoBanco','$hora_sistema','$fecha_sistema','$id_logeado','$id_clienteRegistrado','$cuenta_heredar')";
+			$sql2 = "INSERT INTO cuenta(banco_id, empleado_id_cuenta, cliente_id_cuenta, heredarCuenta) 
+					VALUES ('$id_empleadoBanco','$id_logeado','$id_clienteRegistrado','$cuenta_heredar')";
 			$query2 = mysqli_query($con,$sql2);
 			// Mensaje insertado registro en la base de datos
 			if ($query2) {
@@ -85,8 +85,8 @@
 
 
 			// insercion en la tabla chequera Registro en la BD
-			$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera,tipo_cuentas, estado) 
-					VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_cuentaRegistrado',$cuenta_tipoCuenta,1)";
+			$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera,tipo_cuentas, hora_apertura, fecha_apertura, estado) 
+					VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_cuentaRegistrado','$cuenta_tipoCuenta','$hora_sistema','$fecha_sistema',1)";
 			$query3 = mysqli_query($con,$sql3);
 			// Mensaje insertado registro en la base de datos
 			if ($query3) {
