@@ -76,23 +76,14 @@
 								$nit=$row['nit'];
 								$telefono=$row['telefono'];	
 								$direccion=$row['direccion'];		
-<<<<<<< HEAD
-								//$usuario_cliente= $row['usuario_cliente'];
-								//$contrasenia_cliente= $row['contrasenia_cliente'];
-=======
 								
->>>>>>> recuperar_mi_sistema_prev
 								$horaApertura=$row['hora_apertura'];
 								$fechaApertura=$row['fecha_apertura'];
 								$tipocuenta=$row['nombre_tipoCuenta'];
 								$numeroCuenta=$row['numero_de_cuenta'];
 								$saldoActual=$row['saldo_actual'];
 								//DESENCRIPTACIÓN DE PASSWORD
-<<<<<<< HEAD
-								//$passDesencriptado = SED::decryption($contrasenia_cliente);	
-=======
 								
->>>>>>> recuperar_mi_sistema_prev
 								$finales++;
 							?>	
 							<tr class="<?php echo $text_class;?>">
