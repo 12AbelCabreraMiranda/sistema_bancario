@@ -47,8 +47,8 @@
         //FECHA SISTEMA AL REGISTRARSE
         ini_set('date.timezone', 'America/Guatemala');
         $fecha_sistema = date("d-m-Y");
-
-        $queryValidad = ("SELECT usuario_cliente from usuario_banca_virtual where usuario_cliente='$usu_clienteVirtual' ");
+        //-------------VALIDACION DE USUARIOS POR CUENTAS----------------------
+        $queryValidad = ("SELECT usuario_cliente from usuario_banca_virtual where usuario_cliente='$usu_clienteVirtual' and chequera_id_virtual='$idChequera' ");
         $resultValidad =$con->query($queryValidad);
         
         if($row = $resultValidad->fetch_assoc()){
@@ -60,7 +60,7 @@
                             VALUES('$id_clienteRegistrado','$idChequera','$usu_clienteVirtual','$contraseaCLienteVirtual','cliente','$hora_sistema','$fecha_sistema','$id_empleadoLogeado','Habilitado')";
             $resultadoInsert= $con->query($queryInsert);
 
-            echo 'Usuario y Contraña para Banca Electronica creado exitosamente';
+            echo 'Usuario y Contraseña para Banca Electronica creado exitosamente';
 
             
             
