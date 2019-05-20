@@ -135,7 +135,7 @@
     <?php include("html/modal_delete.php");?>
     <?php include("html/modal_vista.php");?>
     <?php include("html/modal_masCuenta.php");?>
-    <?php include("html/solicitudTarjetaDebito.php");?>
+    <?php include("solicitudTarjeta/solicitudTarjetaDebito.php");?>
     
     <script src="js/script.js"></script>
     <script src="js/limiteCaracter.js"></script>

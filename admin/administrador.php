@@ -240,7 +240,7 @@
                 
                 
                 $.ajax({
-                    url:'login/Models/usuario.php',
+                    url:'../login/Models/usuario.php',
                     type:'POST',
                     data:'nombres='+nombres+'&apellidos='+apellidos+ '&telefono='+telefono+ '&direccion='+direccion+ '&banco='+banco+ '&tipoUsuario='+tipo_usuario+ '&usuario='+usuario+'&password='+password+'&boton=registrar'
                 }).done(function(resp){

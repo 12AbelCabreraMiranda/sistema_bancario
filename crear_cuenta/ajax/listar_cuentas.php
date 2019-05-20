@@ -9,17 +9,18 @@
 		$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
 		$usuarioLogeado = $_SESSION['user'];
 		//SELECCION USUARIO para extraer id del logeado
-		$id_logeado;
+		$id_Usu_logeado;
 		$id_empleadoBanco;
-		$consulta1 = ("SELECT banco_id_empleado FROM empleado where usuario='$usuarioLogeado'");
+		$consulta1 = ("SELECT id_empleados, banco_id_empleado FROM empleado where usuario='$usuarioLogeado' ");
 		$resultado1 = $con->query($consulta1);
 		if($row = $resultado1->fetch_assoc()){      		
 			$id_empleadoBanco=$row['banco_id_empleado'];
+			$id_Usu_logeado=$row['id_empleados'];
 		}
 
 		$tables="cuenta_clientes";
 		$campos="*";
-		$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
+		$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 and empleado_id_cuenta='$id_Usu_logeado' ";
 		$sWhere.=" order by cuenta_clientes.nombre";
 		
 		

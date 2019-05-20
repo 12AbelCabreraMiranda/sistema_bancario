@@ -13,7 +13,7 @@
 <body>
     
     <!--FORMULARIOS -->
-    <div class="container" style="display:show" id="form_solicitudTarDebito">
+    <div class="container" style="display:none" id="form_solicitudTarDebito">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -66,9 +66,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="js/script.js"></script>
-    <script src="js/solicitudTarjeta.js"></script>
+    </div>    
+    <script src="solicitudTarjeta/solicitudTarjeta.js"></script>
     
 
 </body>

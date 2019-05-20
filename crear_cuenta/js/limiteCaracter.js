@@ -45,18 +45,23 @@ function soloNumero(e){
 
 function misClientes(){
     $('#tablaClientes').show();
+    $('#form_solicitudTarDebito').hide();
 }
 
 function newCliente(){
     $('#tablaClientes').hide();
+    $('#form_solicitudTarDebito').hide();
 }
 
 function estadoCuenta(){
     $('#tablaClientes').hide();
+    $('#form_solicitudTarDebito').hide();
 }
 function solCredito(){
     $('#tablaClientes').hide();
+    $('#form_solicitudTarDebito').hide();
 }
 function solDebito(){
     $('#tablaClientes').hide();
+    $('#form_solicitudTarDebito').show();
 }

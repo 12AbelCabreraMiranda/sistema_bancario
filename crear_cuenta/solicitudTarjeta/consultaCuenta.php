@@ -1,6 +1,6 @@
 <?php
    
-   require_once ("../../crear_cuenta/conexion.php");
+   require_once ("../conexion.php");
     session_start();
     $numCuenta =   $_POST["numeroCuenta"];    
     $usuarioLogeado = $_SESSION['user'];

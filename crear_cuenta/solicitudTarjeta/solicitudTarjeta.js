@@ -7,7 +7,7 @@ $(document).ready(function(){
         $('#boton').attr("disabled", false);
         var datos = new FormData($("#formBuscarCuenta")[0])        
           $.ajax({
-              url: 'ajax/consultaDatosCuenta.php',
+              url: 'solicitudTarjeta/consultaDatosCuenta.php',
               type: 'POST',
               data: datos,
               contentType: false, //se anota porque se mandarán archivos
@@ -20,7 +20,7 @@ $(document).ready(function(){
 
             //otra consulta
             $.ajax({
-                url: 'ajax/consultaCuenta.php',
+                url: 'solicitudTarjeta/consultaCuenta.php',
                 type: 'POST',
                 data: datos,
                 contentType: false, //se anota porque se mandarán archivos
