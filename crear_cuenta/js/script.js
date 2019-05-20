@@ -126,6 +126,9 @@ $('#vistaCuentaModal').on('show.bs.modal', function (event) {
   
   var numeroCuenta = button.data('numero_de_cuenta') 
   $('#vista_NumCuenta').val(numeroCuenta)
+  
+  var numeroCuenta2 = button.data('numero_de_cuenta') 
+  $('#vista_NumCuentaCliente').val(numeroCuenta2)
 
   var tipoCuentas = button.data('tipocuenta') 
   $('#vista_tipCuenta').val(tipoCuentas)

@@ -1,7 +1,7 @@
 <div id="vistaCuentaModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form name="vista_cuenta" id="vista_cuenta">
+				<form name="vista_cuenta" id="vista_cuenta" method="post" enctype="multipart/form-data">
 					<div class="modal-header">						
 						<h4 class="modal-title">Detalle de la cuenta del cliente</h4>						
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -12,6 +12,7 @@
 							<div class="form-group col-md-6">
 								<label>Numero de cuenta</label>
 								<input type="text" name="vista_NumCuenta" id="vista_NumCuenta" class="form-control"disabled required>
+								<input type="hidden" name="vista_NumCuenta" id="vista_NumCuentaCliente" class="form-control" required>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Tipo de cuenta</label>
@@ -20,16 +21,21 @@
 							<div class="form-group col-md-6">
 								<label>Saldo actual</label>
 								<input type="text" name="vista_saldoActual" id="vista_saldoActual" class="form-control"disabled required>
-							</div>																			
-						</div>					
+							</div>		
+
+						</div>		
+						<div id="respuestaSolicitudUsuarioVirtual">usuaRes</div>			
 
 					</div>
 					<div class="modal-footer">
 						<center>
-							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">							
+							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">	
+							<input type="submit" class="btn btn-success" value="Guardar solicitud" onclick="registrarSolicitudVirtual()" >						
 						</center>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+
+	<script src="codigoBancaVirtual/crearCodigo.js"></script>

@@ -45,7 +45,7 @@
                                         </div>                                        
                                     
                                         <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
-                                            <div id="respuestaDepositado"></div>
+                                            <div id="respuestaSolicitado"></div>
                                         </div>
                                     </div>
 
