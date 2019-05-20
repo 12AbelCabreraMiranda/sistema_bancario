@@ -12,20 +12,18 @@
 		$cuenta_dpi = mysqli_real_escape_string($con,(strip_tags($_POST["dpi"],ENT_QUOTES)));
 		$cuenta_nit = mysqli_real_escape_string($con,(strip_tags($_POST["nit"],ENT_QUOTES)));
 		$cuenta_telefono = mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
-		$cuenta_direccion = mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));
-		$cuenta_usuCliente = mysqli_real_escape_string($con,(strip_tags($_POST["usuarioCliente"],ENT_QUOTES)));
-		$cuenta_passCliente = mysqli_real_escape_string($con,(strip_tags($_POST["contraseniaCliente"],ENT_QUOTES)));			
+		$cuenta_direccion = mysqli_real_escape_string($con,(strip_tags($_POST["direccion"],ENT_QUOTES)));			
 		$cuenta_tipoCuenta = mysqli_real_escape_string($con,(strip_tags($_POST["tipo_cuenta"],ENT_QUOTES)));
 		$cuenta_saldoInicial = mysqli_real_escape_string($con,(strip_tags($_POST["saldoInicial"],ENT_QUOTES)));
 		$cuenta_heredar = mysqli_real_escape_string($con,(strip_tags($_POST["heredarCuenta"],ENT_QUOTES)));
 		$usuarioLogeado = $_SESSION['user'];	
 		
-		//ENCRIPTACIÓN DE PASSWORD
-		$passEncriptado = SED::encryption($cuenta_passCliente);
+		
+		
 				 
 		// Registro en la BD
-		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion,usuario_cliente,contrasenia_cliente,tipoUsu) 
-				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion','$cuenta_usuCliente','$passEncriptado','cliente')";
+		$sql = "INSERT INTO clientes(id_clientes, nombre, apellido, dpi, nit, telefono,direccion) 
+				VALUES (NULL,'$cuenta_nombre','$cuenta_apellido','$cuenta_dpi','$cuenta_nit','$cuenta_telefono','$cuenta_direccion')";
 		$query = mysqli_query($con,$sql);
 		// Mensaje insertado registro en la base de datos
 		if ($query) {			

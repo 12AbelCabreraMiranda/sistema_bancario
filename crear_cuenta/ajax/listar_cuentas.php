@@ -76,15 +76,14 @@
 								$nit=$row['nit'];
 								$telefono=$row['telefono'];	
 								$direccion=$row['direccion'];		
-								$usuario_cliente= $row['usuario_cliente'];
-								$contrasenia_cliente= $row['contrasenia_cliente'];
+								
 								$horaApertura=$row['hora_apertura'];
 								$fechaApertura=$row['fecha_apertura'];
 								$tipocuenta=$row['nombre_tipoCuenta'];
 								$numeroCuenta=$row['numero_de_cuenta'];
 								$saldoActual=$row['saldo_actual'];
 								//DESENCRIPTACIÓN DE PASSWORD
-								$passDesencriptado = SED::decryption($contrasenia_cliente);	
+								
 								$finales++;
 							?>	
 							<tr class="<?php echo $text_class;?>">
