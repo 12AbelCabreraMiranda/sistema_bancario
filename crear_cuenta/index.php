@@ -57,7 +57,7 @@
         }
     ?>
 	<!--Barra de Navegacion-->
-    <nav class="navbar navbar-default" style="background-color: #269b76">
+    <nav class="navbar navbar-default" style="background-color: #5b5b5b">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Cambiar Navegacion</span>
@@ -68,7 +68,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <a href="index.php" class="navbar-brand" style="color:white">Sistema Bancario: <?php  echo $row['nombre_banco']; ?></a>
                         
-                        <li style="background:#8bf9c4"><a href="#" class="dropdown-toggle" style="color:black" data-toggle="dropdown"> Consultar </a>
+                        <li style="background:#cde6f2"><a href="#" class="dropdown-toggle" style="color:black" data-toggle="dropdown"> Consultar </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" onclick="misClientes()" >Clientes Registrados</a></li>
                                 <li><a href="#addCuentaModal"  data-toggle="modal" onclick="newCliente()"> <span>Registrar nuevo Cliente</span></a></li>
@@ -83,7 +83,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <a class="navbar-brand" style="font-size: 14px;color:white;"> SERVICIO AL CLIENTE </a>
-                <li><a href="javascript: void(0)" style="color:black;background:#8bf9c4" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
+                <li><a href="javascript: void(0)" style="color:black;background:#cde6f2" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
                      <ul class="dropdown-menu">
                         <li><a href="javascript: void(0)" onclick='cerrar();' >Cerrar Session</a></li>
                      
@@ -94,7 +94,7 @@
         </div>
 	</nav>
 	
-    <div class="container" style="display:show" id="tablaClientes">
+    <div class="container" style="display:none" id="tablaClientes">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
@@ -135,6 +135,7 @@
     <?php include("html/modal_delete.php");?>
     <?php include("html/modal_vista.php");?>
     <?php include("html/modal_masCuenta.php");?>
+    <?php include("html/solicitudTarjetaDebito.php");?>
     
     <script src="js/script.js"></script>
     <script src="js/limiteCaracter.js"></script>
