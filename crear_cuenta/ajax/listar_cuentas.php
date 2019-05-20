@@ -19,7 +19,7 @@
 
 		$tables="cuenta_clientes";
 		$campos="*";
-		$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
+		$sWhere=" cuenta_clientes.nombre LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
 		$sWhere.=" order by cuenta_clientes.nombre";
 		
 		
@@ -76,15 +76,15 @@
 								$nit=$row['nit'];
 								$telefono=$row['telefono'];	
 								$direccion=$row['direccion'];		
-								$usuario_cliente= $row['usuario_cliente'];
-								$contrasenia_cliente= $row['contrasenia_cliente'];
+								//$usuario_cliente= $row['usuario_cliente'];
+								//$contrasenia_cliente= $row['contrasenia_cliente'];
 								$horaApertura=$row['hora_apertura'];
 								$fechaApertura=$row['fecha_apertura'];
 								$tipocuenta=$row['nombre_tipoCuenta'];
 								$numeroCuenta=$row['numero_de_cuenta'];
 								$saldoActual=$row['saldo_actual'];
 								//DESENCRIPTACIÓN DE PASSWORD
-								$passDesencriptado = SED::decryption($contrasenia_cliente);	
+								//$passDesencriptado = SED::decryption($contrasenia_cliente);	
 								$finales++;
 							?>	
 							<tr class="<?php echo $text_class;?>">
@@ -98,9 +98,9 @@
 								<td ><?php echo $horaApertura."<b> del </b>".$fechaApertura;?></td>														
 
 								<td  colspan="2">
-									<a href="#"  data-target="#vistaCuentaModal"  data-toggle="modal" data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-usuario_cliente="<?php echo $usuario_cliente;?>" data-contrasenia_cliente="<?php echo $passDesencriptado;?>"  data-tipocuenta="<?php echo $tipocuenta;?>" data-numero_de_cuenta="<?php echo $numeroCuenta;?>" data-saldo_actual="<?php echo $saldoActual;?>"  data-id_cliente="<?php echo $id_cliente; ?>"><i class="material-icons" data-toggle="tooltip" title="Ver más" >&#xe8f4;</i></a>
-									<a href="#"  data-target="#masCuentaModal" class="mas" data-toggle="modal"  data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-dpi="<?php echo $dpi?>" data-nit="<?php echo $nit;?>"   data-telefono="<?php echo $telefono;?>" data-direccion="<?php echo $direccion;?>"  data-horaA="<?php echo $horaApertura;?>" data-fechaA="<?php echo $fechaApertura;?>" data-id_cliente="<?php echo $id_cliente; ?>"><i class="material-icons" data-toggle="tooltip" title="Cuenta nueva" >&#xe147;</i></a>
-									<a href="#"  data-target="#editCuentaModal" class="edit" data-toggle="modal"  data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-dpi="<?php echo $dpi?>" data-nit="<?php echo $nit;?>"   data-telefono="<?php echo $telefono;?>" data-direccion="<?php echo $direccion;?>" data-usuario_cliente="<?php echo $usuario_cliente;?>" data-contrasenia_cliente="<?php echo $passDesencriptado;?>" data-horaA="<?php echo $horaApertura;?>" data-fechaA="<?php echo $fechaApertura;?>"   data-id_cliente="<?php echo $id_cliente; ?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i></a>
+									<a href="#"  data-target="#vistaCuentaModal"  data-toggle="modal" data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>"  data-tipocuenta="<?php echo $tipocuenta;?>" data-numero_de_cuenta="<?php echo $numeroCuenta;?>" data-saldo_actual="<?php echo $saldoActual;?>"  data-id_cliente="<?php echo $id_cliente; ?>"><i class="material-icons" data-toggle="tooltip" title="Ver más" >&#xe8f4;</i></a>
+									<a href="#"  data-target="#masCuentaModal" class="mas" data-toggle="modal"  data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-dpi="<?php echo $dpi?>" data-nit="<?php echo $nit;?>"   data-telefono="<?php echo $telefono;?>" data-direccion="<?php echo $direccion;?>" data-horaA="<?php echo $horaApertura;?>" data-fechaA="<?php echo $fechaApertura;?>" data-id_cliente="<?php echo $id_cliente; ?>"><i class="material-icons" data-toggle="tooltip" title="Cuenta nueva" >&#xe147;</i></a>
+									<a href="#"  data-target="#editCuentaModal" class="edit" data-toggle="modal"  data-nombre="<?php echo $nombre?>" data-apellido="<?php echo $apellido?>" data-dpi="<?php echo $dpi?>" data-nit="<?php echo $nit;?>"   data-telefono="<?php echo $telefono;?>" data-direccion="<?php echo $direccion;?>"  data-horaA="<?php echo $horaApertura;?>" data-fechaA="<?php echo $fechaApertura;?>"   data-id_cliente="<?php echo $id_cliente; ?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i></a>
 									<a href="#deleteProductModal" class="delete" data-toggle="modal" data-id="<?php echo $chequera_id;?>"><i class="material-icons" data-toggle="tooltip" title="Bloquer">&#xE872;</i></a>									
 								</td>
 							</tr>

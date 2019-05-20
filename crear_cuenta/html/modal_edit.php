@@ -35,18 +35,7 @@
 							<div class="form-group col-md-6">
 								<label>Dirección</label>
 								<input type="text" name="edit_direccion" id="edit_direccion" class="form-control" required>
-							</div>
-							
-							<div class="form-group col-md-6">
-								<label>Usuario Cliente</label>
-								<input type="text" name="edit_UsuarioCliente" id="edit_UsuarioCliente" class="form-control" required>
-							</div>
-							
-							<div class="form-group col-md-6">
-								<label>Actualizar Contraseña Cliente</label>
-								
-								<input type="password" name="edit_passwordCliente" id="edit_passwordCliente" class="form-control" required>
-							</div>						
+							</div>																				
 						</div>					
 
 					</div>

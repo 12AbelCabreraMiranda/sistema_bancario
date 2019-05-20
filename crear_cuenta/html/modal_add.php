@@ -5,10 +5,10 @@
     $resultado = $conexion->query($query);
 
 ?>
-<div id="addProductModal" class="modal fade">
+<div id="addCuentaModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form name="add_product" id="add_product">
+				<form name="add_cuenta" id="add_cuenta">
 					<div class="modal-header">
 						<center>
 							<h4 class="modal-title">Datos del cliente</h4>
@@ -19,11 +19,11 @@
 						<div class="row">
 							<div class="form-group col-md-6">
 								<label>Nombre</label>
-								<input type="text" name="name" id="name"class="form-control" required>
+								<input type="text" name="name" id="name"class="form-control" >
 							</div>
 							<div class="form-group col-md-6">            
 								<label>Apellido</label>
-								<input type="text" name="apellido" id="apellido" class="form-control" required>
+								<input type="text" name="apellido" id="apellido" class="form-control" reqired>
 							</div>	
 							<div class="form-group col-md-6">
 								<label>DPI</label>
@@ -32,33 +32,25 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label>Nit</label>
-								<input type="text" name="nit" id="nit" class="form-control text2" required onkeypress="return soloNumero(event)" onpaste="return false">
+								<input type="text" name="nit" id="nit" class="form-control text2"  onkeypress="return soloNumero(event)" onpaste="return false">
 								<span class="count2"></span>
 							</div>
 							<div class="form-group col-md-6">
 								<label>Teléfono</label>
-								<input type="text" name="telefono" id="telefono" class="form-control" required>
+								<input type="text" name="telefono" id="telefono" class="form-control" >
 							</div>
 							<div class="form-group col-md-6">
 								<label>Dirección</label>
-								<input type="text" name="direccion" id="direccion" class="form-control" required>
+								<input type="text" name="direccion" id="direccion" class="form-control" >
 							</div>	
 							
 							
 						</div>
 						<div class="row" style="background:#e6edea">
 							<center>
-								<h4 class="modal-title">Datos para aperturar cuenta</h4><hr>							
+								<h4 class="modal-title">Datos para aperturar cuenta</h4>							
 							</center>					
-												
-							<div class="form-group col-md-6">
-								<label>Usuario Cliente</label>
-								<input type="text" name="usuarioCliente" id="usuarioCliente" class="form-control" required>
-							</div>	
-							<div class="form-group col-md-6">
-								<label>Contraseña Cliente</label>
-								<input type="password" name="contraseniaCliente" id="contraseniaCliente" class="form-control" required>
-							</div>							
+											
 							<div class="form-group col-md-6"> 
 								<label>TIPO DE CUENTA </label>								
 								<select name="tipo_cuenta" class="form-control"  id="tipo_cuenta">
@@ -75,7 +67,7 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label>Heredar cuenta a:</label>
-								<input type="text" name="heredarCuenta" id="heredarCuenta" class="form-control" required placeholder="Ingresar nombre" >
+								<input type="text" name="heredarCuenta" id="heredarCuenta" class="form-control"  placeholder="Ingresar nombre" >
 							</div>
 							
 						</div>

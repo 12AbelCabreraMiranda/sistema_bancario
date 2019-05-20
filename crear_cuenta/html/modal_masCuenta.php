@@ -20,7 +20,7 @@
 							<div class="form-group col-md-6">
 								<label>Nombre</label>
 								<input disabled type="text" name="view_nombre"  id="view_nombre" class="form-control" required>
-								<input type="hidden" name="view_id" id="view_id" >
+								<input type="show" name="view_id" id="view_id" >
 							</div>
 							<div class="form-group col-md-6">
 								<label>Apellido</label>

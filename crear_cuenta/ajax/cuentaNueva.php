@@ -50,7 +50,7 @@
     if ($query3) {
         $messages[] = "La nueva cuenta ha sido Registrado con éxito.";
     } else {
-        $errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
+        $errors[] = "Lo sentimos, el registro falló al crear otra cuenta. Por favor, vuelva a intentarlo.";
     }
 		
 	} else 

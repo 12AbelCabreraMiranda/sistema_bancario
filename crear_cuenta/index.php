@@ -71,9 +71,9 @@
                         <li style="background:#8bf9c4"><a href="#" class="dropdown-toggle" style="color:black" data-toggle="dropdown"> Consultar </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" onclick="misClientes()" >Clientes Registrados</a></li>
-                                <li><a href="#addProductModal"  data-toggle="modal" onclick="newCliente()"> <span>Registrar nuevo Cliente</span></a></li>
-                                <li><a href="#" onclick="solCredito()" >Solicitud de Credito</a></li>
-                                <li><a href="#" onclick="solDebito()" >Solicitud Tarjeta Débito</a></li>
+                                <li><a href="#addCuentaModal"  data-toggle="modal" onclick="neswCliente()"> <span>Registrar nuevo Cliente</span></a></li>
+                                <li><a href="#"  onclick="solCredito()" >Solicitud de Credito</a></li>
+                                <li><a href="#solicitudCuentaModal" data-toggle="modal" onclick="solDebito()" >Solicitud Tarjeta Débito</a></li>
                                 <li><a href="#" onclick="estadoCuenta()" >Estado de cuenta</a></li>
                             
                             </ul>
@@ -136,6 +136,7 @@
     <?php include("html/modal_delete.php");?>
     <?php include("html/modal_vista.php");?>
     <?php include("html/modal_masCuenta.php");?>
+    <?php include("html/solicitudTarjetaDebito.php");?>
     
     <script src="js/script.js"></script>
     <script src="js/limiteCaracter.js"></script>
