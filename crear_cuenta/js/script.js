@@ -137,7 +137,7 @@ $('#vistaCuentaModal').on('show.bs.modal', function (event) {
 })
 
 //SCRIPT NEWCUENTACLIENTEEXISTENTE
-/*
+
 $('#masCuentaModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
 
@@ -162,10 +162,10 @@ $('#masCuentaModal').on('show.bs.modal', function (event) {
 
   var id = button.data('id_cliente') 
   $('#view_id').val(id)
-})*/
+})
 
 //GUARDAR OTRA NUEVA CUENTA CLIENTE
-/*
+
 $( "#view_cuenta" ).submit(function( event ) {
   
   var parametros = $(this).serialize();
@@ -185,4 +185,4 @@ $( "#view_cuenta" ).submit(function( event ) {
     });
   event.preventDefault();
   
-});*/
+});
