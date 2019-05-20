@@ -5,10 +5,10 @@
     $resultado = $conexion->query($query);
 
 ?>
-<div id="addProductModal" class="modal fade">
+<div id="addCuentaModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form name="add_product" id="add_product">
+				<form name="add_cuenta" id="add_cuenta">
 					<div class="modal-header">
 						<center>
 							<h4 class="modal-title">Datos del cliente</h4>

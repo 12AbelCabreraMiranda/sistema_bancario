@@ -41,19 +41,13 @@ $('#editCuentaModal').on('show.bs.modal', function (event) {
   var direccion = button.data('direccion') 
   $('#edit_direccion').val(direccion)
 
-  var usuario_cliente = button.data('usuario_cliente') 
-  $('#edit_UsuarioCliente').val(usuario_cliente)
-
-  var contrasenia_cliente = button.data('contrasenia_cliente') 
-  $('#edit_passwordCliente').val(contrasenia_cliente)
-
   var id = button.data('id_cliente') 
   $('#edit_id').val(id)
 })
 
 
 
-$('#deleteProductModal').on('show.bs.modal', function (event) {
+$('#deleteCuentaModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Botón que activó el modal.
   var id = button.data('id') 
   $('#delete_id').val(id)
@@ -82,7 +76,7 @@ $( "#edit_cuenta" ).submit(function( event ) {
 });
 
 //GUARDAR REGISTROS CONEXION CON LA BASE DE DATOS
-$( "#add_product" ).submit(function( event ) {
+$( "#add_cuenta" ).submit(function( event ) {
   var parametros = $(this).serialize();
     $.ajax({
             type: "POST",
@@ -94,14 +88,14 @@ $( "#add_product" ).submit(function( event ) {
             success: function(datos){
             $("#resultados").html(datos);
             load(1);
-            $('#addProductModal').modal('hide');
+            $('#addCuentaModal').modal('hide');
           }
     });
   event.preventDefault();
 });
 
 //SCRIPT PARA BORRAR REGISTROS DE LA BASE DE DATOS
-$( "#delete_product" ).submit(function( event ) {
+$( "#delete_cuenta" ).submit(function( event ) {
   var parametros = $(this).serialize();
     $.ajax({
             type: "POST",
@@ -113,7 +107,7 @@ $( "#delete_product" ).submit(function( event ) {
             success: function(datos){
             $("#resultados").html(datos);
             load(1);
-            $('#deleteProductModal').modal('hide');
+            $('#deleteCuentaModal').modal('hide');
           }
     });
   event.preventDefault();
@@ -127,9 +121,6 @@ $('#vistaCuentaModal').on('show.bs.modal', function (event) {
   var nombreCliente = button.data('usuario_cliente') 
   $('#nombreCliente').val(nombreCliente)
 
-  var usuario = button.data('usuario_cliente') 
-  $('#vista_usuario').val(usuario)
-
   var contrasenia = button.data('contrasenia_cliente') 
   $('#vista_contrasenia').val(contrasenia)
   
@@ -141,8 +132,6 @@ $('#vistaCuentaModal').on('show.bs.modal', function (event) {
 
   var saldoActual = button.data('saldo_actual') 
   $('#vista_saldoActual').val(saldoActual)
-
-
 
   var id = button.data('id_cliente') 
   $('#vista_id').val(id)

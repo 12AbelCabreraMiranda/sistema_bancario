@@ -8,13 +8,7 @@
 					</div>
 
 					<div class="modal-body">
-						<div class="row">
-							<div class="form-group col-md-6">
-								<label>Usuario</label>
-								<input type="text" name="vista_usuario"  id="vista_usuario" class="form-control" disabled required>
-								<input type="hidden" name="edit_id" id="edit_id" >
-							</div>
-							
+						<div class="row">														
 							<div class="form-group col-md-6">
 								<label>Numero de cuenta</label>
 								<input type="text" name="vista_NumCuenta" id="vista_NumCuenta" class="form-control"disabled required>
@@ -26,8 +20,7 @@
 							<div class="form-group col-md-6">
 								<label>Saldo actual</label>
 								<input type="text" name="vista_saldoActual" id="vista_saldoActual" class="form-control"disabled required>
-							</div>	
-																		
+							</div>																			
 						</div>					
 
 					</div>

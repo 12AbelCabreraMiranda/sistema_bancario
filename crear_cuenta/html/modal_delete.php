@@ -1,7 +1,7 @@
-<div id="deleteProductModal" class="modal fade">
+<div id="deleteCuentaModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form name="delete_product" id="delete_product">
+				<form name="delete_cuenta" id="delete_cuenta">
 					<div class="modal-header">						
 						<h4 class="modal-title">Bloquear Cuenta</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
