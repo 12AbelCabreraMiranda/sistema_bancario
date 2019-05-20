@@ -50,7 +50,11 @@
 							<center>
 								<h4 class="modal-title">Datos para aperturar cuenta</h4>							
 							</center>					
+<<<<<<< HEAD
 											
+=======
+																										
+>>>>>>> recuperar_mi_sistema_prev
 							<div class="form-group col-md-6"> 
 								<label>TIPO DE CUENTA </label>								
 								<select name="tipo_cuenta" class="form-control"  id="tipo_cuenta">
