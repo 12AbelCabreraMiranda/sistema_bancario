@@ -5,16 +5,13 @@ $(document).ready(function(){
     function registrarSolicitudVirtual(evento){
         evento.preventDefault()
         //alert("funciona");
-        
-        //setTimeout("location.href='receptorPagador.php'", 10000);//refress page
-                //$(".nombreCliente").empty(); //reset divs
-       // $('#boton').attr("disabled", true);
+      
 
         var datos = new FormData($("#vista_cuenta")[0])
 
-        var NoCuenta = $("#vista_NumCuentaCliente").text();//valorClass
+        
           $.ajax({
-              url: 'codigoBancaVirtual/generate.php?CuentaCliente='+NoCuenta,// variablePHP
+              url: 'codigoBancaVirtual/generate.php',// variablePHP
               type: 'POST',
               data: datos,
               contentType: false,
@@ -22,7 +19,18 @@ $(document).ready(function(){
               success: function(datos){
                   $("#respuestaSolicitudUsuarioVirtual").html(datos)                  
               }
-          })                 
+          })  
+          
+          $.ajax({
+            url: 'codigoBancaVirtual/welcome.php',// variablePHP
+            type: 'POST',
+            data: datos,
+            contentType: false,
+            processData: false,
+            success: function(datos){
+                $("#respuestaSolicitudUsuarioVirtual").html(datos)                  
+            }
+        })
     }
 
 })

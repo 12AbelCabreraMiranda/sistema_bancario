@@ -12,7 +12,8 @@
 							<div class="form-group col-md-6">
 								<label>Numero de cuenta</label>
 								<input type="text" name="vista_NumCuenta" id="vista_NumCuenta" class="form-control"disabled required>
-								<input type="hidden" name="vista_NumCuenta" id="vista_NumCuentaCliente" class="form-control" required>
+								<input type="hidden" name="vista_NumCuentaCliente" id="vista_NumCuentaCliente">
+								                                   
 							</div>
 							<div class="form-group col-md-6">
 								<label>Tipo de cuenta</label>
@@ -30,7 +31,7 @@
 					<div class="modal-footer">
 						<center>
 							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cerrar">	
-							<input type="submit" class="btn btn-success" value="Guardar solicitud" onclick="registrarSolicitudVirtual()" >						
+							<input type="submit" class="btn btn-success" value="Generar usuario" onclick="registrarSolicitudVirtual()" >						
 						</center>
 					</div>
 				</form>
