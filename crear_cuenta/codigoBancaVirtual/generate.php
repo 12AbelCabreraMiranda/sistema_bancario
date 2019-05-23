@@ -1,6 +1,6 @@
 <?php
    $con = new mysqli("localhost","root","","sistema_bancario");
-   
+   include('seguridad.php');
 
     $cuentaClienteLog = $_REQUEST["vista_NumCuentaCliente"];
     //inlcude dompdf library
@@ -40,6 +40,8 @@
         $minuto = date ('i', time());
         $anio = date("Y");										
         $contraseaCLienteVirtual = $id_clienteRegistrado.strlen($cuenta_nombre).$segundo.$minuto.$anio.$idTopBancaVirtual;
+        //ENCRIPTACIÓN DE PASSWORD
+        $passEncriptado = SED::encryption($contraseaCLienteVirtual);
 
         //HORA SISTEMA AL REGISTRARSE
         ini_set('date.timezone', 'America/Guatemala');
@@ -57,7 +59,7 @@
         }else{
 
            $queryInsert  = "INSERT into usuario_banca_virtual (cliente_id_virtual, chequera_id_virtual, usuario_cliente,contrasenia_cliente,tipoUsu,hora_solicitado,fecha_solicitado, empleado_id_creaSolicitud,estado) 
-                            VALUES('$id_clienteRegistrado','$idChequera','$usu_clienteVirtual','$contraseaCLienteVirtual','cliente','$hora_sistema','$fecha_sistema','$id_empleadoLogeado','Habilitado')";
+                            VALUES('$id_clienteRegistrado','$idChequera','$usu_clienteVirtual','$passEncriptado','cliente','$hora_sistema','$fecha_sistema','$id_empleadoLogeado','Habilitado')";
             $resultadoInsert= $con->query($queryInsert);
 
             echo 'Usuario y Contraseña para Banca Electronica creado exitosamente';

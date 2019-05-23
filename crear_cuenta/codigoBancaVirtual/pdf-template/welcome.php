@@ -1,10 +1,12 @@
 <?php
    $con = new mysqli("localhost","root","","sistema_bancario");
    session_start();
+   
 	
 	$cuentaClienteLog = $_REQUEST["vista_NumCuentaCliente"];
 	    
-	//TRAER DATOS		
+	//TRAER DATOS
+	$pass;		
 	$querySelect = ("SELECT usuario_cliente, contrasenia_cliente, nombre,apellido,numero_de_cuenta,hora_solicitado,fecha_solicitado,nombre_tipoCuenta  from vista_usuarios_banca_virtual where numero_de_cuenta ='$cuentaClienteLog' ");
 	$resultSelect =$con->query($querySelect);
 	if($row = $resultSelect->fetch_assoc()){
@@ -17,6 +19,8 @@
 		$fecha=$row['fecha_solicitado'];
 		$tipoCuenta=$row['nombre_tipoCuenta'];		
 	}
+	//DESENCRIPTACIÓN DE PASSWORD
+	$passDesencriptado = SED::decryption($pass);
 ?>
 
 <!DOCTYPE html>
@@ -68,8 +72,11 @@
 								$level = 'L'; //Precisión Baja
 								$framSize = 3; //Tamaño en blanco								
 
+								
+								
+
 								//Enviamos los parametros a la Función para generar código QR 
-								QRcode::png($pass, $filename, $level, $tamaño, $framSize); 
+								QRcode::png($passDesencriptado, $filename, $level, $tamaño, $framSize); 
 
 								//Mostramos la imagen generada
 								echo '<img src="'.$dir.basename($filename).'" /><hr/>';  
