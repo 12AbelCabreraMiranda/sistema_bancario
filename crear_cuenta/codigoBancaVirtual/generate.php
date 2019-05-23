@@ -62,35 +62,29 @@
                             VALUES('$id_clienteRegistrado','$idChequera','$usu_clienteVirtual','$passEncriptado','cliente','$hora_sistema','$fecha_sistema','$id_empleadoLogeado','Habilitado')";
             $resultadoInsert= $con->query($queryInsert);
 
-            echo 'Usuario y Contraseña para Banca Electronica creado exitosamente';
-
+            echo 'Usuario y Contraseña para Banca Electronica creado exitosamente';            
             
-            
-            //inlude template
-
+            //incluir modelo
             ob_start();
             require_once('pdf-template/welcome.php');
             $template = ob_get_clean();
 
-            /*//inlcude dompdf library
-            require_once('dompdf/autoload.inc.php');
-            use Dompdf\Dompdf;*/
 
-            //using pdf dompdf class
+            //usando pdf dompdf con classes
             $dompdf = new Dompdf();
             $dompdf->loadHtml($template);
 
-            //set papger size 
+            //tamaño papel 
             //$dompdf->setPaper('A4', 'landscape');
             $dompdf->setPaper('letter', 'vertical');
 
-            //Render the html to pdf
+            //Render de html a pdf
             $dompdf->render();
 
-            //ouput to browser
+            //salida de navegador
             //$dompdf->stream('message-'.time());
 
-            //write pdf to directory
+            //crea el pdf en el directorio
             file_put_contents('pdfs/message-'.time().'.pdf', $dompdf->output());
         }
          
