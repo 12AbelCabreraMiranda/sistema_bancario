@@ -81,7 +81,8 @@
             $dompdf->loadHtml($template);
 
             //set papger size 
-            $dompdf->setPaper('A4', 'landscape');
+            //$dompdf->setPaper('A4', 'landscape');
+            $dompdf->setPaper('letter', 'vertical');
 
             //Render the html to pdf
             $dompdf->render();

@@ -41,7 +41,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h3>DATOS DE LA CUENTA</h3>
-							<h4>Nombre del cliente: <?php  echo $row['nombre']; ?> &nbsp; <?php echo $row['apellido']; ?> </h4>
+							<h4>Nombre del cliente: <?php  echo $row['nombre']; ?> <?php echo ' '; ?> <?php echo $row['apellido']; ?> </h4>
 							NUMERO DE CUENTA: <?php  echo $row['numero_de_cuenta']; ?> <br>
 							TIPO DE CUENTA: <?php  echo $row['nombre_tipoCuenta']; ?> <br>
 							<br/>																					
