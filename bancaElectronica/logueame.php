@@ -11,7 +11,7 @@ if(isset($_POST["user"]) && isset($_POST["pass"])){
   //ENCRIPTACIÓN DE PASSWORD
   $passEncriptado = SED::encryption($pass);
 
-  $sql = "SELECT tipoUsu, usuario_cliente FROM clientes WHERE usuario_cliente='$user' AND contrasenia_cliente='$passEncriptado'";
+  $sql = "SELECT tipoUsu, usuario_cliente FROM usuario_banca_virtual WHERE usuario_cliente='$user' AND contrasenia_cliente='$passEncriptado' and estado='Habilitado'  ";
   $result = mysqli_query($connect, $sql);
   $num_row = mysqli_num_rows($result);
   

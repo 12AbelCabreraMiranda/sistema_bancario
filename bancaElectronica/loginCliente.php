@@ -77,7 +77,7 @@
 	<script src="../login/Resources/js/bootstrap.min.js"></script>
     
     <script>
-        setTimeout("location.href='../inicio.php'", 20000);
+        //setTimeout("location.href='../inicio.php'", 20000);
         //FUNCION DE AUTENTICACIÓN DE USUARIOS
         $(document).ready(function() {
             $('#login').click(function(){
