@@ -3,18 +3,21 @@
 		$errors[] = "Id vacío.";
 	} elseif (!empty($_POST['delete_id'])){
 	require_once ("../conexion.php");//Contiene funcion que conecta a la base de datos
-	// escaping, additionally removing everything that could be (html/javascript-) code
+	//id para identificar el registro
     $id_chequera=intval($_POST['delete_id']);
 	
 
-	// DELETE FROM  database	
+	// tabla Actualizado CHEQUERA
 	$sql = "UPDATE chequeras SET estado=0 WHERE id_chequeras='".$id_chequera."' ";
     $query = mysqli_query($con,$sql);
-    // if product has been added successfully
+	// 
+	$sqlDelete = "UPDATE usuario_banca_virtual SET estado='Bloqueado' WHERE chequera_id_virtual='".$id_chequera."' ";
+	$queryDelete = mysqli_query($con,$sqlDelete);
+	
     if ($query) {
-        $messages[] = "La cuenta ha sido eliminada con éxito.";
+        $messages[] = "La cuenta ha sido Bloqueda con éxito.";
     } else {
-        $errors[] = "Lo sentimos, la eliminación falló. Por favor, regrese y vuelva a intentarlo.";
+        $errors[] = "Lo sentimos, el bloquéo falló. Por favor, regrese y vuelva a intentarlo.";
     }
 		
 	} else 
