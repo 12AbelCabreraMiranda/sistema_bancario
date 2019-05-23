@@ -25,7 +25,7 @@
 							</div>		
 
 						</div>		
-						<div id="respuestaSolicitudUsuarioVirtual">usuaRes</div>			
+						<div id="respuestaSolicitudUsuarioVirtual"></div>			
 
 					</div>
 					<div class="modal-footer">

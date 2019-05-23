@@ -9,7 +9,7 @@ $(document).ready(function(){
 
         var datos = new FormData($("#vista_cuenta")[0])
 
-        
+        $("#respuestaSolicitudUsuarioVirtual").html("<img src='codigoBancaVirtual/cargando.gif' style='height:30px'> ")
           $.ajax({
               url: 'codigoBancaVirtual/generate.php',// variablePHP
               type: 'POST',
