@@ -13,6 +13,9 @@
 	// 
 	$sqlDelete = "UPDATE usuario_banca_virtual SET estado='Bloqueado' WHERE chequera_id_virtual='".$id_chequera."' ";
 	$queryDelete = mysqli_query($con,$sqlDelete);
+	//
+	$sqlDesabilitado = "UPDATE tarjeta_debito SET estado='Desabilitado' WHERE chequera_id_tdebito='".$id_chequera."' ";
+	$queryDesabilitado = mysqli_query($con,$sqlDesabilitado);
 	
     if ($query) {
         $messages[] = "La cuenta ha sido Bloqueda con éxito.";
