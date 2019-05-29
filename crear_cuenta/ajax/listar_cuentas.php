@@ -15,12 +15,13 @@
 		$resultado1 = $con->query($consulta1);
 		if($row = $resultado1->fetch_assoc()){      		
 			$id_empleadoBanco=$row['banco_id_empleado'];
-			$id_Usu_logeado=$row['id_empleados'];
+			$id_Usu_logeado=$row['id_empleados'];//El empleado logeado ve su propio registro (pero como es banco entonces cualquier trabajador con usuario SERVICIO AL CLIENTE podrá ver todas las cuentas(clientes))
 		}
 
 		$tables="cuenta_clientes";
 		$campos="*";
-		$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 and empleado_id_cuenta='$id_Usu_logeado' ";
+		//$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 and empleado_id_cuenta='$id_Usu_logeado' ";//El empleado logeado ve su propio registro (pero como es banco entonces cualquier trabajador con usuario SERVICIO AL CLIENTE podrá ver todas las cuentas(clientes))
+		$sWhere=" cuenta_clientes.numero_de_cuenta LIKE '%".$query."%' and cuenta_clientes.banco_id='$id_empleadoBanco' and cuenta_clientes.estado=1 ";
 		$sWhere.=" order by cuenta_clientes.nombre";
 		
 		
