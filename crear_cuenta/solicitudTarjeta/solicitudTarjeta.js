@@ -32,33 +32,6 @@ $(document).ready(function(){
     }
 
 
-
-
-    //  -----------GUARDAR SOLICITUD ---------------
-    $("#formRegistrarDeposito").submit(registrarDeposito)
-    function registrarDeposito(evento){
-        evento.preventDefault()
-        //alert("funciona");
-        
-        //setTimeout("location.href='receptorPagador.php'", 10000);//refress page
-                //$(".nombreCliente").empty(); //reset divs
-       // $('#boton').attr("disabled", true);
-
-        var datos = new FormData($("#formRegistrarDeposito")[0])
-
-        var NoCuenta = $(".numCuentaCliente").text();//valorClass
-          $.ajax({
-              url: 'solicitudTarjeta/solicitudTarjetaDebito.php?CuentaCliente='+NoCuenta,// variablePHP
-              type: 'POST',
-              data: datos,
-              contentType: false,
-              processData: false,
-              success: function(datos){
-                  $("#respuestaSolicitado").html(datos)                  
-              }
-          })                 
-    }
-
 })
 
 

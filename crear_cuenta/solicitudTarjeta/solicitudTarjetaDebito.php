@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
-
-
-    
+    <title>Document</title>        
 </head>
 <body>
     
     <!--FORMULARIOS -->
-    <div class="container" style="display:none" id="form_solicitudTarDebito">
+    <div class="container" style="display:show" id="form_solicitudTarDebito">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -35,7 +31,7 @@
                             </div>
                         </form>
 
-                        <form action="" method="post" id="formRegistrarDeposito" enctype="multipart/form-data">    
+                        <form action="" method="post" id="formSolicitudTarjetaD" enctype="multipart/form-data">    
                             <div class="row">
                                 <div class="container-fluid">
                                 
@@ -51,11 +47,11 @@
 
                                     <div class='col-sm-5' id="datoCuenta" >
                                         <h4 class="text-center">Datos de la cuenta</h4>                                
-                                        <p  class="nombreCliente">nombre </p>                                                                
+                                        <p  class="nombreCliente"> </p>                                                                
                                     </div> 
                                     <div class=" pull-right">
                                         <center> <br>
-                                            <input disabled onclick="registrarDeposito()" id="boton" type="submit" class="btn btn-info" value="Guardar">                       
+                                            <input disabled onclick="solicitudTarjetaD()" id="boton" type="submit" class="btn btn-info" value="Guardar">                       
                                         </center> 
                                     </div>
                                 </div>
@@ -68,6 +64,7 @@
         </div>
     </div>    
     <script src="solicitudTarjeta/solicitudTarjeta.js"></script>
+    <script src="solicitudTarjeta/crearCodigo.js"></script>
     
 
 </body>

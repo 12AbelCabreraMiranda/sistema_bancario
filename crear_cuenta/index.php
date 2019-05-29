@@ -94,7 +94,7 @@
         </div>
 	</nav>
 	
-    <div class="container" style="display:show" id="tablaClientes">
+    <div class="container" style="display:none" id="tablaClientes">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
