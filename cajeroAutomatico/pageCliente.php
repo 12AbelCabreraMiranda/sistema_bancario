@@ -52,11 +52,13 @@
             </ul>
         </div>
     </nav>
+    
+
+    <?php include("opciones.php");?>
 
 
-
-    <!--FORMULARIOS -->
-    <div class="container" style="display:none">
+    <!--FORMULARIOS RETIRO DE SALDO-->
+    <div class="container" style="display:none; margin-top:100px" id="retiroSaldo">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-5">
@@ -78,7 +80,8 @@
                                    
                                     <div class="col-sm-6" >
                                         <center> <br>
-                                            <input onclick="registrarRetiro()" id="boton" type="submit" class="btn btn-default" value="Realizar retiro">                       
+                                            <input onclick="cancelarRetiro()" type="button" class="btn btn-block btn-warning" value="CANCELAR">   <p></p>
+                                            <input onclick="registrarRetiro()" id="boton" type="submit" class="btn btn-block btn-success" value="Realizar retiro">                       
                                         </center> 
                                     </div>
                                     <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
