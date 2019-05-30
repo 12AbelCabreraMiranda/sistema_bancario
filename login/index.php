@@ -50,7 +50,7 @@
                     <ul class="dropdown-menu">                        
                         <li ><a href="index.php" >EMPLEADO o ADMINISTRADOR</a></li>
                         <li ><a href="../bancaElectronica/loginCliente.php" >Banca Electrónca</a></li>
-                        <li ><a href="#" >Cajero Automático</a></li>
+                        <li ><a href="../cajeroAutomatico/loginCliente.php" >Cajero Automático</a></li>
                     </ul>
                 </li>
                 <!-- <li ><a style="color:white" href="javascript:void(0)" data-toggle="modal" data-target="#responsive">Registrarse</a></li>-->

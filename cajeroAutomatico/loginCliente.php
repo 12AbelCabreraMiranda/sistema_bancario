@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../login/Resources/css/bootstrap.min.css">
 </head>
 
-<body style="background: #51504f">
+<body style="background: #167246">
     <!--Barra de Navegacion-->
     <nav class="navbar navbar-default">
         <div class="navbar-header">
@@ -19,7 +19,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../inicio.php" class="navbar-brand">SISTEMA BANCARIO</a>
+            <a href="../inicio.php" class="navbar-brand">CAJERO AUTOMÁTICO</a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -27,8 +27,8 @@
                 <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Identifícate</a>
                     <ul class="dropdown-menu">                        
                         <li ><a href="../login/index.php" >EMPLEADO o ADMINISTRADOR</a></li>
-                        <li ><a href="loginCliente.php" >Banca Electrónca</a></li>
-                        <li ><a href="../cajeroAutomatico/loginCliente.php" >Cajero Automático</a></li>
+                        <li ><a href="../bancaElectronica/loginCliente.php" >Banca Electrónca</a></li>
+                        <li ><a href="loginCliente.php" >Cajero Automático</a></li>
                     </ul>
                 </li>                
             </ul>
@@ -40,26 +40,26 @@
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center">Iniciar Sesión</div>
+                    <div class="panel-heading text-center"><b> ACCESO A CAJERO AUTOMÁTICO </b></div>
                     <div class="panel-body">
                         
                         <form role="form" id="login_form">
                             <div class="form-group">
-                                <label for="usu">Usuario:</label>
+                                <label for="usu">CÓDIGO DE TARJETA:</label>
                                 <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input REQUIRED type="text" class="form-control" name="user" id="user" placeholder="Usuario">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input REQUIRED type="text" class="form-control" name="user" id="user" placeholder="Ingresar código de tarjeta">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="contrasenia">Contraseña</label>
+                                <label for="contrasenia">PIN</label>
                                 <div class="input-group">
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-                                    <input REQUIRED type="password" class="form-control" name="password" id="password" placeholder="Contrasenia">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-qrcode"></span></span>
+                                    <input REQUIRED type="password" class="form-control" name="password" id="password" placeholder="Ingresar PIN de la tarjeta">
                                 </div>
                             </div> 
                             <center>
-                                <button type="button" name="login" id="login" class="btn btn-default"><span class="glyphicon glyphicon-lock"></span> Entrar</button>   
+                                <button type="button" name="login" id="login" class="btn btn-default"><span class="glyphicon glyphicon-send"></span> ACCEDER</button>   
                             </center>                   
                         
                         </form>                    
@@ -103,11 +103,11 @@
                     //Esta función permite mantener por 3 segundos el mensaje de alerta guardado con exito
 
                     $('#login').val("Login");
-                    if (data=="cliente") {
+                    if (data=="debito") {
                     $(location).attr('href','pageCliente.php');
                     }
                                                                     
-                    if (data!=="cliente") {   //si no reconoce ningun usuario registrado, muestra alerta             
+                    if (data!=="debito") {   //si no reconoce ningun usuario registrado, muestra alerta             
                     $("#result").show();                    
                     }
                 }
