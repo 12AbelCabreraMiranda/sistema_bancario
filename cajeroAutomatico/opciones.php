@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-	<header id="opcionMenu">
+	<header id="opcionMenu" style="display:show">
 		
 		<div class="contenedor" id="uno">			
 			<img class="icon" src="pictures/icon1.png" onclick="retiro()">
@@ -20,8 +20,9 @@
 		</div>
 
 		<div class="contenedor" id="tres">
-			<img class="icon" src="pictures/icon3.png">
-			<p class="texto">Pago de servicios</p>
+		<a href="movimientos/pagination-view.php"> <img class="icon" src="pictures/icon3.png" ></a>
+			
+			<p class="texto">Mis movimientos</p>
 		</div>
 
 		<div class="contenedor" id="cuatro">

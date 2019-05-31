@@ -18,39 +18,16 @@
  
  
     
-<body style="background: #332c2c ">
+<body style="background: ">
     
-  
-    <!--Barra de Navegacion-->
-    <!-- 
-    <nav class="navbar navbar-default">
-        <div class="navbar-header">            
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Cambiar Navegacion</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="pageCliente.php" class="navbar-brand">CAJERO AUTOMÁTICO   </a>
-        </div>
-
-        <div class="collapse navbar-collapse navbar-ex1-collapse">         
-            <ul class="nav navbar-nav navbar-right">
-            <a class="navbar-brand" style="font-size: 14px"> CÓDIGO DE TARJETA DÉBITO </a>
-                <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"></a>
-                     <ul class="dropdown-menu">
-                        <li><a href="javascript: void(0)"  onclick='cerrar();'>Cerrar Session</a></li>
-                     
-                    </ul>
-                </li>
-                
-            </ul>
-        </div>
-    </nav>-->
+ 
     <?php include("menu_nav/index.php");?>
-
     <?php include("opciones.php");?>
 
+  
+            
+
+    
 
     <!--FORMULARIOS RETIRO DE SALDO-->
     <div class="container" style="display:none; margin-top:100px" id="retiroSaldo">
@@ -95,7 +72,7 @@
 
 
 
-
+    <script src="movimientos/script.js"></script>
     <script src="../crear_cuenta/js/limiteCaracter.js"></script>
     <script src="../login/Resources/js/jquery-1.11.2.js"></script>
     <script src="../login/Resources/js/bootstrap.min.js"></script>
