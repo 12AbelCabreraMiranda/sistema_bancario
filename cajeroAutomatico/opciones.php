@@ -3,11 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>hover effect</title>
-	<link rel="stylesheet" href="style/index_style.css">
-	
-    
-    
-    
+	<link rel="stylesheet" href="style/index_style.css">	            
 </head>
 <body>
 	

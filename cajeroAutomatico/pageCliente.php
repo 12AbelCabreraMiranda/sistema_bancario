@@ -18,16 +18,11 @@
  
  
     
-<body style="background: #444444 ">
-
-    <?php       
-        session_start();
-        if(isset($_SESSION['user'])){
-        }else{
-            header("location:../inicio.php");
-        }
-    ?>
+<body style="background: #332c2c ">
+    
+  
     <!--Barra de Navegacion-->
+    <!-- 
     <nav class="navbar navbar-default">
         <div class="navbar-header">            
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -36,13 +31,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="pageCliente.php" class="navbar-brand">CAJERO AUTOMÁTICO <b> 5B </b> </a>
+            <a href="pageCliente.php" class="navbar-brand">CAJERO AUTOMÁTICO   </a>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">         
             <ul class="nav navbar-nav navbar-right">
-            <a class="navbar-brand" style="font-size: 14px"> CÓDIGO DE TARJETA DÉBITO ---></a>
-                <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['user']; ?></a>
+            <a class="navbar-brand" style="font-size: 14px"> CÓDIGO DE TARJETA DÉBITO </a>
+                <li><a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown"></a>
                      <ul class="dropdown-menu">
                         <li><a href="javascript: void(0)"  onclick='cerrar();'>Cerrar Session</a></li>
                      
@@ -51,8 +46,8 @@
                 
             </ul>
         </div>
-    </nav>
-    
+    </nav>-->
+    <?php include("menu_nav/index.php");?>
 
     <?php include("opciones.php");?>
 
@@ -63,7 +58,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-5">
                 <div class="panel panel-warning">
-                    <div class="panel-heading" style="background-color: color:white"><h4 class="text-center"> 💸💸SACAR PISTO 💪</h4></div>
+                    <div class="panel-heading" style="background-color: color:white"><h4 class="text-center"> 💸💸RETIRAR DINERO 💪</h4></div>
                     <div class="panel-body" style="background-color: #e8e5e5">                              
 
                         <form action="pageCliente.php" method="post" id="formRegistrarRetiro" enctype="multipart/form-data">    
