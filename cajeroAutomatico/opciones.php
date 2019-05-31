@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="contenedor" id="dos">
-			<img class="icon" src="pictures/icon2.png" >
+			<a href="miSaldo/miSaldo.php"><img class="icon" src="pictures/icon2.png" ></a>			
 			<p class="texto">Consulta de saldo</p>
 		</div>
 

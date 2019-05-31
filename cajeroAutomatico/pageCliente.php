@@ -52,7 +52,7 @@
                                    
                                     <div class="col-sm-6" >
                                         <center> <br>
-                                            <input onclick="cancelarRetiro()" type="button" class="btn btn-block btn-warning" value="CANCELAR">   <p></p>
+                                            <input onclick="cancelarRetiro()" type="button" class="btn btn-block btn-warning" value="INICIO">   <p></p>
                                             <input onclick="registrarRetiro()" id="boton" type="submit" class="btn btn-block btn-success" value="Realizar retiro">                       
                                         </center> 
                                     </div>
