@@ -13,14 +13,15 @@ $cuenta_numCuenta = $numero.strlen($nombre).$segundo.$minuto.$anio;
 echo $cuenta_numCuenta;
 */
 //SELECCION USUARIO para extraer id del maestro logeado
+/*
 $pass;
 $query = ("SELECT pin_tarjeta FROM tarjeta_debito where idtarjeta_debito=19");
 $resultado = $conexion->query($query);
 if($row = $resultado->fetch_assoc()){      
     $pass =$row['pin_tarjeta'];
- }
+ }*/
 
-
+ $passss= 'bXpteDRESFRCUDVVTVB2elI2anZLUT09';
  //DESENCRIPTACIÓN DE PASSWORD
-$passDesencriptado = SED::decryption($pass);
+$passDesencriptado = SED::decryption($passss);
 echo $passDesencriptado;

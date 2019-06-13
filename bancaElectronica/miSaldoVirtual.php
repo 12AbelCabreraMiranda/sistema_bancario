@@ -32,7 +32,7 @@
  
  
     
-<body style="background: #444444 ">
+<body style="background: white ">
 
     <?php       
         if(isset($_SESSION['user'])){
@@ -69,59 +69,44 @@
     <!--FORMULARIOS -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-7">
-                <div class="panel panel-info">
-                    <div class="panel-heading" style="background-color: #262626;color:white"><h4 class="text-center"> TRANSFERENCIA DE SALDOS</h4></div>
-                    <div class="panel-body" style="background-color: #e8e5e5">        
+            <div class="col-md-8 col-md-offset-2" >
+                <div class="table-responsive scrollable"style="border-radius:5px" >
+                    <table class="table table-striped table-bordered table-hover table-condensed ">
+                        <!-- ENCABEZADOS DE LA TABLA -->
+                            <h3 style="text-align:center">DATOS y SALDO</h3>
+                            <tr class="info"  >
+                                <th  class="alinearEncabezado" rowspan="1" >NOMBRE</th>
+                                <th  class="alinearEncabezado" rowspan="1" >APELLIDO</th>
+                                <th  class="alinearEncabezado" rowspan="1" >USUARIO VIRTUAL</th>
+                                <th  class="alinearEncabezado" rowspan="1" >NUMERO DE CUENTA</th>
+                                <th  class="alinearEncabezado" rowspan="1" >MI SALDO ACTUAL</th>                                                              
+                            </tr>
+                            <?php
+                               $passwordVirtual = $_SESSION['passV'];//implementado para ver saldo usu==                               
+                                require_once ("../crear_cuenta/conexion.php");
 
-                        <form action="receptorPagador.php" id="formBuscarCuenta" method="post" enctype="multipart/form-data">
-                            <div class="container-fluid">
-                                                            
-                                <div class="input-group col-md-5 col-xs-12 col-md-offset-3">
-                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Número de cuenta" onkeypress="return soloNumero(event)" onpaste="return false"/>
-                                    <span class="input-group-btn">
-                                                                                    
-                                        <input  onclick="buscarCuenta()" id="botonBuscar" type="submit" class="btn btn-info" value="Buscar"> 
-                                                                                  
-                                    </span>
-                                </div>  <br>
-                            </div>
-                        </form>
+                                $consultaPass = ("SELECT numero_de_cuenta FROM misaldovirtual where usuario_cliente ='$usuarioLogeado'");
+                                $resultadoPass = $con->query($consultaPass);
+                                if($row = $resultadoPass->fetch_assoc()){          
+                                    $cuentaVirtual=$row['numero_de_cuenta'];
 
-                        <form action="receptorPagador.php" method="post" id="formRegistrarDeposito" enctype="multipart/form-data">    
-                            <div class="row">
-                                <div class="container-fluid">
-                                
-                                    <div class="col-sm-7">
-                                        <div class='col-sm-12'>                                                               
-                                            <div class="form-group">                                    
-                                                <label for="nombre">¿Cuánto va a transferir?</label>                        
-                                                <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
-                                            </div>
-                                                                                                                        
-                                            <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>                                   
-                                        </div>
-                                                                                
-                                        <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
-                                            <div id="respuestaDepositado"></div>
-                                        </div>
-                                    </div>
+                                }                                
 
-                                    <div class='col-sm-5' id="datoCuenta" >
-                                        <h4 class="text-center">Datos de la cuenta</h4>                                
-                                        <p  class="nombreCliente"> </p>                                                                
-                                    </div> 
-                                    <div class=" pull-right">
-                                        <center> <br>
-                                            <input disabled onclick="registrarDeposito()" id="boton" type="submit" class="btn btn-info" value="Realizar depósito">                       
-                                        </center> 
-                                    </div>
-                                </div>
-                            </div>                                                                                                                                                                               
-                        </form>                                                    
-
-                    </div>
+                                $querySaldo="Select *from misaldovirtual  where usuario_cliente='$usuarioLogeado' and contrasenia_cliente='$passwordVirtual' ";
+                                $resultadoSaldo=$con->query($querySaldo);
+                                while($row=$resultadoSaldo->fetch_assoc()){
+                            ?>  
+                                    <tr>
+                                        <td> <?php echo $row['nombre']; ?> </td>
+                                        <td>  <?php echo $row['apellido']; ?></td>
+                                        <td> <?php echo $row['usuario_cliente']; ?> </td>
+                                        <td> <?php echo $row['numero_de_cuenta']; ?> </td>                                    
+                                        <td> <?php echo $row['saldo_actual']; ?> </td>                                    
+                                    </tr>                               
+                            <?php      
+                                }
+                            ?>
+                    </table>
                 </div>
             </div>
         </div>

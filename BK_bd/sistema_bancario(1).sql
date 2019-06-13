@@ -3,12 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2019 a las 00:11:34
+-- Tiempo de generación: 31-05-2019 a las 18:34:03
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.8
-
-create database sistema_bancario;
-use sistema_bancario;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -81,6 +78,36 @@ CREATE TABLE `bitacora_inicio` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cajero_automatico`
+--
+
+CREATE TABLE `cajero_automatico` (
+  `idcajero_automatico` int(11) NOT NULL,
+  `tarjetaDebito_id_cajero` int(11) DEFAULT NULL,
+  `monto_retirar` decimal(10,2) DEFAULT NULL,
+  `hora_cajero` varchar(45) DEFAULT NULL,
+  `fecha_cajero` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cajero_automatico`
+--
+
+INSERT INTO `cajero_automatico` (`idcajero_automatico`, `tarjetaDebito_id_cajero`, `monto_retirar`, `hora_cajero`, `fecha_cajero`) VALUES
+(1, 19, '100.00', '00:54:48', '30-05-2019'),
+(2, 19, '200.00', '00:55:19', '30-05-2019'),
+(3, 19, '1.00', '00:59:06', '30-05-2019'),
+(4, 19, '2.00', '00:59:34', '30-05-2019'),
+(5, 19, '3.00', '00:59:59', '30-05-2019'),
+(6, 19, '2.00', '01:38:10', '30-05-2019'),
+(7, 19, '50.00', '02:06:11', '31-05-2019'),
+(8, 18, '1000.00', '03:10:42', '31-05-2019'),
+(9, 18, '250.00', '03:25:37', '31-05-2019'),
+(10, 18, '500.00', '03:32:46', '31-05-2019');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `chequeras`
 --
 
@@ -114,10 +141,10 @@ INSERT INTO `chequeras` (`id_chequeras`, `numero_de_cuenta`, `saldo_actual`, `cu
 (24, '47535292019', '2100.00', 29, 1, '18:27:39', '26-04-2019', 1),
 (25, '48739112019', '100.00', 30, 1, '18:29:35', '26-04-2019', 1),
 (26, '49529322019', '100.00', 31, 1, '17:11:38', '27-04-2019', 1),
-(27, '50440202019', '1200.00', 32, 1, '21:32:29', '27-04-2019', 1),
+(27, '50440202019', '542.00', 32, 1, '21:32:29', '27-04-2019', 1),
 (28, '52626372019', '100.00', 33, 1, '00:20:40', '28-04-2019', 1),
 (29, '54517502019', '1605.00', 34, 1, '01:37:26', '28-04-2019', 1),
-(30, '55711332019', '4000.00', 35, 1, '01:50:17', '28-04-2019', 1),
+(30, '55711332019', '2250.00', 35, 1, '01:50:17', '28-04-2019', 0),
 (31, '56506252019', '3600.00', 36, 1, '18:33:11', '28-04-2019', 1),
 (32, '57531002019', '980.00', 37, 1, '00:25:05', '05-05-2019', 1),
 (40, '12340956789', '300.00', 22, 1, '01:00:31', '13-05-2019', 0),
@@ -191,7 +218,8 @@ INSERT INTO `chequeras` (`id_chequeras`, `numero_de_cuenta`, `saldo_actual`, `cu
 (121, '281150312019120', '200.00', 22, 2, '02:31:50', '20-05-2019', 0),
 (122, '281158312019121', '130.00', 22, 2, '02:31:58', '20-05-2019', 1),
 (123, '107528312019', '100.00', 61, 2, '03:31:28', '23-05-2019', 0),
-(124, '107526322019123', '800.00', 61, 1, '03:32:26', '23-05-2019', 1);
+(124, '107526322019123', '800.00', 61, 1, '03:32:26', '23-05-2019', 1),
+(125, '55705142019124', '100.00', 35, 1, '01:14:05', '29-05-2019', 1);
 
 -- --------------------------------------------------------
 
@@ -280,15 +308,6 @@ INSERT INTO `clientes` (`id_clientes`, `nombre`, `apellido`, `dpi`, `nit`, `tele
 (105, 'Omero', 'Simpson', '2034986752039', '984032958', '4534-5463', 'Reu'),
 (106, 'Rodrigo', 'Perez', '4302857439573', '320485345', '3489-2345', 'Santa Rosa'),
 (107, 'Angel', 'Barreno', '4563465346654', '563349234', '3253-2345', 'Retalhuleu');
-
--- --------------------------------------------------------
-
---
--- Estructura Stand-in para la vista `cliente_logueadotransferencia`
--- (Véase abajo para la vista actual)
---
-CREATE TABLE `cliente_logueadotransferencia` (
-);
 
 -- --------------------------------------------------------
 
@@ -551,6 +570,34 @@ INSERT INTO `retiros` (`id_retiro`, `monto_retirado`, `cliente_id_retiro`, `cheq
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tarjeta_debito`
+--
+
+CREATE TABLE `tarjeta_debito` (
+  `idtarjeta_debito` int(11) NOT NULL,
+  `cliente_id_tdebito` int(11) DEFAULT NULL,
+  `chequera_id_tdebito` int(11) DEFAULT NULL,
+  `codigo_tarjeta` varchar(45) DEFAULT NULL,
+  `pin_tarjeta` varchar(200) DEFAULT NULL,
+  `tipo_tarjeta` varchar(45) DEFAULT NULL,
+  `hora_solicitado` varchar(45) DEFAULT NULL,
+  `fecha_solicitado` varchar(45) DEFAULT NULL,
+  `empleado_id_atiende` int(11) DEFAULT NULL,
+  `estado` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tarjeta_debito`
+--
+
+INSERT INTO `tarjeta_debito` (`idtarjeta_debito`, `cliente_id_tdebito`, `chequera_id_tdebito`, `codigo_tarjeta`, `pin_tarjeta`, `tipo_tarjeta`, `hora_solicitado`, `fecha_solicitado`, `empleado_id_atiende`, `estado`) VALUES
+(1, NULL, NULL, '57', NULL, NULL, NULL, NULL, NULL, 'Desabilitado'),
+(18, 55, 30, '55720191430', 'UFQwS2ptTmdaM1V2N2FJWXlISUMvUT09', 'debito', '01:48:47', '29-05-2019', 11, 'Habilitado'),
+(19, 50, 27, '5042019727', 'SGlDSXJSelFqQlV5Uk12ak9JVUs0Zz09', 'debito', '01:51:41', '29-05-2019', 10, 'Habilitado');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo_cuentas`
 --
 
@@ -670,7 +717,41 @@ INSERT INTO `usuario_banca_virtual` (`idusuario_banca_virtual`, `cliente_id_virt
 (74, 62, 91, 'mivirtual49', 'NFd1NTZ1SFRnSy8zbTlWMEdCNWVCUT09', 'cliente', '02:51:11', '23-05-2019', 10, 'Habilitado'),
 (75, 68, 88, 'mivirtual55', 'TkRZL0tkS2JubjJlbFQ1Und4dFIzdz09', 'cliente', '02:54:18', '23-05-2019', 10, 'Habilitado'),
 (76, 40, 21, 'mivirtual68', 'REloTm1FendlYTN0RUZibXAvYUQ1dz09', 'cliente', '03:02:10', '23-05-2019', 10, 'Habilitado'),
-(77, 62, 82, 'mivirtual49', 'QXV4allpb3pRYitXWDFHOGd5SUZGZz09', 'cliente', '03:26:56', '23-05-2019', 10, 'Bloqueado');
+(77, 62, 82, 'mivirtual49', 'QXV4allpb3pRYitXWDFHOGd5SUZGZz09', 'cliente', '03:26:56', '23-05-2019', 10, 'Bloqueado'),
+(78, 12, 4, 'mivirtual46', 'bXpteDRESFRCUDVVTVB2elI2anZLUT09', 'cliente', '18:20:35', '25-05-2019', 11, 'Habilitado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `visa_movimiento_cajero`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `visa_movimiento_cajero` (
+`codigo_tarjeta` varchar(45)
+,`Monto_Retirado` decimal(10,2)
+,`Hora_Retirado` varchar(45)
+,`Fecha_retirado` varchar(45)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_tarjeta_debito`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_tarjeta_debito` (
+`codigo_tarjeta` varchar(45)
+,`pin_tarjeta` varchar(200)
+,`tipo_tarjeta` varchar(45)
+,`nombre` varchar(45)
+,`apellido` varchar(45)
+,`numero_de_cuenta` varchar(45)
+,`saldo_actual` decimal(12,2)
+,`hora_solicitado` varchar(45)
+,`fecha_solicitado` varchar(45)
+,`nombre_tipoCuenta` varchar(45)
+,`estado` varchar(45)
+);
 
 -- --------------------------------------------------------
 
@@ -697,15 +778,6 @@ CREATE TABLE `vista_usuarios_banca_virtual` (
 DROP TABLE IF EXISTS `banco_cliente`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `banco_cliente`  AS  select `banco`.`nombre_banco` AS `nombre_banco`,`usuario_banca_virtual`.`usuario_cliente` AS `usuario_cliente` from ((((`usuario_banca_virtual` join `chequeras` on((`chequeras`.`id_chequeras` = `usuario_banca_virtual`.`chequera_id_virtual`))) join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) join `banco` on((`banco`.`id_banco` = `cuenta`.`banco_id`))) ;
-
--- --------------------------------------------------------
-
---
--- Estructura para la vista `cliente_logueadotransferencia`
---
-DROP TABLE IF EXISTS `cliente_logueadotransferencia`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cliente_logueadotransferencia`  AS  select `chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`clientes`.`id_clientes` AS `id_clientes`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`clientes`.`usuario_cliente` AS `usuario_cliente` from ((`chequeras` join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) ;
 
 -- --------------------------------------------------------
 
@@ -746,6 +818,24 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Estructura para la vista `visa_movimiento_cajero`
+--
+DROP TABLE IF EXISTS `visa_movimiento_cajero`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `visa_movimiento_cajero`  AS  select `tarjeta_debito`.`codigo_tarjeta` AS `codigo_tarjeta`,`cajero_automatico`.`monto_retirar` AS `Monto_Retirado`,`cajero_automatico`.`hora_cajero` AS `Hora_Retirado`,`cajero_automatico`.`fecha_cajero` AS `Fecha_retirado` from (`cajero_automatico` join `tarjeta_debito` on((`tarjeta_debito`.`idtarjeta_debito` = `cajero_automatico`.`tarjetaDebito_id_cajero`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_tarjeta_debito`
+--
+DROP TABLE IF EXISTS `vista_tarjeta_debito`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_tarjeta_debito`  AS  select `tarjeta_debito`.`codigo_tarjeta` AS `codigo_tarjeta`,`tarjeta_debito`.`pin_tarjeta` AS `pin_tarjeta`,`tarjeta_debito`.`tipo_tarjeta` AS `tipo_tarjeta`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`chequeras`.`saldo_actual` AS `saldo_actual`,`tarjeta_debito`.`hora_solicitado` AS `hora_solicitado`,`tarjeta_debito`.`fecha_solicitado` AS `fecha_solicitado`,`tipo_cuentas`.`nombre_tipoCuenta` AS `nombre_tipoCuenta`,`tarjeta_debito`.`estado` AS `estado` from (((`tarjeta_debito` join `chequeras` on((`chequeras`.`id_chequeras` = `tarjeta_debito`.`chequera_id_tdebito`))) join `clientes` on((`clientes`.`id_clientes` = `tarjeta_debito`.`cliente_id_tdebito`))) join `tipo_cuentas` on((`tipo_cuentas`.`id_tipo_cuenta` = `chequeras`.`tipo_cuentas`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura para la vista `vista_usuarios_banca_virtual`
 --
 DROP TABLE IF EXISTS `vista_usuarios_banca_virtual`;
@@ -773,6 +863,13 @@ ALTER TABLE `bitacora_inicio`
   ADD KEY `deposito_bitacora_idx` (`deposito_id_bitacoraInicio`),
   ADD KEY `empleado_id_bitacoraInicio_idx` (`empleado_id_bitacoraInicio`),
   ADD KEY `transferencia_bitacoraIni_idx` (`transferenciaId_bitacoraInicio`);
+
+--
+-- Indices de la tabla `cajero_automatico`
+--
+ALTER TABLE `cajero_automatico`
+  ADD PRIMARY KEY (`idcajero_automatico`),
+  ADD KEY `tarjeatadebito_id_idx` (`tarjetaDebito_id_cajero`);
 
 --
 -- Indices de la tabla `chequeras`
@@ -839,6 +936,15 @@ ALTER TABLE `retiros`
   ADD KEY `tipo_doc_ret_idx` (`tipo_documento_retiro`);
 
 --
+-- Indices de la tabla `tarjeta_debito`
+--
+ALTER TABLE `tarjeta_debito`
+  ADD PRIMARY KEY (`idtarjeta_debito`),
+  ADD KEY `cliente_ditarjetadebito_idx` (`cliente_id_tdebito`),
+  ADD KEY `chequera_idtarjetadebito_idx` (`chequera_id_tdebito`),
+  ADD KEY `empleadoAtiende_idtarjetadebito_idx` (`empleado_id_atiende`);
+
+--
 -- Indices de la tabla `tipo_cuentas`
 --
 ALTER TABLE `tipo_cuentas`
@@ -887,10 +993,15 @@ ALTER TABLE `banco`
 ALTER TABLE `bitacora_inicio`
   MODIFY `idbitacora` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `cajero_automatico`
+--
+ALTER TABLE `cajero_automatico`
+  MODIFY `idcajero_automatico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
 -- AUTO_INCREMENT de la tabla `chequeras`
 --
 ALTER TABLE `chequeras`
-  MODIFY `id_chequeras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id_chequeras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT de la tabla `cheques_anulados`
 --
@@ -927,6 +1038,11 @@ ALTER TABLE `prueba`
 ALTER TABLE `retiros`
   MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT de la tabla `tarjeta_debito`
+--
+ALTER TABLE `tarjeta_debito`
+  MODIFY `idtarjeta_debito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
 -- AUTO_INCREMENT de la tabla `tipo_cuentas`
 --
 ALTER TABLE `tipo_cuentas`
@@ -950,7 +1066,7 @@ ALTER TABLE `transferencia`
 -- AUTO_INCREMENT de la tabla `usuario_banca_virtual`
 --
 ALTER TABLE `usuario_banca_virtual`
-  MODIFY `idusuario_banca_virtual` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `idusuario_banca_virtual` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- Restricciones para tablas volcadas
 --
@@ -965,6 +1081,12 @@ ALTER TABLE `bitacora_inicio`
   ADD CONSTRAINT `empleado_id_bitacoraInicio` FOREIGN KEY (`empleado_id_bitacoraInicio`) REFERENCES `empleado` (`id_empleados`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `retiros_bitacora` FOREIGN KEY (`retiro_id_bitacoraInicio`) REFERENCES `retiros` (`id_retiro`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `transferencia_bitacoraIni` FOREIGN KEY (`transferenciaId_bitacoraInicio`) REFERENCES `transferencia` (`Id_transferencia`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `cajero_automatico`
+--
+ALTER TABLE `cajero_automatico`
+  ADD CONSTRAINT `tarjeatadebito_id` FOREIGN KEY (`tarjetaDebito_id_cajero`) REFERENCES `tarjeta_debito` (`idtarjeta_debito`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `chequeras`
@@ -1008,6 +1130,14 @@ ALTER TABLE `retiros`
   ADD CONSTRAINT `chequ_id` FOREIGN KEY (`chequera_id`) REFERENCES `chequeras` (`id_chequeras`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `cliente_id_ret` FOREIGN KEY (`cliente_id_retiro`) REFERENCES `clientes` (`id_clientes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tipo_doc_ret` FOREIGN KEY (`tipo_documento_retiro`) REFERENCES `tipo_documento` (`idtipo_documento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `tarjeta_debito`
+--
+ALTER TABLE `tarjeta_debito`
+  ADD CONSTRAINT `chequera_idtarjetadebito` FOREIGN KEY (`chequera_id_tdebito`) REFERENCES `chequeras` (`id_chequeras`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `cliente_ditarjetadebito` FOREIGN KEY (`cliente_id_tdebito`) REFERENCES `clientes` (`id_clientes`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `empleadoAtiende_idtarjetadebito` FOREIGN KEY (`empleado_id_atiende`) REFERENCES `empleado` (`id_empleados`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `transferencia`
