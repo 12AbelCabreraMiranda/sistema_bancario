@@ -69,39 +69,43 @@
     <!--FORMULARIOS -->
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2" >
+            <div class="col-md-10 col-md-offset-1" >
                 <div class="table-responsive scrollable"style="border-radius:5px" >
                     <table class="table table-striped table-bordered table-hover table-condensed ">
                         <!-- ENCABEZADOS DE LA TABLA -->
-                            <h3 style="text-align:center">DATOS y SALDO</h3>
+                            <h3 style="text-align:center">MIS MOVIMIENTOS DE TRANSFERENCIAS</h3>
                             <tr class="info"  >
                                 <th  class="alinearEncabezado" rowspan="1" >NOMBRE</th>
                                 <th  class="alinearEncabezado" rowspan="1" >APELLIDO</th>
-                                <th  class="alinearEncabezado" rowspan="1" >USUARIO VIRTUAL</th>
-                                <th  class="alinearEncabezado" rowspan="1" >NUMERO DE CUENTA</th>
-                                <th  class="alinearEncabezado" rowspan="1" >MI SALDO ACTUAL</th>                                                              
+                                <th  class="alinearEncabezado" rowspan="1" >CUENTA QUE TRANSFIERE</th>
+                                <th  class="alinearEncabezado" rowspan="1" >MONTO TRANSFERIDO</th>
+                                <th  class="alinearEncabezado" rowspan="1" >CUENTA QUE RECIBE</th>                                                              
+                                <th  class="alinearEncabezado" rowspan="1" >HORA</th>
+                                <th  class="alinearEncabezado" rowspan="1" >FECHA</th>
                             </tr>
                             <?php
                                $passwordVirtual = $_SESSION['passV'];//implementado para ver saldo usu==                               
                                 require_once ("../crear_cuenta/conexion.php");
 
-                                $consultaPass = ("SELECT numero_de_cuenta FROM misaldovirtual where usuario_cliente ='$usuarioLogeado'");
+                                $consultaPass = ("SELECT numero_de_cuenta FROM misaldovirtual where usuario_cliente ='$usuarioLogeado' and contrasenia_cliente='$passwordVirtual' ");
                                 $resultadoPass = $con->query($consultaPass);
                                 if($row = $resultadoPass->fetch_assoc()){          
                                     $cuentaVirtual=$row['numero_de_cuenta'];
+                                }        
+           
 
-                                }                                
-
-                                $querySaldo="Select *from misaldovirtual  where usuario_cliente='$usuarioLogeado' and contrasenia_cliente='$passwordVirtual' ";
+                                $querySaldo="SELECT *from transferencia where cuenta_transfiere='$cuentaVirtual'";
                                 $resultadoSaldo=$con->query($querySaldo);
                                 while($row=$resultadoSaldo->fetch_assoc()){
                             ?>  
                                     <tr>
-                                        <td> <?php echo $row['nombre']; ?> </td>
-                                        <td>  <?php echo $row['apellido']; ?></td>
-                                        <td> <?php echo $row['usuario_cliente']; ?> </td>
-                                        <td> <?php echo $row['numero_de_cuenta']; ?> </td>                                    
-                                        <td> <?php echo $row['saldo_actual']; ?> </td>                                    
+                                        <td> <?php echo $row['cliente_que_transfiere']; ?> </td>
+                                        <td>  <?php echo $row['apellido_que_transfiere']; ?></td>
+                                        <td> <?php echo $row['cuenta_transfiere']; ?> </td>
+                                        <td> <?php echo $row['monto_deTransaccion']; ?> </td>                                    
+                                        <td> <?php echo $row['numeroCuenta_a_transferir']; ?> </td>    
+                                        <td> <?php echo $row['hora_deTransaccion']; ?> </td>    
+                                        <td> <?php echo $row['fecha_deTransaccion']; ?> </td>                                    
                                     </tr>                               
                             <?php      
                                 }

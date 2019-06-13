@@ -4,6 +4,7 @@
    session_start();
 
     $usuarioLogeado = $_SESSION['user'];
+    $passwordVirtual = $_SESSION['passV'];//implementado para ver saldo usu==   
     $cuenta_a_transferir = $_REQUEST["CuentaCliente"];
     $cantidadTransferido = $_POST['cantidad'];
     
@@ -18,7 +19,7 @@
     $mi_saldoLogueado;
     $nombreClienteLog;
     $apellidoLog;
-    $consulta = ("SELECT numero_de_cuenta, nombre,apellido, saldo_actual FROM cuenta_cliente_logueado where usuario_cliente='$usuarioLogeado'");
+    $consulta = ("SELECT numero_de_cuenta, nombre,apellido, saldo_actual FROM cuenta_cliente_logueado where usuario_cliente='$usuarioLogeado' and contrasenia_cliente='$passwordVirtual' ");
     $resultado = $con->query($consulta);
     if($row = $resultado->fetch_assoc()){          
         $cuentaCLienteLogeado=$row['numero_de_cuenta'];//cuenta logueada

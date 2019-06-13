@@ -145,7 +145,7 @@
                     <a href="miSaldoVirtual.php">Consulta de Saldo</a>
                 </li>
                 <li>
-                    <a href="#">Mis movimientos</a>
+                    <a href="miMovimientoVirtual.php">Mis movimientos</a>
                 </li>
                 <li>
                     <a href="#">Otros</a>
