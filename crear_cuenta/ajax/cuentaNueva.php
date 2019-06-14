@@ -41,22 +41,49 @@
 	ini_set('date.timezone', 'America/Guatemala');
 	$fecha_sistema = date("d-m-Y");
 
+	//COMPROBAR TIPO DE DOCUMENTO
+	if($tipoCuenta==2){
+		// insercion en la tabla chequera Registro en la BD
+		$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera, tipo_cuentas, hora_apertura, fecha_apertura, estado) 
+		VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_tablaCuenta','$tipoCuenta','$hora_sistema','$fecha_sistema',1)";
+		$query3 = mysqli_query($con,$sql3);    
 
-	// insercion en la tabla chequera Registro en la BD
-	$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera, tipo_cuentas, hora_apertura, fecha_apertura, estado) 
-	VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_tablaCuenta','$tipoCuenta','$hora_sistema','$fecha_sistema',1)";
-	$query3 = mysqli_query($con,$sql3);    
-    
-    if ($query3) {
-        $messages[] = "La nueva cuenta ha sido Registrado con éxito.";
-    } else {
-        $errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
-    }
+		//CONSULTA A TABLA CHEQUERA -----> EXTRAER ID
+		$consultaChequeras = ("SELECT id_chequeras FROM chequeras where numero_de_cuenta='$cuenta_numCuenta'");
+		$resultadoChequeras = $con->query($consultaChequeras);
+		if($row = $resultadoChequeras->fetch_assoc()){      
+			$id_chequera =$row['id_chequeras'];		
+			}
+		//INSERTAR EN TABLA NUMERO DE CHEQUE
+		$sqlCheque = "INSERT INTO numeros_cheques(chequera_id_numCheque, nombre_documento,estado) 
+			VALUES ('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1) ";
+			$queryCheque = mysqli_query($con,$sqlCheque);
+
+		//MENSAJE
+		if ($query3) {
+			$messages[] = "La nueva cuenta ha sido Registrado con éxito.";
+			} else {
+					$errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
+				}
+	}else{
+		// insercion en la tabla chequera Registro en la BD
+		$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera, tipo_cuentas, hora_apertura, fecha_apertura, estado) 
+		VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_tablaCuenta','$tipoCuenta','$hora_sistema','$fecha_sistema',1)";
+		$query3 = mysqli_query($con,$sql3);    
 		
-	} else 
-	{
+		if ($query3) {
+			$messages[] = "La nueva cuenta ha sido Registrado con éxito.";
+			} else {
+					$errors[] = "Lo sentimos, el registro falló. Por favor, vuelva a intentarlo.";
+				}
+	}
+		
+	} else{
 		$errors[] = "desconocido.";
 	}
+
+
+
 if (isset($errors)){
 			
 			?>

@@ -81,17 +81,45 @@
 			$anio = date("Y");										
 			$cuenta_numCuenta = $id_clienteRegistrado.strlen($cuenta_nombre).$segundo.$minuto.$anio;					
 
+			//COMPROBAR TIPO DE DOCUMENTO
+			if($cuenta_tipoCuenta==2){
+				// insercion en la tabla chequera Registro en la BD
+				$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera,tipo_cuentas, hora_apertura, fecha_apertura, estado) 
+						VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_cuentaRegistrado','$cuenta_tipoCuenta','$hora_sistema','$fecha_sistema',1)";
+				$query3 = mysqli_query($con,$sql3);
 
-			// insercion en la tabla chequera Registro en la BD
-			$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera,tipo_cuentas, hora_apertura, fecha_apertura, estado) 
-					VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_cuentaRegistrado','$cuenta_tipoCuenta','$hora_sistema','$fecha_sistema',1)";
-			$query3 = mysqli_query($con,$sql3);
-			// Mensaje insertado registro en la base de datos
-			if ($query3) {
-				$messages[] = "La cuenta ha sido registrado con éxito en tabla chequera.";
-			} else {
-				$errors[] = "El registro falló. El número de cuenta debe ser unico. Por favor, vuelva a intentarlo.";//que se realice automaticamente
-				}
+					//CONSULTA A TABLA CHEQUERA -----> EXTRAER ID
+					$consultaChequera = ("SELECT id_chequeras FROM chequeras where numero_de_cuenta='$cuenta_numCuenta'");
+					$resultadoChequera = $con->query($consultaChequera);
+					if($row = $resultadoChequera->fetch_assoc()){      
+						$id_chequera =$row['id_chequeras'];		
+						}
+					//INSERTAR EN TABLA NUMERO DE CHEQUE
+					$sqlCheque = "INSERT INTO numeros_cheques(chequera_id_numCheque, nombre_documento,estado) 
+						VALUES ('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1) ";
+					$queryCheque = mysqli_query($con,$sqlCheque);
+
+				// Mensaje insertado registro en la base de datos
+				if ($query3) {
+					$messages[] = "La cuenta ha sido registrado con éxito en tabla chequera.";
+				} else {
+					$errors[] = "El registro falló. El número de cuenta debe ser unico. Por favor, vuelva a intentarlo.";//que se realice automaticamente
+					}
+			}else{
+				// insercion en la tabla chequera Registro en la BD
+				$sql3 = "INSERT INTO chequeras(numero_de_cuenta, saldo_actual, cuenta_id_chequera,tipo_cuentas, hora_apertura, fecha_apertura, estado) 
+						VALUES ('$cuenta_numCuenta','$cuenta_saldoInicial','$id_cuentaRegistrado','$cuenta_tipoCuenta','$hora_sistema','$fecha_sistema',1)";
+				$query3 = mysqli_query($con,$sql3);
+				// Mensaje insertado registro en la base de datos
+				if ($query3) {
+					$messages[] = "La cuenta ha sido registrado con éxito en tabla chequera.";
+				} else {
+					$errors[] = "El registro falló. El número de cuenta debe ser unico. Por favor, vuelva a intentarlo.";//que se realice automaticamente
+					}
+			}
+
+
+
 
 		} else {
 			$errors[] = "El registro falló. El No. DPI y USUARIO debe ser únicos. Por favor, vuelva a intentarlo.";
