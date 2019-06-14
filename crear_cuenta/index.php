@@ -74,7 +74,7 @@
                                 <li><a href="#addCuentaModal"  data-toggle="modal" onclick="newCliente()"> <span>Registrar nuevo Cliente</span></a></li>
                                 <li><a href="#" onclick="solCredito()" >Solicitud de Credito</a></li>
                                 <li><a href="#" onclick="solDebito()" >Solicitud Tarjeta Débito</a></li>
-                                <li><a href="#" onclick="estadoCuenta()" >Estado de cuenta</a></li>                            
+                                <li><a href="verTransacciones/movimientosClientes.php">Transacciones de clientes</a></li>                            
                             </ul>
                         </li>   
                 </ul>         
@@ -93,7 +93,7 @@
             </ul>
         </div>
 	</nav>
-	
+	<!--TABLA CLIENTES REGISTRADOS-->
     <div class="container" style="display:none" id="tablaClientes">
         <div class="table-wrapper">
             <div class="table-title">
@@ -127,6 +127,7 @@
 			
         </div>
     </div>
+    
 	<!-- Edit Modal HTML -->
 	<?php include("html/modal_add.php");?>
 	<!-- Edit Modal HTML -->
