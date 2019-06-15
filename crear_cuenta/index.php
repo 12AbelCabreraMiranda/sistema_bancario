@@ -72,7 +72,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#" onclick="misClientes()" >Clientes Registrados</a></li>
                                 <li><a href="#addCuentaModal"  data-toggle="modal" onclick="newCliente()"> <span>Registrar nuevo Cliente</span></a></li>
-                                <li><a href="#" onclick="solCredito()" >Solicitud de Credito</a></li>
+                                <li><a href="chequera/lista_chequera.php">CHEQUERA</a></li>
                                 <li><a href="#" onclick="solDebito()" >Solicitud Tarjeta Débito</a></li>
                                 <li><a href="verTransacciones/movimientosClientes.php">Transacciones de clientes</a></li>                            
                             </ul>
