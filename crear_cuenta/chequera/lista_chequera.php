@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Temporizador</title>
+    <link rel="icon" href="../../img/icono.png">
+    <title>Chequera</title>
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/timer.jquery.js"></script>
     <script src="js/timer.jquery.min.js"></script>
@@ -19,7 +20,13 @@
 </head>
 <body>
     <!--PERMITE REDIRECCIONARLO AL LOGIN SI NO HAY SESION INICIADA -->
-   
+    <?php   
+        session_start();      
+        if(isset($_SESSION['user'])){
+        }else{
+            header("location:../../inicio.php");
+        }
+    ?>
     <!--PERMITE REDIRECCIONARLO AL LOGIN SI NO HAY SESION INICIADA -->
     <header style="background: #039b5c; display: flex;">
         <h4>            
@@ -36,8 +43,7 @@
                 <div class="table-responsive" >
                     <table class="table table-striped table-bordered table-hover table-condensed ">
                         <!-- ENCABEZADOS DE LA TABLA -->
-                                <h3 style="text-align:center">CHEQUERA</h3>
-                                <p style="color:red">Acualizar los botones despues de 3 segundos de su acción</p>
+                                <h3 style="text-align:center">CHEQUERA</h3>                                
                             <tr class="success"  >
                                 <th  class="alinearEncabezado" rowspan="1" >No. CHEQUE</th>
                                 <th  class="alinearEncabezado" rowspan="1" >NOMBRE</th>
@@ -45,7 +51,7 @@
                                 <th  class="alinearEncabezado" rowspan="1" >NUMERO DE CUENTA</th>
                                 <th  class="alinearEncabezado" rowspan="1" >DOCUMENTO</th>
                                 
-                                <th style="text-align:center"  class="alinearEncabezado"  rowspan="1" >CONTROL</th>                                                           
+                                <th style="text-align:center"  class="alinearEncabezado"  rowspan="1" >IMPRIMIR</th>                                                           
                             </tr>
                             <?php
                             // ------------VALIDARLO QUE MUESTRE LAS CHEQUERAS POR CADA BANCO LOGEADO ----------------
@@ -72,7 +78,7 @@
                                             <td>  <?php echo $row['nombre_documento']; ?>  
                                             </td>                                          
                                             <!--UPDATE -->                                        
-                                            <td> <a target="_BLANK" type="button"class="btn btn-warning btn-block" href="index.php?delete=<?php echo $row['idnumeros_cheques']; ?>">
+                                            <td> <a onclick="refreshLista()" target="_BLANK" type="button"class="btn btn-warning btn-block" href="index.php?delete=<?php echo $row['idnumeros_cheques']; ?>">
                                                 <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
                                                 </a> 
                                             </td>                                        
@@ -87,6 +93,10 @@
         </div>
 
     </div>
-
+<script>
+    function refreshLista(){
+        setTimeout("location.href='lista_chequera.php'", 5000);//refress page
+    }
+</script>
 </body>
 </html>
