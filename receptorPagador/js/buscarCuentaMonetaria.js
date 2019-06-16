@@ -28,6 +28,18 @@ $(document).ready(function(){
                     $(".numCuentaCliente").html(datos)
                 }
             })
+
+             //otra consulta
+             $.ajax({
+                url: 'queryBD/consultaIdCheque.php',
+                type: 'POST',
+                data: datos,
+                contentType: false, //se anota porque se mandarán archivos
+                processData: false,
+                success: function(datos){
+                    $(".idNumCheque").html(datos)
+                }
+            })
     }
 })
 

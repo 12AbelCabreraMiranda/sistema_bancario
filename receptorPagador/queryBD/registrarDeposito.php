@@ -52,7 +52,9 @@
         $queryInsert  = "INSERT into depositos (chequera_id_deposito,monto_depositado,hora_deDeposito,fecha_deDeposito,tipo_documento_deposito) 
                         VALUES('$idChequera','$cantidadDeposito','$hora_sistema','$fecha_sistema','$tipoDocumento')";
         $resultadoInsert= $con->query($queryInsert);
-            
+        
+        
+
             echo '<div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

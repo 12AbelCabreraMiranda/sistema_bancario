@@ -55,8 +55,8 @@
 			$id_chequera =$row['id_chequeras'];		
 			}
 		//INSERTAR EN TABLA NUMERO DE CHEQUE
-		$sqlCheque = "INSERT INTO numeros_cheques(chequera_id_numCheque, nombre_documento,estado) 
-			VALUES ('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1),('$id_chequera','Cheque',1) ";
+		$sqlCheque = "INSERT INTO numeros_cheques(chequera_id_numCheque, nombre_documento,estado,movimiento) 
+			VALUES ('$id_chequera','Cheque',1,'no_cobrado'),('$id_chequera','Cheque',1,'no_cobrado'),('$id_chequera','Cheque',1,'no_cobrado'),('$id_chequera','Cheque',1,'no_cobrado'),('$id_chequera','Cheque',1,'no_cobrado') ";
 			$queryCheque = mysqli_query($con,$sqlCheque);
 
 		//MENSAJE

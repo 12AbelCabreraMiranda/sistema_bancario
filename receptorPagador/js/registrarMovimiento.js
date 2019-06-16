@@ -42,9 +42,9 @@ $(document).ready(function(){
 
         var datos = new FormData($("#formRegistrarDeposito")[0])
 
-        var NoCuenta = $(".numCuentaCliente").text();//valorClass
+        var NoCuenta = $(".numCuentaCliente").text();//valorClass        
           $.ajax({
-              url: 'queryBD/registrarDeposito.php?CuentaCliente='+NoCuenta,// variablePHP
+              url: 'queryBD/registrarDeposito.php?CuentaCliente='+NoCuenta,  // variablePHP              
               type: 'POST',
               data: datos,
               contentType: false,
@@ -52,7 +52,22 @@ $(document).ready(function(){
               success: function(datos){
                   $("#respuestaDepositado").html(datos)                  
               }
-          })                 
+          })   
+          
+          //update cheque
+          var idCheque = $(".idNumCheque").text();//valorClass
+          $.ajax({
+              url: 'queryBD/update_cheque.php?idCheque='+idCheque,  // variablePHP              
+              type: 'POST',
+              data: datos,
+              contentType: false,
+              processData: false,
+              success: function(datos){
+                  $("#updateCheque").html(datos)   // no configurado en php la respuesta               
+              }
+          }) 
+
+
     }
 
     //  -----------retirar ---------------
@@ -77,7 +92,21 @@ $(document).ready(function(){
               success: function(datos){
                   $("#respuestaDepositado").html(datos)                  
               }
-          })                 
+          })  
+          
+        //update cheque
+        var idCheque = $(".idNumCheque").text();//valorClass
+        $.ajax({
+            url: 'queryBD/update_cheque.php?idCheque='+idCheque,  // variablePHP              
+            type: 'POST',
+            data: datos,
+            contentType: false,
+            processData: false,
+            success: function(datos){
+                $("#updateCheque").html(datos)   // no configurado en php la respuesta               
+            }
+        }) 
+
     }
 
 

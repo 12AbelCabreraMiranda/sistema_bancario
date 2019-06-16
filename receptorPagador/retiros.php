@@ -81,25 +81,47 @@
                 <div class="panel panel-info">
                     <div class="panel-heading" style="background-color: #03b25d;color:white"><h4 class="text-center"> RETIROS DE CUENTAS</h4></div>
                     <div class="panel-body" style="background-color: #ededed">        
+                        <span class="input-group-btn">
+                            <center>                            
+                                <label for="nombre">TIPO DE CUENTA</label>  
+                                <input  onclick="ahorro()" id="btnAhorro" type="submit" class="btn btn-warning" value="AHORRO">  
+                                <input  onclick="monetario()" id="btnMonetario" type="submit" class="btn btn-success" value="MONETARIO">                            
+                            </center>                                                    
+                        </span><p></p> 
 
-                        <form action="receptorPagador.php" id="formBuscarCuenta" method="post" enctype="multipart/form-data">
+                        <!--CUENTA DE AHORRO -->
+                        <form action="receptorPagador.php" id="formBuscarCuenta" method="post" enctype="multipart/form-data" class="ahorro" style="display:none">
                             <div class="container-fluid">
-                                                            
-                                <div class="input-group col-md-5 col-xs-12 col-md-offset-3">
-                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Ingresar número de cuenta" onkeypress="return soloNumero(event)" onpaste="return false"/>
+                            <div class="idtipo_documento"></div><!--ID TIPO DOCUMENTO -->                            
+                                <div class="input-group col-md-6 col-xs-12 col-md-offset-3">
+                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Número de cuenta ahorro" onkeypress="return soloNumero(event)" onpaste="return false"/>
                                     <span class="input-group-btn">
                                                                                     
-                                        <input  onclick="buscarCuenta()" id="botonBuscar" type="submit" class="btn btn-info" value="Buscar"> 
-                                                                                  
+                                        <input  onclick="buscarCuenta()" id="botonBuscar" type="submit" class="btn btn-warning" value="BUSCAR">                                         
                                     </span>
-                                </div>  <br>
+                                </div>  <br>                                                        
+                            </div>
+                        </form>
+                        <!--CUENTA MONETARIO -->
+                        <form action="receptorPagador.php" id="formBuscarCuentaMonetaria" method="post" enctype="multipart/form-data" class="monetario" style="display:none">
+                            <div class="container-fluid">
+                            <div class="idtipo_documento"></div><!--ID TIPO DOCUMENTO -->                               
+                                
+                                <div class="input-group col-md-6 col-xs-12 col-md-offset-3">
+                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Número de cheque" onkeypress="return soloNumero(event)" onpaste="return false"/>
+                                    <span class="input-group-btn">
+                                                                                    
+                                        <input  onclick="buscarCuentaMonetaria()" id="botonBuscar" type="submit" class="btn btn-success" value="BUSCAR">                                         
+                                        
+                                    </span>
+                                </div>  <br>                                                        
                             </div>
                         </form>
 
                         <form action="receptorPagador.php" method="post" id="formRegistrarRetiro" enctype="multipart/form-data">    
                             <div class="row">
                                 <div class="container-fluid">
-                                
+                                <div class="idtipo_documento"></div><!--ID TIPO DOCUMENTO -->
                                     <div class="col-sm-7">
                                         <div class='col-sm-7'>                                                               
                                             <div class="form-group">                                    
@@ -107,19 +129,15 @@
                                                 <input REQUIRED name="cantidadRetirar" class="form-control" id="cantidadRetirar" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
                                             </div>
                                                                                                                         
-                                            <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>                                   
+                                            <p style="display:show" class="numCuentaCliente">numero cuenta para guardar deposito</p>   
+                                            <p style="display:show" class="idNumCheque">ID del numero de cheque </p>                                
                                         </div>
                                         
-                                        <div class="form-group col-md-5"> 
-                                            <label>TIPO DOCUMENTO </label>								
-                                            <select name="tipoDoc" class="form-control"  id="tipoDoc">
-                                                <?php while($row = $resultadoDocumento->fetch_assoc()){  ?>
-                                                    <option value="<?php echo $row['idtipo_documento']; ?> ">
-                                                        <?php  echo $row['nombre_documento']; ?>                                             
-                                                    </option>
-                                                <?php }?>
-                                            </select> 								
+                                        <div class="form-group col-md-5" id="campoNumBoleta" style="display:none">
+                                            <label for="nombre">Número de DPI</label> 
+                                            <input REQUIRED name="numBoleta" class="form-control" id="numBoleta" type="text" placeholder="000" onkeypress="return soloNumero(event)" onpaste="return false">
                                         </div>
+
                                         <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
                                             <div id="respuestaDepositado"></div>
                                         </div>
@@ -191,6 +209,8 @@
     <script src="../login/Resources/js/jquery-1.11.2.js"></script>
     <script src="../login/Resources/js/bootstrap.min.js"></script>
     <script src="js/evento.js"></script>
+    <script src="js/tipo_cuenta.js"></script>
+    <script src="js/buscarCuentaMonetaria.js"></script>
     <script src="js/registrarMovimiento.js"></script>
 
     <script>

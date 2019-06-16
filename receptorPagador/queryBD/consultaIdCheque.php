@@ -14,16 +14,16 @@
     }
 
     
-        //SELECCION USUARIO para extraer id del maestro logeado
-        $nomClienteCuenta;
-        $query1 = ("SELECT numero_de_cuenta, id_tipo_cuenta FROM vista_cheque_monetaria where numeroCheque='$numCheque'");
+        //SELECCION USUARIO para extraer id del maestro logeado        
+        $query1 = ("SELECT numero_de_cuenta, id_tipo_cuenta, idnumeros_cheques FROM vista_cheque_monetaria where numeroCheque='$numCheque'");
         $result1 = $con->query($query1);
         if($row = $result1->fetch_assoc()){      
-            $nomClienteCuenta =$row['numero_de_cuenta'];
+            
             $idTipoCuenta=$row['id_tipo_cuenta'];
+            $idNumCheque=$row['idnumeros_cheques'];
 
             if($tipoDocCuenta==$idTipoCuenta){
-                echo $nomClienteCuenta;
+                echo $idNumCheque;
             }else{
                     echo '';
                 }

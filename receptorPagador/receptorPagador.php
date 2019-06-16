@@ -110,7 +110,7 @@
                             <div class="idtipo_documento"></div><!--ID TIPO DOCUMENTO -->                               
                                 
                                 <div class="input-group col-md-6 col-xs-12 col-md-offset-3">
-                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Número de cuenta monetaria" onkeypress="return soloNumero(event)" onpaste="return false"/>
+                                    <input REQUIRED name="numeroCuenta" type="text" class="form-control" placeholder="Número de cheque" onkeypress="return soloNumero(event)" onpaste="return false"/>
                                     <span class="input-group-btn">
                                                                                     
                                         <input  onclick="buscarCuentaMonetaria()" id="botonBuscar" type="submit" class="btn btn-success" value="BUSCAR">                                         
@@ -132,7 +132,8 @@
                                                 <input REQUIRED name="cantidad" class="form-control" id="cantidad" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
                                             </div>
                                                                                                                         
-                                            <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>                                   
+                                            <p style="display:show" class="numCuentaCliente">numero cuenta para guardar deposito</p>  
+                                            <p style="display:show" class="idNumCheque">ID del numero de cheque </p>                                                                            
                                         </div>
 
                                         <div class="form-group col-md-5" id="campoNumBoleta" style="display:none">
@@ -142,6 +143,7 @@
                                        
                                         <div class="col-sm-12"> <!-- Respuesta de la base de datos-->   
                                             <div id="respuestaDepositado"></div>
+                                            <p id="updateCheque"></p>
                                         </div>
                                     </div>
 
