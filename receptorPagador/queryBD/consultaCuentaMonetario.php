@@ -21,17 +21,17 @@
         if($row = $result1->fetch_assoc()){      
             $nomClienteCuenta =$row['numero_de_cuenta'];
             $idTipoCuenta=$row['id_tipo_cuenta'];
-            
+
             if($tipoDocCuenta==$idTipoCuenta){
                 echo $nomClienteCuenta;
             }else{
                     echo '';
                 }
-                
+
          }else{
             echo'no existe cuenta';
         }
-        
+    
 
 
 ?>
