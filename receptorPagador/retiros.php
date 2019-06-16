@@ -129,8 +129,8 @@
                                                 <input REQUIRED name="cantidadRetirar" class="form-control" id="cantidadRetirar" type="text" placeholder="Q. 00.00" onkeypress="return soloNumero(event)" onpaste="return false">
                                             </div>
                                                                                                                         
-                                            <p style="display:show" class="numCuentaCliente">numero cuenta para guardar deposito</p>   
-                                            <p style="display:show" class="idNumCheque">ID del numero de cheque </p>                                
+                                            <p style="display:none" class="numCuentaCliente">numero cuenta para guardar deposito</p>   
+                                            <p style="display:none" class="idNumCheque">ID del numero de cheque </p>                                
                                         </div>
                                         
                                         <div class="form-group col-md-5" id="campoNumBoleta" style="display:none">

@@ -4,7 +4,7 @@ function ahorro(){
     $('#btnMonetario').attr("disabled", true);//boton desabilitado
     $('#campoNumBoleta').show(); 
 
-    $(".idtipo_documento").html("<input type='text' name='tipoDoc' class='idtipo_documento' value='1'>");
+    $(".idtipo_documento").html("<input type='hidden' name='tipoDoc' class='idtipo_documento' value='1'>");
 }
 
 function monetario(){
@@ -14,5 +14,5 @@ function monetario(){
     $('#campoNumBoleta').hide();
     $('#numBoleta').attr("disabled", true);//campo desabilitado
 
-    $(".idtipo_documento").html("<input type='text' name='tipoDoc' class='idtipo_documento' value='2'>");
+    $(".idtipo_documento").html("<input type='hidden' name='tipoDoc' class='idtipo_documento' value='2'>");
 }
