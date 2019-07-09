@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-05-2019 a las 18:34:03
+-- Tiempo de generación: 09-07-2019 a las 09:52:10
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 7.1.8
 
@@ -42,7 +42,9 @@ CREATE TABLE `banco` (
 INSERT INTO `banco` (`id_banco`, `nombre_banco`, `telefono_banco`, `nit_banco`) VALUES
 (1, 'Banrural', '4534-4365', '12345-2'),
 (2, 'Banco Industrial', '7745-2342', '54421-2'),
-(3, 'Banco G&T', '3453-2343', '34324-6');
+(3, 'Banco G&T', '3453-2343', '34324-6'),
+(4, 'otro', '34343', '3434343'),
+(5, 'otro2', '34343', '3434343');
 
 -- --------------------------------------------------------
 
@@ -103,7 +105,17 @@ INSERT INTO `cajero_automatico` (`idcajero_automatico`, `tarjetaDebito_id_cajero
 (7, 19, '50.00', '02:06:11', '31-05-2019'),
 (8, 18, '1000.00', '03:10:42', '31-05-2019'),
 (9, 18, '250.00', '03:25:37', '31-05-2019'),
-(10, 18, '500.00', '03:32:46', '31-05-2019');
+(10, 18, '500.00', '03:32:46', '31-05-2019'),
+(11, 19, '22.00', '12:55:26', '14-06-2019'),
+(12, 20, '90.00', '21:35:03', '24-06-2019'),
+(13, 21, '100.00', '21:45:48', '24-06-2019'),
+(14, 21, '100.00', '22:07:01', '24-06-2019'),
+(15, 21, '100.00', '22:08:57', '24-06-2019'),
+(16, 21, '100.00', '22:09:47', '24-06-2019'),
+(17, 21, '10.00', '22:58:41', '24-06-2019'),
+(18, 20, '320.00', '23:03:39', '24-06-2019'),
+(19, 20, '20.00', '23:11:45', '24-06-2019'),
+(20, 20, '20.00', '23:12:20', '24-06-2019');
 
 -- --------------------------------------------------------
 
@@ -127,99 +139,114 @@ CREATE TABLE `chequeras` (
 --
 
 INSERT INTO `chequeras` (`id_chequeras`, `numero_de_cuenta`, `saldo_actual`, `cuenta_id_chequera`, `tipo_cuentas`, `hora_apertura`, `fecha_apertura`, `estado`) VALUES
-(1, '12345678953', '9100.00', 1, 1, '23:20:21', '22-04-2019', 1),
-(2, '65765456265', '6000.00', 2, 1, '01:29:21', '24-04-2019', 1),
+(1, '12345678953', '9119.00', 1, 1, '23:20:21', '22-04-2019', 1),
+(2, '65765456265', '6200.00', 2, 1, '01:29:21', '24-04-2019', 1),
 (3, '99999999559', '150.00', 3, 1, '16:19:21', '24-04-2019', 1),
-(4, '21474836437', '7270.00', 8, 1, '11:03:34', '26-04-2019', 1),
+(4, '21474836437', '13000.00', 8, 1, '11:03:34', '26-04-2019', 1),
 (15, '67676767444', '100.00', 20, 1, '12:53:54', '26-04-2019', 1),
 (17, '93929292954', '200.00', 22, 1, '13:22:33', '26-04-2019', 0),
 (19, '93929292927', '100.00', 24, 1, '13:28:01', '26-04-2019', 1),
 (20, '39451572019', '100.00', 25, 1, '13:32:28', '26-04-2019', 1),
-(21, '40659052019', '100.00', 26, 1, '14:57:51', '26-04-2019', 1),
+(21, '40659052019', '-20.00', 26, 1, '14:57:51', '26-04-2019', 1),
 (22, '41544042019', '100.00', 27, 1, '15:05:59', '26-04-2019', 0),
 (23, '42339272019', '100.00', 28, 1, '17:04:44', '26-04-2019', 1),
 (24, '47535292019', '2100.00', 29, 1, '18:27:39', '26-04-2019', 1),
 (25, '48739112019', '100.00', 30, 1, '18:29:35', '26-04-2019', 1),
-(26, '49529322019', '100.00', 31, 1, '17:11:38', '27-04-2019', 1),
-(27, '50440202019', '542.00', 32, 1, '21:32:29', '27-04-2019', 1),
+(26, '49529322019', '71.00', 31, 1, '17:11:38', '27-04-2019', 1),
+(27, '50440202019', '3400.00', 32, 1, '21:32:29', '27-04-2019', 1),
 (28, '52626372019', '100.00', 33, 1, '00:20:40', '28-04-2019', 1),
-(29, '54517502019', '1605.00', 34, 1, '01:37:26', '28-04-2019', 1),
-(30, '55711332019', '2250.00', 35, 1, '01:50:17', '28-04-2019', 0),
-(31, '56506252019', '3600.00', 36, 1, '18:33:11', '28-04-2019', 1),
+(29, '54517502019', '1620.00', 34, 1, '01:37:26', '28-04-2019', 1),
+(30, '55711332019', '3180.00', 35, 1, '01:50:17', '28-04-2019', 0),
+(31, '56506252019', '3598.00', 36, 1, '18:33:11', '28-04-2019', 1),
 (32, '57531002019', '980.00', 37, 1, '00:25:05', '05-05-2019', 1),
 (40, '12340956789', '300.00', 22, 1, '01:00:31', '13-05-2019', 0),
 (42, '5262243201940', '100.00', 28, 1, '17:04:33', '16-05-2019', 1),
 (46, '4240047201942', '100.00', 23, 1, '17:29:24', '16-05-2019', 1),
-(47, '1240351201946', '170.00', 8, 1, '01:00:31', '16-05-2019', 0),
+(47, '1240351201946', '6970.00', 8, 1, '01:00:31', '16-05-2019', 0),
 (48, '5261751201947', '100.00', 33, 1, '01:00:31', '26-04-2019', 1),
 (49, '59933042019', '100.00', 38, 1, '17:04:33', '16-05-2019', 1),
-(50, '2891221201949', '1100.00', 22, 2, '18:33:11', '16-05-2019', 0),
-(51, '5994724201950', '1000.00', 38, 2, '18:27:39', '24-04-2019', 1),
+(50, '2891221201949', '1100.00', 22, 1, '18:33:11', '16-05-2019', 0),
+(51, '5994724201950', '1000.00', 38, 1, '18:27:39', '24-04-2019', 1),
 (52, '5992425201951', '1000.00', 38, 1, '17:11:38', '16-05-2019', 1),
 (53, '60624292019', '101.00', 39, 1, '18:27:39', '24-04-2019', 1),
 (54, '6065829201953', '500.00', 39, 1, '17:11:38', '26-04-2019', 1),
-(55, '6060830201954', '1500.00', 39, 2, '13:32:28', '26-04-2019', 1),
-(56, '184637201955', '50000.00', 1, 2, '01:00:31', '16-05-2019', 1),
-(57, '4751631201956', '100.00', 29, 2, '18:31:16', '16-05-2019', 1),
-(58, '62437322019', '100.00', 41, 2, '18:32:37', '16-05-2019', 0),
-(59, '6240733201958', '400.00', 41, 1, '18:33:07', '16-05-2019', 0),
+(55, '6060830201954', '1500.00', 39, 1, '13:32:28', '26-04-2019', 1),
+(56, '184637201955', '50019.00', 1, 1, '01:00:31', '16-05-2019', 1),
+(57, '4751631201956', '100.00', 29, 1, '18:31:16', '16-05-2019', 1),
+(58, '62437322019', '1200.00', 41, 1, '18:32:37', '16-05-2019', 0),
+(59, '6240733201958', '1500.00', 41, 1, '18:33:07', '16-05-2019', 0),
 (60, '63710182019', '100.00', 42, 1, '14:18:10', '17-05-2019', 1),
-(61, '28114041201960', '200.00', 22, 2, '14:41:40', '17-05-2019', 0),
-(62, '28114041201961', '200.00', 22, 2, '14:41:40', '17-05-2019', 0),
+(61, '28114041201960', '200.00', 22, 1, '14:41:40', '17-05-2019', 0),
+(62, '28114041201961', '200.00', 22, 1, '14:41:40', '17-05-2019', 0),
 (63, '28115041201962', '200.00', 22, 1, '14:41:50', '17-05-2019', 0),
-(65, '28110843201963', '200.00', 22, 2, '14:43:08', '17-05-2019', 0),
-(66, '28110943201963', '200.00', 22, 2, '14:43:09', '17-05-2019', 0),
-(67, '28112845201966', '200.00', 22, 2, '14:45:28', '17-05-2019', 0),
-(69, '1245752201967', '70.00', 8, 2, '14:52:57', '17-05-2019', 1),
+(65, '28110843201963', '200.00', 22, 1, '14:43:08', '17-05-2019', 0),
+(66, '28110943201963', '200.00', 22, 1, '14:43:09', '17-05-2019', 0),
+(67, '28112845201966', '200.00', 22, 1, '14:45:28', '17-05-2019', 0),
+(69, '1245752201967', '6817.00', 8, 1, '14:52:57', '17-05-2019', 1),
 (71, '5261009201969', '100.00', 33, 1, '15:09:10', '17-05-2019', 1),
-(73, '5263542201971', '100.00', 33, 2, '15:42:35', '17-05-2019', 1),
-(75, '6243051201973', '100.00', 41, 1, '15:51:30', '17-05-2019', 0),
-(77, '5633461234987', '120.00', 41, 2, '15:51:30', '17-05-2019', 0),
-(78, '569743334987', '120.00', 41, 2, '15:51:30', '17-05-2019', 0),
-(79, '56903948327', '120.00', 41, 2, '15:51:30', '17-05-2019', 0),
-(80, '6245107201979', '100.00', 41, 1, '16:07:51', '17-05-2019', 0),
-(82, '6244309201980', '100.00', 41, 1, '16:09:43', '17-05-2019', 0),
-(84, '6243110201982', '100.00', 41, 1, '16:10:31', '17-05-2019', 0),
-(86, '65755192019', '100.00', 43, 1, '16:19:55', '17-05-2019', 0),
+(73, '5263542201971', '100.00', 33, 1, '15:42:35', '17-05-2019', 1),
+(75, '6243051201973', '1200.00', 41, 1, '15:51:30', '17-05-2019', 0),
+(77, '5633461234987', '1220.00', 41, 1, '15:51:30', '17-05-2019', 0),
+(78, '569743334987', '1220.00', 41, 1, '15:51:30', '17-05-2019', 0),
+(79, '56903948327', '1220.00', 41, 1, '15:51:30', '17-05-2019', 0),
+(80, '6245107201979', '1200.00', 41, 1, '16:07:51', '17-05-2019', 0),
+(82, '6244309201980', '1200.00', 41, 1, '16:09:43', '17-05-2019', 0),
+(84, '6243110201982', '1200.00', 41, 1, '16:10:31', '17-05-2019', 0),
+(86, '65755192019', '-150.00', 43, 1, '16:19:55', '17-05-2019', 0),
 (87, '66404532019', '100.00', 44, 1, '16:53:04', '17-05-2019', 1),
 (88, '68553582019', '100.00', 45, 1, '16:58:53', '17-05-2019', 1),
 (89, '70734112019', '100.00', 46, 1, '17:11:34', '17-05-2019', 1),
 (90, '72732172019', '100.00', 47, 1, '17:17:32', '17-05-2019', 1),
-(91, '6241229201990', '100.00', 41, 2, '22:29:12', '19-05-2019', 1),
-(92, '6240330201991', '100.00', 41, 2, '22:30:03', '19-05-2019', 1),
+(91, '6241229201990', '1200.00', 41, 1, '22:29:12', '19-05-2019', 0),
+(92, '6240330201991', '1200.00', 41, 1, '22:30:03', '19-05-2019', 1),
 (93, '87613362019', '100.00', 48, 1, '22:36:13', '19-05-2019', 1),
 (94, '89549402019', '100.00', 49, 1, '22:40:49', '19-05-2019', 1),
-(95, '65135542201994', '100.00', 43, 2, '22:42:55', '19-05-2019', 0),
-(96, '65132143201995', '100.00', 43, 2, '22:43:21', '19-05-2019', 0),
-(97, '65133443201996', '100.00', 43, 2, '22:43:34', '19-05-2019', 0),
-(98, '183246201997', '100.00', 1, 2, '22:46:32', '19-05-2019', 1),
+(95, '65135542201994', '-150.00', 43, 1, '22:42:55', '19-05-2019', 0),
+(96, '65132143201995', '-150.00', 43, 1, '22:43:21', '19-05-2019', 0),
+(97, '65133443201996', '-150.00', 43, 1, '22:43:34', '19-05-2019', 0),
+(98, '183246201997', '119.00', 1, 1, '22:46:32', '19-05-2019', 1),
 (99, '90646492019', '100.00', 50, 1, '22:49:46', '19-05-2019', 1),
 (100, '91828512019', '100.00', 51, 1, '22:51:28', '19-05-2019', 1),
 (101, '93628532019', '100.00', 52, 1, '22:53:28', '19-05-2019', 0),
 (102, '94629552019', '100.00', 53, 1, '22:55:29', '19-05-2019', 1),
 (103, '98900002019', '100.00', 54, 1, '23:00:00', '19-05-2019', 1),
-(104, '93611012019103', '100.00', 52, 2, '23:01:11', '19-05-2019', 0),
-(105, '93623012019104', '100.00', 52, 2, '23:01:23', '19-05-2019', 0),
-(106, '93630012019105', '100.00', 52, 2, '23:01:30', '19-05-2019', 0),
+(104, '93611012019103', '100.00', 52, 1, '23:01:11', '19-05-2019', 0),
+(105, '93623012019104', '100.00', 52, 1, '23:01:23', '19-05-2019', 0),
+(106, '93630012019105', '100.00', 52, 1, '23:01:30', '19-05-2019', 0),
 (107, '93614472019106', '100.00', 52, 1, '23:47:14', '19-05-2019', 0),
 (108, '99754482019', '100.00', 55, 1, '23:48:54', '19-05-2019', 1),
 (109, '93654352019108', '100.00', 52, 1, '00:35:54', '20-05-2019', 0),
 (110, '93639422019109', '100.00', 52, 1, '00:42:39', '20-05-2019', 0),
-(111, '93644422019110', '100.00', 52, 2, '00:42:44', '20-05-2019', 0),
-(112, '93647422019111', '100.00', 52, 2, '00:42:47', '20-05-2019', 0),
-(113, '93651422019112', '100.00', 52, 2, '00:42:51', '20-05-2019', 0),
+(111, '93644422019110', '100.00', 52, 1, '00:42:44', '20-05-2019', 0),
+(112, '93647422019111', '100.00', 52, 1, '00:42:47', '20-05-2019', 0),
+(113, '93651422019112', '100.00', 52, 1, '00:42:51', '20-05-2019', 0),
 (114, '100644492019', '100.00', 56, 1, '00:49:44', '20-05-2019', 1),
-(115, '651320032019114', '100.00', 43, 1, '01:03:20', '20-05-2019', 0),
-(116, '651320032019115', '100.00', 43, 1, '01:03:20', '20-05-2019', 1),
+(115, '651320032019114', '-150.00', 43, 1, '01:03:20', '20-05-2019', 0),
+(116, '651320032019115', '-150.00', 43, 1, '01:03:20', '20-05-2019', 1),
 (117, '101815032019', '100.00', 57, 1, '02:03:15', '20-05-2019', 1),
 (118, '103537052019', '100.00', 58, 1, '02:05:37', '20-05-2019', 1),
 (119, '105513082019', '100.00', 59, 1, '02:08:12', '20-05-2019', 1),
 (120, '106705312019', '100.00', 60, 1, '02:31:05', '20-05-2019', 1),
-(121, '281150312019120', '200.00', 22, 2, '02:31:50', '20-05-2019', 0),
-(122, '281158312019121', '130.00', 22, 2, '02:31:58', '20-05-2019', 1),
-(123, '107528312019', '100.00', 61, 2, '03:31:28', '23-05-2019', 0),
+(121, '281150312019120', '200.00', 22, 1, '02:31:50', '20-05-2019', 0),
+(122, '281158312019121', '130.00', 22, 1, '02:31:58', '20-05-2019', 1),
+(123, '107528312019', '100.00', 61, 1, '03:31:28', '23-05-2019', 0),
 (124, '107526322019123', '800.00', 61, 1, '03:32:26', '23-05-2019', 1),
-(125, '55705142019124', '100.00', 35, 1, '01:14:05', '29-05-2019', 1);
+(125, '55705142019124', '1030.00', 35, 1, '01:14:05', '29-05-2019', 1),
+(126, '12455122019125', '6900.00', 8, 1, '00:12:55', '13-06-2019', 1),
+(127, '108933332019', '5010.00', 62, 2, '16:33:33', '14-06-2019', 1),
+(128, '109844352019', '450.00', 63, 1, '16:35:44', '14-06-2019', 1),
+(129, '111600162019', '50000.00', 64, 2, '17:16:00', '14-06-2019', 1),
+(130, '112610182019', '41300.00', 65, 2, '17:18:10', '14-06-2019', 1),
+(131, '107516292019130', '100.00', 61, 1, '17:29:16', '14-06-2019', 1),
+(132, '651351292019131', '50.00', 43, 2, '17:29:51', '14-06-2019', 1),
+(133, '113942072019', '2019.00', 66, 2, '22:07:42', '15-06-2019', 1),
+(134, '114448152019', '550.00', 67, 2, '00:15:48', '16-06-2019', 1),
+(135, '115603192019', '540.00', 68, 1, '00:19:02', '16-06-2019', 1),
+(136, '116548212019', '450.00', 69, 1, '00:21:48', '16-06-2019', 1),
+(137, '107526252019136', '100.00', 61, 2, '00:25:26', '16-06-2019', 1),
+(138, '117535262019', '320.00', 70, 1, '00:26:35', '16-06-2019', 1),
+(139, '118704322019', '103.00', 71, 2, '00:32:04', '16-06-2019', 1),
+(140, '40646392019139', '-380.00', 26, 2, '21:39:46', '24-06-2019', 1);
 
 -- --------------------------------------------------------
 
@@ -307,7 +334,17 @@ INSERT INTO `clientes` (`id_clientes`, `nombre`, `apellido`, `dpi`, `nit`, `tele
 (103, 'Karla', 'Vasquez', '3429875023945', '293847523', '3423-2345', 'Reu'),
 (105, 'Omero', 'Simpson', '2034986752039', '984032958', '4534-5463', 'Reu'),
 (106, 'Rodrigo', 'Perez', '4302857439573', '320485345', '3489-2345', 'Santa Rosa'),
-(107, 'Angel', 'Barreno', '4563465346654', '563349234', '3253-2345', 'Retalhuleu');
+(107, 'Angel', 'Barreno', '4563465346654', '563349234', '3253-2345', 'Retalhuleu'),
+(108, 'Joel Otto', 'Torres', '3289247934853', '984375923', '4938-3949', 'Xela'),
+(109, 'Katarina', 'Meduza', '1983475987105', '438795203', '3984-3434', 'Champerico'),
+(111, 'Sandra', 'Torres', '1843729753758', '843975984', '3498-2323', 'Guatemala'),
+(112, 'Thelma', 'Rivera', '4390810984905', '409852398', '9034-3432', 'Zacapa'),
+(113, 'Esmeralda', 'Perez', '3049805239840', '049830598', '3094-3432', 'Reu'),
+(114, 'Rubi', 'Camarreno', '0439348098509', '049808520', '3409-2342', 'Mazatenango'),
+(115, 'Romero', 'Domingo', '2094875874837', '843975938', '3943-2343', 'Mazatenango'),
+(116, 'RenÃ©', 'Gonzales', '8493473495349', '843978573', '3948-3432', 'Reu'),
+(117, 'Cesar', 'Tuch', '2039580490358', '903840380', '9034-3443', 'Reu'),
+(118, 'Cecilia', 'Castarofo', '9438753872582', '843795237', '9384-2342', 'Reu');
 
 -- --------------------------------------------------------
 
@@ -372,7 +409,17 @@ INSERT INTO `cuenta` (`id_cuentas`, `banco_id`, `empleado_id_cuenta`, `cliente_i
 (58, 1, 10, 103, 'Hija'),
 (59, 1, 10, 105, 'Jiho'),
 (60, 2, 11, 106, 'Hijo'),
-(61, 1, 10, 107, 'Hijo');
+(61, 1, 10, 107, 'Hijo'),
+(62, 1, 10, 108, 'hijo'),
+(63, 1, 10, 109, 'hijo'),
+(64, 1, 10, 111, 'hijo'),
+(65, 1, 10, 112, 'Hija'),
+(66, 1, 10, 113, 'hijo'),
+(67, 1, 10, 114, 'hija'),
+(68, 1, 10, 115, 'Hijo'),
+(69, 1, 10, 116, 'hijoi'),
+(70, 1, 10, 117, 'hijo'),
+(71, 1, 10, 118, 'hjo');
 
 -- --------------------------------------------------------
 
@@ -383,6 +430,9 @@ INSERT INTO `cuenta` (`id_cuentas`, `banco_id`, `empleado_id_cuenta`, `cliente_i
 CREATE TABLE `cuentaclientebanco` (
 `id_cuentas` int(11)
 ,`numero_de_cuenta` varchar(45)
+,`id_tipo_cuenta` int(11)
+,`nombre_tipoCuenta` varchar(45)
+,`saldo_actual` decimal(12,2)
 ,`id_clientes` int(11)
 ,`nombre` varchar(45)
 ,`apellido` varchar(45)
@@ -426,6 +476,7 @@ CREATE TABLE `cuenta_cliente_logueado` (
 ,`nombre` varchar(45)
 ,`apellido` varchar(45)
 ,`usuario_cliente` varchar(45)
+,`contrasenia_cliente` varchar(200)
 ,`saldo_actual` decimal(12,2)
 );
 
@@ -466,7 +517,24 @@ INSERT INTO `depositos` (`id_deposito`, `chequera_id_deposito`, `monto_depositad
 (16, 27, '50.00', '02:06:54', '03-05-2019', 1),
 (17, 27, '500.00', '02:15:38', '03-05-2019', 1),
 (18, 27, '500.00', '02:23:41', '03-05-2019', 1),
-(19, 27, '500.00', '01:36:03', '13-05-2019', 1);
+(19, 27, '500.00', '01:36:03', '13-05-2019', 1),
+(20, 1, '75.00', '10:22:07', '14-06-2019', 1),
+(21, 2, '200.00', '12:24:47', '14-06-2019', 1),
+(22, 4, '7000.00', '12:30:05', '14-06-2019', 2),
+(23, 27, '400.00', '20:28:07', '15-06-2019', 1),
+(24, 27, '500.00', '20:31:58', '15-06-2019', 1),
+(25, 27, '500.00', '20:32:55', '15-06-2019', 1),
+(26, 27, '500.00', '22:30:28', '15-06-2019', 1),
+(27, 27, '500.00', '22:40:20', '15-06-2019', 1),
+(28, 127, '200.00', '22:55:55', '15-06-2019', 2),
+(29, 127, '500.00', '22:58:26', '15-06-2019', 2),
+(30, 127, '500.00', '22:59:03', '15-06-2019', 2),
+(31, 127, '5000.00', '22:59:37', '15-06-2019', 2),
+(32, 27, '500.00', '23:01:10', '15-06-2019', 1),
+(33, 130, '1200.00', '01:33:13', '16-06-2019', 2),
+(34, 130, '100.00', '01:35:49', '16-06-2019', 2),
+(35, 91, '1200.00', '01:58:47', '16-06-2019', 1),
+(36, 127, '4000.00', '02:02:08', '16-06-2019', 2);
 
 -- --------------------------------------------------------
 
@@ -513,6 +581,71 @@ CREATE TABLE `idcuenta` (
 `id_cuentas` int(11)
 ,`dpi` varchar(45)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `misaldovirtual`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `misaldovirtual` (
+`nombre` varchar(45)
+,`apellido` varchar(45)
+,`usuario_cliente` varchar(45)
+,`contrasenia_cliente` varchar(200)
+,`numero_de_cuenta` varchar(45)
+,`saldo_actual` decimal(12,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `numeros_cheques`
+--
+
+CREATE TABLE `numeros_cheques` (
+  `idnumeros_cheques` int(11) NOT NULL,
+  `chequera_id_numCheque` int(11) DEFAULT NULL,
+  `nombre_documento` varchar(45) DEFAULT NULL,
+  `estado` int(11) DEFAULT NULL,
+  `movimiento` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `numeros_cheques`
+--
+
+INSERT INTO `numeros_cheques` (`idnumeros_cheques`, `chequera_id_numCheque`, `nombre_documento`, `estado`, `movimiento`) VALUES
+(1, 127, 'Cheque', 0, 'cobrado'),
+(2, 127, 'Cheque', 0, 'cobrado'),
+(3, 127, 'Cheque', 0, 'cobrado'),
+(4, 127, 'Cheque', 0, 'no_cobrado'),
+(5, 127, 'Cheque', 1, 'no_cobrado'),
+(6, 130, 'Cheque', 1, 'no_cobrado'),
+(7, 130, 'Cheque', 0, 'cobrado'),
+(8, 130, 'Cheque', 1, 'no_cobrado'),
+(9, 130, 'Cheque', 1, 'no_cobrado'),
+(10, 130, 'Cheque', 1, 'no_cobrado'),
+(11, 132, 'Cheque', 1, 'no_cobrado'),
+(12, 132, 'Cheque', 1, 'no_cobrado'),
+(13, 132, 'Cheque', 1, 'cobrado'),
+(14, 132, 'Cheque', 1, 'no_cobrado'),
+(15, 132, 'Cheque', 0, 'cobrado'),
+(17, 137, 'Cheque', 1, 'no_cobrado'),
+(18, 137, 'Cheque', 1, 'no_cobrado'),
+(19, 137, 'Cheque', 1, 'no_cobrado'),
+(20, 137, 'Cheque', 1, 'no_cobrado'),
+(21, 137, 'Cheque', 1, 'no_cobrado'),
+(22, 139, 'Cheque', 1, 'no_cobrado'),
+(23, 139, 'Cheque', 1, 'no_cobrado'),
+(24, 139, 'Cheque', 1, 'no_cobrado'),
+(25, 139, 'Cheque', 1, 'no_cobrado'),
+(26, 139, 'Cheque', 1, 'no_cobrado'),
+(27, 140, 'Cheque', 1, 'no_cobrado'),
+(28, 140, 'Cheque', 1, 'no_cobrado'),
+(29, 140, 'Cheque', 1, 'no_cobrado'),
+(30, 140, 'Cheque', 1, 'no_cobrado'),
+(31, 140, 'Cheque', 1, 'no_cobrado');
 
 -- --------------------------------------------------------
 
@@ -565,7 +698,27 @@ INSERT INTO `retiros` (`id_retiro`, `monto_retirado`, `cliente_id_retiro`, `cheq
 (2, '40', 50, 27, '02:08:45', '03-05-2019', 1),
 (3, '40', 50, 27, '02:16:20', '03-05-2019', 1),
 (4, '460', 50, 27, '02:20:06', '03-05-2019', 1),
-(5, '100', 50, 27, '02:24:06', '03-05-2019', 1);
+(5, '100', 50, 27, '02:24:06', '03-05-2019', 1),
+(6, '70', 1, 1, '10:22:52', '14-06-2019', 1),
+(7, '120', 55, 125, '12:25:17', '14-06-2019', 1),
+(8, '2', 56, 31, '12:28:19', '14-06-2019', 1),
+(9, '200', 12, 4, '12:32:22', '14-06-2019', 2),
+(10, '100', 50, 27, '23:26:14', '15-06-2019', 1),
+(11, '300', 108, 127, '23:28:00', '15-06-2019', 2),
+(12, '100', 65, 132, '01:40:16', '16-06-2019', 2),
+(13, '150', 65, 132, '01:42:46', '16-06-2019', 2),
+(14, '100', 62, 91, '01:59:27', '16-06-2019', 1),
+(15, '200', 108, 127, '02:01:15', '16-06-2019', 2),
+(16, '5000', 108, 127, '12:02:41', '21-06-2019', 2),
+(17, '100', 40, 140, '21:45:48', '24-06-2019', 2),
+(18, '100', 40, 140, '22:07:01', '24-06-2019', 2),
+(19, '100', 40, 140, '22:09:47', '24-06-2019', 2),
+(20, '10', 40, 140, '22:58:41', '24-06-2019', 2),
+(21, '10', 40, 140, '22:59:41', '24-06-2019', 2),
+(22, '320', 40, 21, '23:03:39', '24-06-2019', 1),
+(23, '20', 40, 21, '23:12:20', '24-06-2019', 1),
+(24, '20', 40, 21, '23:15:36', '24-06-2019', 1),
+(25, '20', 40, 21, '23:15:36', '24-06-2019', 1);
 
 -- --------------------------------------------------------
 
@@ -593,7 +746,9 @@ CREATE TABLE `tarjeta_debito` (
 INSERT INTO `tarjeta_debito` (`idtarjeta_debito`, `cliente_id_tdebito`, `chequera_id_tdebito`, `codigo_tarjeta`, `pin_tarjeta`, `tipo_tarjeta`, `hora_solicitado`, `fecha_solicitado`, `empleado_id_atiende`, `estado`) VALUES
 (1, NULL, NULL, '57', NULL, NULL, NULL, NULL, NULL, 'Desabilitado'),
 (18, 55, 30, '55720191430', 'UFQwS2ptTmdaM1V2N2FJWXlISUMvUT09', 'debito', '01:48:47', '29-05-2019', 11, 'Habilitado'),
-(19, 50, 27, '5042019727', 'SGlDSXJSelFqQlV5Uk12ak9JVUs0Zz09', 'debito', '01:51:41', '29-05-2019', 10, 'Habilitado');
+(19, 50, 27, '5042019727', 'SGlDSXJSelFqQlV5Uk12ak9JVUs0Zz09', 'debito', '01:51:41', '29-05-2019', 10, 'Habilitado'),
+(20, 40, 21, '4062019821', 'ajR2Mlo2K1F3eEVTMFhCWEZRVzg1QT09', 'debito', '21:30:36', '24-06-2019', 10, 'Habilitado'),
+(21, 40, 140, '40620198140', 'MVM3L2oyQVBKWmdRUlVaaUxaTVg3QT09', 'debito', '21:42:15', '24-06-2019', 10, 'Habilitado');
 
 -- --------------------------------------------------------
 
@@ -684,7 +839,17 @@ INSERT INTO `transferencia` (`Id_transferencia`, `numeroCuenta_a_transferir`, `c
 (5, '54517502019', 29, '505.00', 'Ricardo', 'Andrade Valdaz', '55711332019', '23:50:20', '05-05-2019'),
 (6, '281158312019121', 122, '50.00', 'Alan', 'Chocho', '1245752201967', '02:35:52', '23-05-2019'),
 (7, '281158312019121', 122, '50.00', 'Alan', 'Chocho', '1245752201967', '02:36:51', '23-05-2019'),
-(8, '1245752201967', 69, '70.00', 'Adalberto F', 'GollÃ³n', '281158312019121', '02:44:50', '23-05-2019');
+(8, '1245752201967', 69, '70.00', 'Adalberto F', 'GollÃ³n', '281158312019121', '02:44:50', '23-05-2019'),
+(9, '50440202019', 27, '3.00', 'Alan', 'Chocho', '1245752201967', '00:10:47', '13-06-2019'),
+(10, '12345678953', 1, '7.00', 'Oscar', 'Robles', '49529322019', '00:19:41', '13-06-2019'),
+(11, '50440202019', 27, '7.00', 'Oscar', 'Robles', '49529322019', '00:56:47', '13-06-2019'),
+(12, '54517502019', 29, '15.00', 'Oscar', 'Robles', '49529322019', '01:17:49', '13-06-2019'),
+(13, '50440202019', 27, '50.00', 'Alan', 'Chocho', '1245752201967', '01:20:35', '13-06-2019'),
+(14, '50440202019', 27, '20.00', 'Alan', 'Chocho', '21474836437', '01:28:15', '13-06-2019'),
+(15, '55711332019', 30, '50.00', 'Alan', 'Chocho', '21474836437', '01:28:30', '13-06-2019'),
+(16, '55711332019', 30, '1000.00', 'Alan', 'Chocho', '21474836437', '01:28:47', '13-06-2019'),
+(17, '12345678953', 1, '7.00', 'Alan', 'Chocho', '12455122019125', '01:32:44', '13-06-2019'),
+(18, '108933332019', 127, '10.00', 'Vanesa', 'ChachÃ¡n', '40659052019', '12:06:04', '21-06-2019');
 
 -- --------------------------------------------------------
 
@@ -714,11 +879,13 @@ INSERT INTO `usuario_banca_virtual` (`idusuario_banca_virtual`, `cliente_id_virt
 (71, 12, 69, 'mivirtual46', 'NjdqSnlpMnpZdzlRTytLejdnWDVxQT09', 'cliente', '01:13:27', '23-05-2019', 11, 'Habilitado'),
 (72, 28, 122, 'mivirtual117', 'QXozR2pxbFBaRWRKVStzc0k4d0srZz09', 'cliente', '01:19:17', '23-05-2019', 11, 'Habilitado'),
 (73, 65, 116, 'mivirtual136', 'OFd4UHdzSFgvdWZyM2UrMjl2MlRaQT09', 'cliente', '02:48:45', '23-05-2019', 10, 'Habilitado'),
-(74, 62, 91, 'mivirtual49', 'NFd1NTZ1SFRnSy8zbTlWMEdCNWVCUT09', 'cliente', '02:51:11', '23-05-2019', 10, 'Habilitado'),
+(74, 62, 91, 'mivirtual49', 'NFd1NTZ1SFRnSy8zbTlWMEdCNWVCUT09', 'cliente', '02:51:11', '23-05-2019', 10, 'Bloqueado'),
 (75, 68, 88, 'mivirtual55', 'TkRZL0tkS2JubjJlbFQ1Und4dFIzdz09', 'cliente', '02:54:18', '23-05-2019', 10, 'Habilitado'),
 (76, 40, 21, 'mivirtual68', 'REloTm1FendlYTN0RUZibXAvYUQ1dz09', 'cliente', '03:02:10', '23-05-2019', 10, 'Habilitado'),
 (77, 62, 82, 'mivirtual49', 'QXV4allpb3pRYitXWDFHOGd5SUZGZz09', 'cliente', '03:26:56', '23-05-2019', 10, 'Bloqueado'),
-(78, 12, 4, 'mivirtual46', 'bXpteDRESFRCUDVVTVB2elI2anZLUT09', 'cliente', '18:20:35', '25-05-2019', 11, 'Habilitado');
+(78, 12, 4, 'mivirtual46', 'bXpteDRESFRCUDVVTVB2elI2anZLUT09', 'cliente', '18:20:35', '25-05-2019', 11, 'Habilitado'),
+(79, 49, 26, 'mivirtual56', 'R3pzNkx5VjBQZ2VzLzQ2Y2FBbkl4UT09', 'cliente', '14:06:26', '31-05-2019', 11, 'Habilitado'),
+(80, 12, 126, 'mivirtual46', 'RkN6YzMvYkg1ZGRWaGFjRXJHVDNJQT09', 'cliente', '00:13:33', '13-06-2019', 11, 'Habilitado');
 
 -- --------------------------------------------------------
 
@@ -731,6 +898,61 @@ CREATE TABLE `visa_movimiento_cajero` (
 ,`Monto_Retirado` decimal(10,2)
 ,`Hora_Retirado` varchar(45)
 ,`Fecha_retirado` varchar(45)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_cheque_monetaria`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_cheque_monetaria` (
+`id_cuentas` int(11)
+,`numero_de_cuenta` varchar(45)
+,`id_tipo_cuenta` int(11)
+,`nombre_tipoCuenta` varchar(45)
+,`saldo_actual` decimal(12,2)
+,`id_clientes` int(11)
+,`nombre` varchar(45)
+,`apellido` varchar(45)
+,`nombreBancoCliente` varchar(45)
+,`banco_id` int(11)
+,`numeroCheque` int(11)
+,`movimiento` varchar(45)
+,`idnumeros_cheques` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_depositos`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_depositos` (
+`nombre` varchar(45)
+,`apellido` varchar(45)
+,`numero_de_cuenta` varchar(45)
+,`monto_depositado` decimal(12,2)
+,`hora_deDeposito` varchar(45)
+,`fecha_deDeposito` varchar(45)
+,`nombre_documento` varchar(100)
+,`banco_id` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_numeros_chequera`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_numeros_chequera` (
+`estado` int(11)
+,`nombre` varchar(45)
+,`apellido` varchar(45)
+,`numero_de_cuenta` varchar(45)
+,`nombre_documento` varchar(45)
+,`idnumeros_cheques` int(11)
+,`nombre_banco` varchar(45)
 );
 
 -- --------------------------------------------------------
@@ -786,7 +1008,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `cuentaclientebanco`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cuentaclientebanco`  AS  select `cuenta`.`id_cuentas` AS `id_cuentas`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`clientes`.`id_clientes` AS `id_clientes`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`banco`.`nombre_banco` AS `nombreBancoCliente`,`cuenta`.`banco_id` AS `banco_id` from (((`chequeras` join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) join `banco` on((`banco`.`id_banco` = `cuenta`.`banco_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cuentaclientebanco`  AS  select `cuenta`.`id_cuentas` AS `id_cuentas`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`tipo_cuentas`.`id_tipo_cuenta` AS `id_tipo_cuenta`,`tipo_cuentas`.`nombre_tipoCuenta` AS `nombre_tipoCuenta`,`chequeras`.`saldo_actual` AS `saldo_actual`,`clientes`.`id_clientes` AS `id_clientes`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`banco`.`nombre_banco` AS `nombreBancoCliente`,`cuenta`.`banco_id` AS `banco_id` from ((((`chequeras` join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) join `banco` on((`banco`.`id_banco` = `cuenta`.`banco_id`))) join `tipo_cuentas` on((`tipo_cuentas`.`id_tipo_cuenta` = `chequeras`.`tipo_cuentas`))) ;
 
 -- --------------------------------------------------------
 
@@ -804,7 +1026,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `cuenta_cliente_logueado`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cuenta_cliente_logueado`  AS  select `chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`usuario_banca_virtual`.`usuario_cliente` AS `usuario_cliente`,`chequeras`.`saldo_actual` AS `saldo_actual` from (((`usuario_banca_virtual` join `chequeras` on((`chequeras`.`id_chequeras` = `usuario_banca_virtual`.`chequera_id_virtual`))) join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `cuenta_cliente_logueado`  AS  select `chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`usuario_banca_virtual`.`usuario_cliente` AS `usuario_cliente`,`usuario_banca_virtual`.`contrasenia_cliente` AS `contrasenia_cliente`,`chequeras`.`saldo_actual` AS `saldo_actual` from (((`usuario_banca_virtual` join `chequeras` on((`chequeras`.`id_chequeras` = `usuario_banca_virtual`.`chequera_id_virtual`))) join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) ;
 
 -- --------------------------------------------------------
 
@@ -818,11 +1040,47 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Estructura para la vista `misaldovirtual`
+--
+DROP TABLE IF EXISTS `misaldovirtual`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `misaldovirtual`  AS  select `clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`usuario_banca_virtual`.`usuario_cliente` AS `usuario_cliente`,`usuario_banca_virtual`.`contrasenia_cliente` AS `contrasenia_cliente`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`chequeras`.`saldo_actual` AS `saldo_actual` from ((`usuario_banca_virtual` join `chequeras` on((`chequeras`.`id_chequeras` = `usuario_banca_virtual`.`chequera_id_virtual`))) join `clientes` on((`clientes`.`id_clientes` = `usuario_banca_virtual`.`cliente_id_virtual`))) ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura para la vista `visa_movimiento_cajero`
 --
 DROP TABLE IF EXISTS `visa_movimiento_cajero`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `visa_movimiento_cajero`  AS  select `tarjeta_debito`.`codigo_tarjeta` AS `codigo_tarjeta`,`cajero_automatico`.`monto_retirar` AS `Monto_Retirado`,`cajero_automatico`.`hora_cajero` AS `Hora_Retirado`,`cajero_automatico`.`fecha_cajero` AS `Fecha_retirado` from (`cajero_automatico` join `tarjeta_debito` on((`tarjeta_debito`.`idtarjeta_debito` = `cajero_automatico`.`tarjetaDebito_id_cajero`))) ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_cheque_monetaria`
+--
+DROP TABLE IF EXISTS `vista_cheque_monetaria`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_cheque_monetaria`  AS  select `cuenta`.`id_cuentas` AS `id_cuentas`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`tipo_cuentas`.`id_tipo_cuenta` AS `id_tipo_cuenta`,`tipo_cuentas`.`nombre_tipoCuenta` AS `nombre_tipoCuenta`,`chequeras`.`saldo_actual` AS `saldo_actual`,`clientes`.`id_clientes` AS `id_clientes`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`banco`.`nombre_banco` AS `nombreBancoCliente`,`cuenta`.`banco_id` AS `banco_id`,`numeros_cheques`.`idnumeros_cheques` AS `numeroCheque`,`numeros_cheques`.`movimiento` AS `movimiento`,`numeros_cheques`.`idnumeros_cheques` AS `idnumeros_cheques` from (((((`numeros_cheques` join `chequeras` on((`chequeras`.`id_chequeras` = `numeros_cheques`.`chequera_id_numCheque`))) join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) join `banco` on((`banco`.`id_banco` = `cuenta`.`banco_id`))) join `tipo_cuentas` on((`tipo_cuentas`.`id_tipo_cuenta` = `chequeras`.`tipo_cuentas`))) where (`numeros_cheques`.`movimiento` = 'no_cobrado') ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_depositos`
+--
+DROP TABLE IF EXISTS `vista_depositos`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_depositos`  AS  select `clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`depositos`.`monto_depositado` AS `monto_depositado`,`depositos`.`hora_deDeposito` AS `hora_deDeposito`,`depositos`.`fecha_deDeposito` AS `fecha_deDeposito`,`tipo_documento`.`nombre_documento` AS `nombre_documento`,`cuenta`.`banco_id` AS `banco_id` from ((((`depositos` join `chequeras` on((`chequeras`.`id_chequeras` = `depositos`.`chequera_id_deposito`))) join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) join `tipo_documento` on((`tipo_documento`.`idtipo_documento` = `depositos`.`tipo_documento_deposito`))) order by `depositos`.`fecha_deDeposito` desc ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_numeros_chequera`
+--
+DROP TABLE IF EXISTS `vista_numeros_chequera`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_numeros_chequera`  AS  select `numeros_cheques`.`estado` AS `estado`,`clientes`.`nombre` AS `nombre`,`clientes`.`apellido` AS `apellido`,`chequeras`.`numero_de_cuenta` AS `numero_de_cuenta`,`numeros_cheques`.`nombre_documento` AS `nombre_documento`,`numeros_cheques`.`idnumeros_cheques` AS `idnumeros_cheques`,`banco`.`nombre_banco` AS `nombre_banco` from ((((`numeros_cheques` join `chequeras` on((`chequeras`.`id_chequeras` = `numeros_cheques`.`chequera_id_numCheque`))) join `cuenta` on((`cuenta`.`id_cuentas` = `chequeras`.`cuenta_id_chequera`))) join `clientes` on((`clientes`.`id_clientes` = `cuenta`.`cliente_id_cuenta`))) join `banco` on((`banco`.`id_banco` = `cuenta`.`banco_id`))) where (`numeros_cheques`.`estado` = 1) ;
 
 -- --------------------------------------------------------
 
@@ -921,6 +1179,13 @@ ALTER TABLE `empleado`
   ADD KEY `bank_id_emp_idx` (`banco_id_empleado`);
 
 --
+-- Indices de la tabla `numeros_cheques`
+--
+ALTER TABLE `numeros_cheques`
+  ADD PRIMARY KEY (`idnumeros_cheques`),
+  ADD KEY `chequera_id_numcheque_idx` (`chequera_id_numCheque`);
+
+--
 -- Indices de la tabla `prueba`
 --
 ALTER TABLE `prueba`
@@ -986,7 +1251,7 @@ ALTER TABLE `usuario_banca_virtual`
 -- AUTO_INCREMENT de la tabla `banco`
 --
 ALTER TABLE `banco`
-  MODIFY `id_banco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_banco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `bitacora_inicio`
 --
@@ -996,12 +1261,12 @@ ALTER TABLE `bitacora_inicio`
 -- AUTO_INCREMENT de la tabla `cajero_automatico`
 --
 ALTER TABLE `cajero_automatico`
-  MODIFY `idcajero_automatico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idcajero_automatico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `chequeras`
 --
 ALTER TABLE `chequeras`
-  MODIFY `id_chequeras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id_chequeras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 --
 -- AUTO_INCREMENT de la tabla `cheques_anulados`
 --
@@ -1011,22 +1276,27 @@ ALTER TABLE `cheques_anulados`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 --
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-  MODIFY `id_cuentas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_cuentas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT de la tabla `depositos`
 --
 ALTER TABLE `depositos`
-  MODIFY `id_deposito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_deposito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
   MODIFY `id_empleados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `numeros_cheques`
+--
+ALTER TABLE `numeros_cheques`
+  MODIFY `idnumeros_cheques` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `prueba`
 --
@@ -1036,12 +1306,12 @@ ALTER TABLE `prueba`
 -- AUTO_INCREMENT de la tabla `retiros`
 --
 ALTER TABLE `retiros`
-  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_retiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `tarjeta_debito`
 --
 ALTER TABLE `tarjeta_debito`
-  MODIFY `idtarjeta_debito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idtarjeta_debito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `tipo_cuentas`
 --
@@ -1061,12 +1331,12 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `transferencia`
 --
 ALTER TABLE `transferencia`
-  MODIFY `Id_transferencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id_transferencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `usuario_banca_virtual`
 --
 ALTER TABLE `usuario_banca_virtual`
-  MODIFY `idusuario_banca_virtual` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `idusuario_banca_virtual` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 --
 -- Restricciones para tablas volcadas
 --
@@ -1122,6 +1392,12 @@ ALTER TABLE `depositos`
 ALTER TABLE `empleado`
   ADD CONSTRAINT `bank_id_emp` FOREIGN KEY (`banco_id_empleado`) REFERENCES `banco` (`id_banco`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `tipo_usu` FOREIGN KEY (`tipoUsuario_id`) REFERENCES `tipo_usuario` (`idtipo_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `numeros_cheques`
+--
+ALTER TABLE `numeros_cheques`
+  ADD CONSTRAINT `chequera_id_numcheque` FOREIGN KEY (`chequera_id_numCheque`) REFERENCES `chequeras` (`id_chequeras`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `retiros`

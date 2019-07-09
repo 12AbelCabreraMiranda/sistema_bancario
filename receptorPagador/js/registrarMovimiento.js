@@ -94,7 +94,8 @@ $(document).ready(function(){
               }
           })  
           
-        //update cheque
+        //update cheque 
+        
         var idCheque = $(".idNumCheque").text();//valorClass
         $.ajax({
             url: 'queryBD/update_cheque.php?idCheque='+idCheque,  // variablePHP              
